@@ -13,7 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@uncover/games-common": "ash-uncover/ap-games-common",
-    "@uncover/js-utils": "^0.0.11",
+    "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
     "@uncover/js-utils-microfrontend": "^0.0.9",

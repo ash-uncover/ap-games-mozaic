@@ -1,6 +1,9 @@
 {
   "name": "mozaic",
   "url": "http://localhost:8083",
+  "dependencies": [
+    "https://ash-uncover.github.io/ap-games-mozaic-themes/plugin.json"
+  ],
   "provides": {
     "game": {
       "url": "",
@@ -9,6 +12,18 @@
         "name": "Mozaic",
         "description": "A mozaic game",
         "thumbnail": "/thumbnail.jpg"
+      }
+    }
+  },
+  "defines": {
+    "theme": {
+      "attributes": {
+        "name": "string",
+        "description": "string",
+        "thumbnail?": "url",
+        "background?": "url",
+        "images": "url[]",
+        "music?": "url[]"
       }
     }
   }

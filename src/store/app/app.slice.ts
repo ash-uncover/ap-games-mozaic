@@ -21,6 +21,8 @@ const initialState: AppState = {
 
   language: Language.DEFAULT.id,
 
+  theme: 'lol',
+
   loaded: false,
   started: false,
 }
@@ -58,6 +60,10 @@ const setLanguage: CaseReducer<AppState, PayloadAction<string>> = (state, action
   state.language = action.payload
 }
 
+const setTheme: CaseReducer<AppState, PayloadAction<string>> = (state, action) => {
+  state.theme = action.payload
+}
+
 const setLoaded: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
   state.loaded = action.payload
 }
@@ -89,6 +95,7 @@ const AppSlice = createSlice({
     startApp,
     setBusy,
     setLanguage,
+    setTheme,
     setEmbedded,
     setLoaded,
     openDialog,

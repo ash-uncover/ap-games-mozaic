@@ -15,6 +15,8 @@ import 'lib/utils/i18n'
 // Import icons
 import 'lib/utils/icons'
 
+import { PluginManager } from 'lib/PluginManager'
+
 // Should be imported before first access to the reducers
 import store from 'store'
 
@@ -30,13 +32,20 @@ if (CONFIG.AP_GAMES_MOZAIC_ENVIRONMENT === 'github') {
   Router = HashRouter
 }
 
-const containerRoot = document.getElementById('reactroot')!
-const root = createRoot(containerRoot)
+PluginManager.loadPlugin(CONFIG.AP_GAMES_MOZAIC_PLUGIN)
+  .then(() => {
+    console.log(PluginManager.plugins)
+    console.log(PluginManager.definitions)
+    console.log(PluginManager.providers)
 
-root.render(
-  <Provider store={store}>
-    <Router>
-      <Root />
-    </Router>
-  </Provider>
-)
+    const containerRoot = document.getElementById('reactroot')!
+    const root = createRoot(containerRoot)
+
+    root.render(
+      <Provider store={store}>
+        <Router>
+          <Root />
+        </Router>
+      </Provider>
+    )
+  })

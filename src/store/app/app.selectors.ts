@@ -8,6 +8,7 @@ export const dialog = (state: RootState) => base(state).dialog
 export const dialogParams = (state: RootState) => base(state).dialogParams
 export const embedded = (state: RootState) => base(state).embedded
 export const language = (state: RootState) => base(state).language
+export const theme = (state: RootState) => base(state).theme
 export const loaded = (state: RootState) => base(state).loaded
 export const started = (state: RootState) => base(state).started
 
@@ -18,6 +19,7 @@ const AppSelectors = {
   dialogParams,
   embedded,
   language,
+  theme,
   loaded,
   started,
 }

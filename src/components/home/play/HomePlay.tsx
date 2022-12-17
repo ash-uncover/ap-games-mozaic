@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSlice from 'store/game/game.slice'
 // Libs
+import { ArrayUtils } from  '@uncover/js-utils'
 import { ShortcutManager, Shortcuts } from '@uncover/games-common'
+import AppSelectors from 'store/app/app.selectors'
+import { PluginManager } from 'lib/PluginManager'
 // Components
 
 const HomeNew = () => {
@@ -13,6 +16,7 @@ const HomeNew = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const themeId = useSelector(AppSelectors.theme)
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
@@ -29,10 +33,20 @@ const HomeNew = () => {
   // Events //
 
   const handleStart = () => {
+    const themes = PluginManager.providers['mozaic/theme']
+    const theme = themes.find(t => t.name === themeId)
+    let background = null
+    if (Array.isArray(theme.attributes.images)) {
+      background = ArrayUtils.randomElement(theme.attributes.images)!
+    } else {
+      background = theme.attributes.images
+    }
+    const sizeWidth = 4
+    const sizeHeight = 3
     dispatch(GameSlice.actions.startGame({
-      background: 'images/puzzle/puzzle_0.jpg',
-      sizeWidth: 4,
-      sizeHeight: 3
+      background,
+      sizeWidth,
+      sizeHeight
     }))
     navigate('/game')
   }

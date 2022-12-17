@@ -6,7 +6,7 @@ const CONFIG: {
   AP_GAMES_MOZAIC_PUBLIC: string
   AP_GAMES_MOZAIC_ENVIRONMENT: string
 } = {
-  AP_GAMES_MOZAIC_PLUGIN: 'http://localhost:8083',
+  AP_GAMES_MOZAIC_PLUGIN: 'http://localhost:8083/plugin.json',
   AP_GAMES_MOZAIC_PUBLIC: '',
   AP_GAMES_MOZAIC_ENVIRONMENT: 'local',
 }

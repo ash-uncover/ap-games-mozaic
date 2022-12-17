@@ -9,6 +9,8 @@ interface AppState {
 
   language: string
 
+  theme: string
+
   loaded: boolean
   started: boolean
 }
