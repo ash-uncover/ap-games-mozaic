@@ -30,7 +30,7 @@ const HomeNew = () => {
 
   const handleStart = () => {
     dispatch(GameSlice.actions.startGame({
-      background: '/images/puzzle/puzzle_0.jpg',
+      background: 'images/puzzle/puzzle_0.jpg',
       sizeWidth: 4,
       sizeHeight: 3
     }))
