@@ -1,0 +1,61 @@
+.game {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  user-select: none;
+
+  & .game-header {
+    background: black;
+    color: white;
+    height: 3rem;
+    flex-shrink: 0;
+  }
+
+  & .game-left {
+
+  }
+
+  & .game-area {
+    flex-basis: 0;
+    flex-grow: 1;
+    overflow: hidden;
+
+    background: #112;
+  }
+
+  & .game-footer {
+    background: black;
+    color: white;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  & .game-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & .game-dialog {
+      height: 200px;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      font-size: 3rem;
+      background: #DDD;
+      box-shadow: 0px 0px 20px 5px black;
+    }
+  }
+}

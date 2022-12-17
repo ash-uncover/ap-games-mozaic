@@ -1,0 +1,15 @@
+{
+  "name": "mozaic",
+  "url": "https://ash-uncover.github.io/ap-games-mozaic",
+  "provides": {
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Mozaic",
+        "description": "A mozaic game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
+  }
+}

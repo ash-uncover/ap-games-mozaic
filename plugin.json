@@ -1,0 +1,15 @@
+{
+  "name": "mozaic",
+  "url": "http://localhost:8083",
+  "provides": {
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Mozaic",
+        "description": "A mozaic game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
+  }
+}

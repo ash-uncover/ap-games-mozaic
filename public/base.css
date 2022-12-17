@@ -1,0 +1,42 @@
+html,
+body,
+.main-layer,
+#reactroot {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  font-family: 'Roboto', sans-serif;
+
+  user-select: none;
+}
+
+.main-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.main-layer-background {
+  background: url('images/background.jpg');
+  background-size: cover;
+}
+
+.main-layer-copyright {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: darkgrey;
+  margin: 1rem;
+  fontStyle: italic;
+  fontSize: 0.75rem;
+}
+
+h1, h2 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
+}
