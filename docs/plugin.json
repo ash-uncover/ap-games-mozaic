@@ -6,7 +6,7 @@
   ],
   "provides": {
     "ap-games/game": {
-      "name": "memory",
+      "name": "mozaic",
       "attributes": {
         "name": "Mozaic",
         "description": "A mozaic game",
