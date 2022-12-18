@@ -5,6 +5,8 @@ import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
+import MessageServiceCentral from 'services/message.service'
+import { useLocation } from 'react-router-dom'
 
 interface AppProperties {
   children: ReactElement
@@ -17,7 +19,16 @@ const App = ({
   // Hooks //
 
   const dispatch = useDispatch()
+  const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
+
+  useEffect(() => {
+    const embedded = query.has('embedded')
+    if (embedded) {
+      dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
+      return MessageServiceCentral.init(dispatch)
+    }
+  }, [])
 
   useEffect(() => {
     loadData()
@@ -35,6 +46,11 @@ const App = ({
       loading
     </div>
   )
+}
+
+const useQuery = () => {
+  const { search } = useLocation()
+  return React.useMemo(() => new URLSearchParams(search), [search])
 }
 
 export default App
