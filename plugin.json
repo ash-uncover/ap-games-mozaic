@@ -10,7 +10,7 @@
       "attributes": {
         "name": "Mozaic",
         "description": "A mozaic game",
-        "thumbnail": "/thumbnail.jpg"
+        "thumbnail": "/images/thumbnail.jpg"
       },
       "elements": {
         "main": {
