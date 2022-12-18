@@ -16,7 +16,7 @@
     "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/js-utils-microfrontend": "^1.0.0",
+    "@uncover/js-utils-microfrontend": "^1.0.1",
     "i18next": "^22.4.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-chained-backend": "^4.2.0",
