@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
@@ -7,7 +7,7 @@ import GameSlice from 'store/game/game.slice'
 import { ArrayUtils } from  '@uncover/js-utils'
 import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 import AppSelectors from 'store/app/app.selectors'
-import { PluginManager } from 'lib/PluginManager'
+import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
 
 const HomeNew = () => {

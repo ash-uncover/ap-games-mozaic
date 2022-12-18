@@ -1,7 +1,7 @@
+import { PluginManager } from '@uncover/js-utils-microfrontend'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 // Libs
-import { PluginManager } from 'lib/PluginManager'
 
 const HomeSettingsGeneral = () => {
 

@@ -15,8 +15,6 @@ import 'lib/utils/i18n'
 // Import icons
 import 'lib/utils/icons'
 
-import { PluginManager } from 'lib/PluginManager'
-
 // Should be imported before first access to the reducers
 import store from 'store'
 
@@ -25,6 +23,7 @@ import Root from 'routes/__layout'
 
 import { ShortcutManager } from '@uncover/games-common'
 import CONFIG from 'config'
+import { PluginManager } from '@uncover/js-utils-microfrontend'
 ShortcutManager.reset()
 
 let Router = BrowserRouter
