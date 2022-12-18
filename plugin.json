@@ -6,12 +6,17 @@
   ],
   "provides": {
     "game": {
-      "url": "",
-      "type": "iframe",
-      "properties": {
+      "name": "memory",
+      "attributes": {
         "name": "Mozaic",
         "description": "A mozaic game",
         "thumbnail": "/thumbnail.jpg"
+      },
+      "elements": {
+        "main": {
+          "url": "",
+          "type": "iframe"
+        }
       }
     }
   },
