@@ -5,7 +5,7 @@
     "https://ash-uncover.github.io/ap-games-mozaic-themes/plugin.json"
   ],
   "provides": {
-    "game": {
+    "ap-games/game": {
       "name": "memory",
       "attributes": {
         "name": "Mozaic",
@@ -14,7 +14,7 @@
       },
       "elements": {
         "main": {
-          "url": "",
+          "url": "#",
           "type": "iframe"
         }
       }
