@@ -32,8 +32,7 @@ const Tile = ({
   // Hooks //
 
   const background = useSelector(GameSelectors.background)
-  const sizeWidth = useSelector(GameSelectors.sizeWidth)
-  const sizeHeight = useSelector(GameSelectors.sizeHeight)
+  const size= useSelector(GameSelectors.size)
 
   // Events //
 
@@ -55,8 +54,8 @@ const Tile = ({
           <img
             className='tile-image'
             src={background}
-            width={`${sizeWidth * 100}%`}
-            height={`${sizeHeight * 100}%`}
+            width={`${size.width * 100}%`}
+            height={`${size.height * 100}%`}
             draggable={false}
             style={{
               position: 'absolute',

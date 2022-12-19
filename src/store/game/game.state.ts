@@ -1,5 +1,5 @@
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
-import { GameStatus } from 'lib/game/constants'
+import { GameSize, GameStatus } from 'lib/game/constants'
 
 export interface GameState {
   status: GameStatus
@@ -10,8 +10,7 @@ export interface GameState {
   clicks: number
 
   background: string
-  sizeWidth: number
-  sizeHeight: number
+  size: GameSize
 
   board: GameBoardState
 

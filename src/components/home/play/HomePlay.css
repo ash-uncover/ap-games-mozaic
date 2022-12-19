@@ -1,0 +1,26 @@
+.home-play {
+  position: relative;
+
+  & .home-play-sizes {
+    & .grid-tiles-item {
+      padding: 0.25rem;
+      box-sizing: border-box;
+
+      & .home-play-size {
+        border: 1px solid red;
+        border-radius: 0.25rem;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+
+        &.disabled {
+          cursor: not-allowed;
+        }
+        &.selected {
+          background: green;
+        }
+      }
+    }
+
+  }
+}

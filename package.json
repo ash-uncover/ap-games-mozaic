@@ -5,7 +5,7 @@
     "build": "webpack",
     "build:docs": "npm i && webpack --config webpack.config.docs.js",
     "postinstall": "npm update @uncover/games-common",
-    "start": "npm i && webpack serve --config webpack.config.dev.js --progress"
+    "start": "webpack serve --config webpack.config.dev.js --progress"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",

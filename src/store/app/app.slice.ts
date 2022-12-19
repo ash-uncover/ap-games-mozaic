@@ -21,7 +21,7 @@ const initialState: AppState = {
 
   language: Language.DEFAULT.id,
 
-  theme: 'lol',
+  theme: 'default',
 
   loaded: false,
   started: false,

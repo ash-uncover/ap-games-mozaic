@@ -1,0 +1,6 @@
+.grid-tiles {
+  & .grid-tiles-item {
+    display: inline-block;
+    aspect-ratio: 1;
+  }
+}

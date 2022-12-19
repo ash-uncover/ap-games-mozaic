@@ -21,7 +21,7 @@ const BoardTile = ({
   const dispatch = useDispatch()
 
   const tile = useSelector(GameSelectors.tile(tileId))
-  const sizeWidth = useSelector(GameSelectors.sizeWidth)
+  const size = useSelector(GameSelectors.size)
 
   // Events //
 
@@ -35,7 +35,7 @@ const BoardTile = ({
     return null
   }
 
-  const tileSize = 100 / sizeWidth
+  const tileSize = 100 / size.width
 
   return (
     <div

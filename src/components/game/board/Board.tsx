@@ -24,8 +24,7 @@ const Board = ({
   const background = useSelector(GameSelectors.background)
 
   const tiles = useSelector(GameSelectors.boardTiles)
-  const sizeWidth = useSelector(GameSelectors.sizeWidth)
-  const sizeHeight = useSelector(GameSelectors.sizeHeight)
+  const size = useSelector(GameSelectors.size)
 
   // Events //
 
@@ -54,8 +53,8 @@ const Board = ({
   return (
     <div className={classes.join(' ')}>
       <GridContainer
-        width={sizeWidth}
-        height={sizeHeight}
+        width={size.width}
+        height={size.height}
       >
         {tiles.map(renderTile)}
         {status === GameStatuses.GAME_READY ?

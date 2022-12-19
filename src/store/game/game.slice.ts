@@ -13,10 +13,8 @@ import {
   GameState,
 } from 'store/game/game.state'
 
-import { Cards } from 'lib/data'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
-import { Card } from 'lib/data/card.helper'
-import { GameStatuses } from 'lib/game/constants'
+import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 
 // STATE //
 
@@ -28,8 +26,7 @@ const initialState: GameState = {
 
   clicks: 0,
   background: null,
-  sizeWidth: 0,
-  sizeHeight: 0,
+  size: GameSizes.SIZE_3X3,
 
   board: {
     tiles: [],
@@ -40,49 +37,54 @@ const initialState: GameState = {
 
 // REDUCERS //
 
+interface SetSizePayload {
+  size: GameSize
+}
+const setSize: CaseReducer<GameState, PayloadAction<SetSizePayload>> = (state, action) => {
+  const {
+    size,
+  } = action.payload
+  state.size = size
+}
+
+
 interface PrepareGamePayload {
   background: string
-  sizeWidth: number
-  sizeHeight: number
 }
 const prepareGame: CaseReducer<GameState, PayloadAction<PrepareGamePayload>> = (state, action) => {
   const {
     background,
-    sizeWidth,
-    sizeHeight,
   } = action.payload
 
-  const tilesNumber = sizeWidth * sizeHeight
+  const tilesNumber = state.size.width * state.size.height
   const tilesPosition = ArrayUtils.createIntArray(tilesNumber)
 
   tilesPosition.forEach((tilePosition: number) => {
     const tile: GameBoardTile = {
       id: `tile-${UUID.next()}`,
       hidden: false,
-      baseX: tilePosition % sizeWidth,
-      baseY: Math.floor(tilePosition / sizeWidth),
-      x: tilePosition % sizeWidth,
-      y: Math.floor(tilePosition / sizeWidth)
+      baseX: tilePosition % state.size.width,
+      baseY: Math.floor(tilePosition / state.size.width),
+      x: tilePosition % state.size.width,
+      y: Math.floor(tilePosition / state.size.width)
     }
     state.tiles[tile.id] = tile
     state.board.tiles.push(tile.id)
   })
 
   state.background = background
-  state.sizeWidth = sizeWidth
-  state.sizeHeight = sizeHeight
   state.status = GameStatuses.GAME_READY
 }
 
 const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const tilesNumber = state.sizeWidth * state.sizeHeight
+  const tilesNumber = state.size.width * state.size.height
   const tilesPosition = ArrayUtils.shuffle(ArrayUtils.createIntArray(tilesNumber))
 
   tilesPosition.forEach((tilePosition: number, index: number) => {
     const tileId = state.board.tiles[tilePosition]
     const tile = state.tiles[tileId]
-    tile.x = index % state.sizeWidth
-    tile.y = Math.floor(index / state.sizeWidth)
+    tile.x = index % state.size.width
+    tile.y = Math.floor(index / state.size.width)
     if (index === state.board.tiles.length - 1) {
       state.board.hiddenTile = tileId
       tile.hidden = true
@@ -147,6 +149,8 @@ const GameSlice = createSlice({
   initialState,
 
   reducers: {
+    setSize,
+
     prepareGame,
     startGame,
 

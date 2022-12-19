@@ -7,8 +7,7 @@ export const startTime = (state: RootState) => base(state).startTime
 export const endTime = (state: RootState) => base(state).endTime
 export const clicks = (state: RootState) => base(state).clicks
 export const background = (state: RootState) => base(state).background
-export const sizeWidth = (state: RootState) => base(state).sizeWidth
-export const sizeHeight = (state: RootState) => base(state).sizeHeight
+export const size = (state: RootState) => base(state).size
 
 export const board = (state: RootState) => base(state).board
 export const boardTiles = (state: RootState) => board(state)?.tiles
@@ -23,8 +22,7 @@ const GameSelectors = {
   endTime,
   clicks,
   background,
-  sizeWidth,
-  sizeHeight,
+  size,
 
   board,
   boardTiles,
