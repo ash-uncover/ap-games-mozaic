@@ -1,11 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
 import { GridContainer } from '@uncover/games-common'
+
+import { GameStatuses } from 'lib/game/constants'
+import GameSlice from 'store/game/game.slice'
 
 import './Board.css'
 
@@ -15,11 +18,20 @@ const Board = ({
 
   // Hooks //
 
+  const dispatch = useDispatch()
+
+  const status = useSelector(GameSelectors.status)
+  const background = useSelector(GameSelectors.background)
+
   const tiles = useSelector(GameSelectors.boardTiles)
   const sizeWidth = useSelector(GameSelectors.sizeWidth)
   const sizeHeight = useSelector(GameSelectors.sizeHeight)
 
   // Events //
+
+  const handleStart = () => {
+    dispatch(GameSlice.actions.startGame())
+  }
 
   // Rendering //
 
@@ -32,13 +44,34 @@ const Board = ({
     )
   }
 
+
+  const classes = ['board']
+  if (status === GameStatuses.GAME_READY) {
+    classes.push('board-ready')
+  }
+
+
   return (
-    <div className='board'>
+    <div className={classes.join(' ')}>
       <GridContainer
         width={sizeWidth}
         height={sizeHeight}
       >
         {tiles.map(renderTile)}
+        {status === GameStatuses.GAME_READY ?
+          <div className='board-layer'>
+            <img
+              className='board-layer-image'
+              src={background}
+            />
+            <button
+            className='board-layer-button'
+              onClick={handleStart}
+            >
+              Start
+            </button>
+          </div>
+          : null}
       </GridContainer>
     </div>
   )

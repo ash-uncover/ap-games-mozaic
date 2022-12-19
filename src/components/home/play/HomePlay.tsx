@@ -43,7 +43,7 @@ const HomeNew = () => {
     }
     const sizeWidth = 4
     const sizeHeight = 3
-    dispatch(GameSlice.actions.startGame({
+    dispatch(GameSlice.actions.prepareGame({
       background,
       sizeWidth,
       sizeHeight
