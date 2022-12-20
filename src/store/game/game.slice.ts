@@ -83,21 +83,21 @@ const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
   const tilesNumber = state.size.width * state.size.height
   const tilesPosition = ArrayUtils.shuffle(ArrayUtils.createIntArray(tilesNumber))
 
-  state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
-  state.tiles[state.board.hiddenTile].x--
-  state.tiles[state.board.hiddenTile].hidden = true
-  state.tiles[state.board.tiles[state.board.tiles.length - 2]].x++
+  // state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
+  // state.tiles[state.board.hiddenTile].x--
+  // state.tiles[state.board.hiddenTile].hidden = true
+  // state.tiles[state.board.tiles[state.board.tiles.length - 2]].x++
 
-  // tilesPosition.forEach((tilePosition: number, index: number) => {
-  //   const tileId = state.board.tiles[tilePosition]
-  //   const tile = state.tiles[tileId]
-  //   tile.x = index % state.size.width
-  //   tile.y = Math.floor(index / state.size.width)
-  //   if (index === state.board.tiles.length - 1) {
-  //     state.board.hiddenTile = tileId
-  //     tile.hidden = true
-  //   }
-  // })
+  tilesPosition.forEach((tilePosition: number, index: number) => {
+    const tileId = state.board.tiles[tilePosition]
+    const tile = state.tiles[tileId]
+    tile.x = index % state.size.width
+    tile.y = Math.floor(index / state.size.width)
+    if (index === state.board.tiles.length - 1) {
+      state.board.hiddenTile = tileId
+      tile.hidden = true
+    }
+  })
 
   state.startTime = new Date().getTime()
   state.clicks = 0
