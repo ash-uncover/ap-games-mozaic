@@ -15,6 +15,7 @@ import {
 
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
+import { DIALOG } from 'components/game/dialogs/Dialogs'
 
 // STATE //
 
@@ -27,6 +28,9 @@ const initialState: GameState = {
   clicks: 0,
   background: null,
   size: GameSizes.SIZE_3X3,
+
+  dialog: null,
+  dialogParams: null,
 
   board: {
     tiles: [],
@@ -46,7 +50,6 @@ const setSize: CaseReducer<GameState, PayloadAction<SetSizePayload>> = (state, a
   } = action.payload
   state.size = size
 }
-
 
 interface PrepareGamePayload {
   background: string
@@ -80,23 +83,21 @@ const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
   const tilesNumber = state.size.width * state.size.height
   const tilesPosition = ArrayUtils.shuffle(ArrayUtils.createIntArray(tilesNumber))
 
-  // state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
-  // state.tiles[state.board.hiddenTile].x--
-  // state.tiles[state.board.hiddenTile].hidden = true
-  // state.tiles[state.board.tiles[state.board.tiles.length - 2]].x++
+  state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
+  state.tiles[state.board.hiddenTile].x--
+  state.tiles[state.board.hiddenTile].hidden = true
+  state.tiles[state.board.tiles[state.board.tiles.length - 2]].x++
 
-
-  tilesPosition.forEach((tilePosition: number, index: number) => {
-    const tileId = state.board.tiles[tilePosition]
-    const tile = state.tiles[tileId]
-    tile.x = index % state.size.width
-    tile.y = Math.floor(index / state.size.width)
-    if (index === state.board.tiles.length - 1) {
-      state.board.hiddenTile = tileId
-      tile.hidden = true
-    }
-  })
-
+  // tilesPosition.forEach((tilePosition: number, index: number) => {
+  //   const tileId = state.board.tiles[tilePosition]
+  //   const tile = state.tiles[tileId]
+  //   tile.x = index % state.size.width
+  //   tile.y = Math.floor(index / state.size.width)
+  //   if (index === state.board.tiles.length - 1) {
+  //     state.board.hiddenTile = tileId
+  //     tile.hidden = true
+  //   }
+  // })
 
   state.startTime = new Date().getTime()
   state.clicks = 0
@@ -142,11 +143,29 @@ const clickTile: CaseReducer<GameState, PayloadAction<ClickTilePayload>> = (stat
   })
   if (!mismatch) {
     state.status = GameStatuses.GAME_ENDED_VICTORY
+    state.dialog = DIALOG.VICTORY
   }
 }
 
 const endGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   Object.assign(state, initialState)
+}
+
+type PayloadDialog = {
+  dialog: string | null,
+  params?: any,
+}
+const openDialog: CaseReducer<GameState, PayloadAction<PayloadDialog>> = (state, action) => {
+  const {
+    dialog,
+    params,
+  } = action.payload
+  state.dialog = dialog
+  state.dialogParams = params
+}
+const closeDialog: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.dialog = null
+  state.dialogParams = null
 }
 
 // SLICE //
@@ -164,6 +183,9 @@ const GameSlice = createSlice({
     clickTile,
 
     endGame,
+
+    openDialog,
+    closeDialog,
   },
 })
 

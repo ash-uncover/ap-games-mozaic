@@ -8,17 +8,23 @@ import GameSlice from 'store/game/game.slice'
 import Audio, { AudioFiles } from 'lib/utils/Audio'
 import { GameStatuses } from 'lib/game/constants'
 // Components
-import Board from 'components/game/board/Board'
+import { Board } from 'components/game/board/Board'
 // Libs
 import { AudioTypes } from '@uncover/games-common'
 
 import './Game.css'
+import { GameFooterAction } from './GameFooterAction'
+import { GameHeader } from './GameHeader'
+import { DIALOG, Dialogs } from './dialogs/Dialogs'
 
 const Game = ({ }) => {
 
   // Hooks //
 
   const dispatch = useDispatch()
+
+  const [reveal, setReveal] = useState(false)
+  const [showEndConfirm, setShowEndConfirm] = useState(false)
 
   const status = useSelector(GameSelectors.status)
 
@@ -33,8 +39,20 @@ const Game = ({ }) => {
 
   // Events //
 
-  const handleEndGame = () => {
-    dispatch(GameSlice.actions.endGame())
+  const handleStart = () => {
+    dispatch(GameSlice.actions.startGame())
+  }
+
+  const handleToggleView = () => {
+    setReveal(!reveal)
+  }
+
+  const handleEndMenu = () => {
+    dispatch(GameSlice.actions.openDialog({ dialog: DIALOG.DEFEAT }))
+  }
+
+  const handleVictoryMenu = () => {
+    dispatch(GameSlice.actions.openDialog({ dialog: DIALOG.VICTORY }))
   }
 
   // Rendering //
@@ -45,34 +63,73 @@ const Game = ({ }) => {
     )
   }
 
-
+  const buildFooterActions = () => {
+    const result = []
+    switch (status) {
+      case GameStatuses.GAME_READY: {
+        result.push(
+          <GameFooterAction
+            key='start'
+            title='Start Game'
+            onClick={handleStart}
+          />
+        )
+        break
+      }
+      case GameStatuses.GAME_ON_GOING: {
+        result.push(
+          <GameFooterAction
+            key='reveal'
+            icon={['fas', 'eye']}
+            selected={reveal}
+            title=''
+            onClick={handleToggleView}
+          />
+        )
+        result.push(
+          <GameFooterAction
+            key='quit'
+            icon={['fas', 'door-open']}
+            title=''
+            onClick={handleEndMenu}
+          />
+        )
+        break
+      }
+      case GameStatuses.GAME_ENDED_VICTORY: {
+        result.push(
+          <GameFooterAction
+            key='victory'
+            icon={['fas', 'door-open']}
+            title=''
+            onClick={handleVictoryMenu}
+          />
+        )
+        break
+      }
+    }
+    return result;
+  }
 
   return (
     <div className='game'>
-      <div className='game-header'>
-        {`Clicks: ${clicks}`}
-      </div>
+
+      <GameHeader />
+
       <div
         className='game-area'
         style={{ position: 'relative' }}
       >
-        <Board />
+        <Board
+          reveal={reveal || (status === GameStatuses.GAME_READY)  || (status === GameStatuses.GAME_ENDED_VICTORY)}
+        />
       </div>
+
       <div className='game-footer'>
-        footer
+        {buildFooterActions()}
       </div>
-      {status === GameStatuses.GAME_ENDED_VICTORY ?
-        <div className='game-layer'>
-          <div className='game-dialog'>
-            VICTORY
-            <button
-              onClick={handleEndGame}
-            >
-              Return to Main Menu
-            </button>
-          </div>
-        </div>
-        : null}
+
+      <Dialogs />
     </div>
   )
 }

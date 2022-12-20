@@ -10,7 +10,7 @@
     overflow: visible;
   }
 
-  &.board-ready {
+  &.reveal {
     pointer-events: none;
     & .board-layer {
       &.board-layer__game {
@@ -20,25 +20,10 @@
         pointer-events: all;
         opacity: 1;
         & .board-layer-image {
-          filter: grayscale(1);
+          filter: grayscale(0.5);
         }
       }
     }
-  }
-  &.board-victory {
-    pointer-events: none;
-    & .board-layer {
-      &.board-layer__game {
-        pointer-events: none;
-      }
-      &.board-layer__mask {
-        pointer-events: none;
-        opacity: 1;
-      }
-    }
-  }
-  &.board-defeat {
-
   }
 
   & .board-layer {
@@ -54,7 +39,7 @@
     &.board-layer__mask {
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.25s ease-in-out;
+      transition: opacity 0.1s ease-in-out;
       & .board-layer-image {
         position: absolute;
         top: 0;

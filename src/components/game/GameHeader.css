@@ -1,0 +1,15 @@
+.game-header {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3rem;
+
+  background: black;
+  color: grey;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+}

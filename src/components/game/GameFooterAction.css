@@ -1,0 +1,19 @@
+.game-footer-action {
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  background: grey;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background: lightgrey;
+  }
+  &.selected {
+    background: rgb(42, 128, 185);
+  }
+}

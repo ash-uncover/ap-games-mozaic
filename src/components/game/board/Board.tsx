@@ -7,20 +7,22 @@ import GameSelectors from 'store/game/game.selectors'
 import BoardTile from 'components/game/board/BoardTile'
 import { GridContainer, GridTiles } from '@uncover/games-common'
 
-import { GameStatuses } from 'lib/game/constants'
 import GameSlice from 'store/game/game.slice'
 
 import './Board.css'
 
-const Board = ({
+export interface BoardProperties {
+  reveal?: boolean
+}
 
-}) => {
+export const Board = ({
+  reveal
+}: BoardProperties) => {
 
   // Hooks //
 
   const dispatch = useDispatch()
 
-  const status = useSelector(GameSelectors.status)
   const background = useSelector(GameSelectors.background)
 
   const tiles = useSelector(GameSelectors.boardTiles)
@@ -48,14 +50,8 @@ const Board = ({
   }
 
   const classes = ['board']
-  if (status === GameStatuses.GAME_READY) {
-    classes.push('board-ready')
-  }
-  if (status === GameStatuses.GAME_ENDED_VICTORY) {
-    classes.push('board-victory')
-  }
-  if (status === GameStatuses.GAME_ENDED_DEFEAT) {
-    classes.push('board-defeat')
+  if (reveal) {
+    classes.push('reveal')
   }
 
   return (
@@ -78,21 +74,8 @@ const Board = ({
           className='board-layer-image'
           src={background}
         />
-        <div
-          className='board-layer-action'
-        >
-          <button
-            className='board-layer-button'
-            onClick={handleStart}
-          >
-            Start
-          </button>
-        </div>
       </GridContainer>
 
     </div>
   )
 }
-
-
-export default Board

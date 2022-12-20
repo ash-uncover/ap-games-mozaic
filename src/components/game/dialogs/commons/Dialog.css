@@ -1,0 +1,25 @@
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .dialog {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
+
+    & .dialog-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight:bold;
+    }
+  }
+}

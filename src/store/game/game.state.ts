@@ -12,6 +12,9 @@ export interface GameState {
   background: string
   size: GameSize
 
+  dialog: string | null
+  dialogParams: any | null
+
   board: GameBoardState
 
   tiles: GameBoardTilesState

@@ -9,14 +9,19 @@
   user-select: none;
 
   & .game-header {
-    background: black;
-    color: white;
-    height: 3rem;
     flex-shrink: 0;
-  }
 
-  & .game-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    height: 3rem;
+
+    background: black;
+    color: grey;
+
+    font-size: 1.1rem;
+    font-weight: bold;
   }
 
   & .game-area {
@@ -28,10 +33,21 @@
   }
 
   & .game-footer {
-    background: black;
-    color: white;
-    height: 1rem;
     flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+    height: 3rem;
+
+    background: black;
+    color: grey;
+
+    font-size: 1.1rem;
+    font-weight: bold;
   }
 
   & .game-layer {

@@ -22,7 +22,7 @@
     "mozaic/theme": {
       "name": "default",
       "attributes": {
-        "name": "Default",
+        "name": "Natural",
         "description": "Default theme",
         "thumbnail": "/theme/thumbnail.jpg",
         "background": "/theme/background.jpg",

@@ -14,9 +14,6 @@ const initialState: AppState = {
   busy: false,
   busyMessage: '',
 
-  dialog: null,
-  dialogParams: null,
-
   embedded: false,
 
   language: Language.DEFAULT.id,
@@ -68,22 +65,6 @@ const setLoaded: CaseReducer<AppState, PayloadAction<boolean>> = (state, action)
   state.loaded = action.payload
 }
 
-type PayloadDialog = {
-  dialog: string | null,
-  params?: any,
-}
-const openDialog: CaseReducer<AppState, PayloadAction<PayloadDialog>> = (state, action) => {
-  const {
-    dialog,
-    params,
-  } = action.payload
-  state.dialog = dialog
-  state.dialogParams = params
-}
-const closeDialog: CaseReducer<AppState, PayloadAction<void>> = (state, action) => {
-  state.dialog = null
-  state.dialogParams = null
-}
 
 // SLICE //
 
@@ -98,8 +79,6 @@ const AppSlice = createSlice({
     setTheme,
     setEmbedded,
     setLoaded,
-    openDialog,
-    closeDialog,
   },
 })
 

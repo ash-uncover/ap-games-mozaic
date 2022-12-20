@@ -1,0 +1,24 @@
+.dialog-action {
+
+  & button {
+    width: 100%;
+
+    padding: 1rem 3rem;
+
+    cursor: pointer;
+    border: 0;
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    box-sizing: border-box;
+
+    & svg + span {
+      margin-left: 1rem;
+    }
+  }
+
+  & + .dialog-action {
+    margin-top: 1rem;
+  }
+}
