@@ -48,6 +48,12 @@ const Board = ({
   if (status === GameStatuses.GAME_READY) {
     classes.push('board-ready')
   }
+  if (status === GameStatuses.GAME_ENDED_VICTORY) {
+    classes.push('board-victory')
+  }
+  if (status === GameStatuses.GAME_ENDED_DEFEAT) {
+    classes.push('board-defeat')
+  }
 
 
   return (
@@ -57,20 +63,22 @@ const Board = ({
         height={size.height}
       >
         {tiles.map(renderTile)}
-        {status === GameStatuses.GAME_READY ?
-          <div className='board-layer'>
-            <img
-              className='board-layer-image'
-              src={background}
-            />
+        <div className='board-layer'>
+          <img
+            className='board-layer-image'
+            src={background}
+          />
+          <div
+            className='board-layer-action'
+          >
             <button
-            className='board-layer-button'
+              className='board-layer-button'
               onClick={handleStart}
             >
               Start
             </button>
           </div>
-          : null}
+        </div>
       </GridContainer>
     </div>
   )

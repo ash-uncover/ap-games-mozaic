@@ -28,17 +28,18 @@ export const GridTiles = ({
     if (Array.isArray(children)) {
       const result = []
       for (let i = 0; i < maxChildren && i < children.length ; i++) {
-        result.push(renderChild(children[i]))
+        result.push(renderChild(children[i], i + 1))
       }
       return result
     }
     return renderChild(children)
   }
 
-  const renderChild = (element: ReactNode) => {
+  const renderChild = (element: ReactNode, index?: number) => {
     return (
       <div
         className='grid-tiles-item'
+        key={index ? `tile-${index}` : undefined}
         style={{
           width: `${100 / width}%`
         }}

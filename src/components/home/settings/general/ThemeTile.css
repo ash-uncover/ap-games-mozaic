@@ -1,0 +1,30 @@
+.theme-tile {
+  height: 200px;
+  width: 320px;
+
+  position: relative;
+
+  cursor: pointer;
+
+  padding: 0;
+  border: 0;
+  background: none;
+  filter: grayscale(1);
+
+  border: 2px solid transparent;
+
+  &:hover {
+    filter: grayscale(0.5);
+  }
+
+  &.selected {
+    filter: none;
+    border: 2px solid gold;
+  }
+
+  & .theme-tile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

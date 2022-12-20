@@ -65,47 +65,47 @@ const HomeNew = () => {
 
   return (
     <div className='home-play'>
-      <h2>Board Size</h2>
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: '400px',
-          aspectRatio: 1
-        }}
-      >
-        <GridTiles
-          className='home-play-sizes'
-          width={6}
-          height={6}
-        >
-          {Object.values(GameSizes).map((gameSize) => {
-            const classes = ['home-play-size']
-            if (size === gameSize) {
-              classes.push('selected')
-            }
-            if (!gameSize.available) {
-              classes.push('disabled')
-            }
-            return (
-              <button
-                key={gameSize.name}
-                className={classes.join(' ')}
-                disabled={!gameSize.available}
-                onClick={() => handleSizeSelected(gameSize)}
-              >
-                {gameSize.name}
-              </button>
-            )
-          })}
-        </GridTiles>
+      <div className='home-play-panel'>
+        <h2>New Game</h2>
       </div>
-      <button
-        title='New Game'
-        onClick={handleStart}
-      >
-        Start
-      </button>
+      <div className='home-play-panel'>
+        <h3>Board Size</h3>
+        <div className='home-play-sizes-container'>
+          <GridTiles
+            className='home-play-sizes'
+            width={6}
+            height={6}
+          >
+            {Object.values(GameSizes).map((gameSize) => {
+              const classes = ['home-play-size']
+              if (size === gameSize) {
+                classes.push('selected')
+              }
+              if (!gameSize.available) {
+                classes.push('disabled')
+              }
+              return (
+                <button
+                  key={gameSize.name}
+                  className={classes.join(' ')}
+                  disabled={!gameSize.available}
+                  onClick={() => handleSizeSelected(gameSize)}
+                >
+                  {gameSize.name}
+                </button>
+              )
+            })}
+          </GridTiles>
+        </div>
+      </div>
+      <div className='home-play-panel'>
+        <button
+          title='New Game'
+          onClick={handleStart}
+        >
+          Start Game
+        </button>
+      </div>
     </div>
   )
 }
