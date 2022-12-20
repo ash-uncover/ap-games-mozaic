@@ -5,7 +5,7 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
-import { GridContainer } from '@uncover/games-common'
+import { GridContainer, GridTiles } from '@uncover/games-common'
 
 import { GameStatuses } from 'lib/game/constants'
 import GameSlice from 'store/game/game.slice'
@@ -34,6 +34,10 @@ const Board = ({
 
   // Rendering //
 
+  const renderTiles = () => {
+    return tiles.map(renderTile)
+  }
+
   const renderTile = (tileId: string) => {
     return (
       <BoardTile
@@ -42,7 +46,6 @@ const Board = ({
       />
     )
   }
-
 
   const classes = ['board']
   if (status === GameStatuses.GAME_READY) {
@@ -55,33 +58,41 @@ const Board = ({
     classes.push('board-defeat')
   }
 
-
   return (
     <div className={classes.join(' ')}>
-      <GridContainer
+
+      <GridTiles
+        className='board-layer board-layer__game'
         width={size.width}
         height={size.height}
       >
-        {tiles.map(renderTile)}
-        <div className='board-layer'>
-          <img
-            className='board-layer-image'
-            src={background}
-          />
-          <div
-            className='board-layer-action'
+        {renderTiles()}
+      </GridTiles>
+
+      <GridContainer
+        className='board-layer board-layer__mask'
+        width={size.width}
+        height={size.height}
+      >
+        <img
+          className='board-layer-image'
+          src={background}
+        />
+        <div
+          className='board-layer-action'
+        >
+          <button
+            className='board-layer-button'
+            onClick={handleStart}
           >
-            <button
-              className='board-layer-button'
-              onClick={handleStart}
-            >
-              Start
-            </button>
-          </div>
+            Start
+          </button>
         </div>
       </GridContainer>
+
     </div>
   )
 }
+
 
 export default Board

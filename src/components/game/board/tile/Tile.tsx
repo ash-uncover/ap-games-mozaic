@@ -54,13 +54,13 @@ const Tile = ({
           <img
             className='tile-image'
             src={background}
-            width={`${size.width * 100}%`}
             height={`${size.height * 100}%`}
+            width={`${size.width * 100}%`}
             draggable={false}
             style={{
               position: 'absolute',
-              top: `-${baseY * 100}%`,
-              left: `-${baseX * 100}%`,
+              top: `${-baseY * 100}%`,
+              left: `${-baseX * 100}%`,
             }}
           />
         </>
@@ -74,7 +74,7 @@ const Tile = ({
         />
       }
       <div
-        className='tile-layer'
+        className='tile-layer2'
       />
     </button>
   )

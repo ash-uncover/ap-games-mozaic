@@ -12,6 +12,8 @@
   filter: grayscale(1);
 
   border: 2px solid transparent;
+  border-radius: 0.25rem;
+  overflow: hidden;
 
   &:hover {
     filter: grayscale(0.5);
@@ -19,7 +21,7 @@
 
   &.selected {
     filter: none;
-    border: 2px solid gold;
+    box-shadow: 0 0 5px 0 white;
   }
 
   & .theme-tile-image {

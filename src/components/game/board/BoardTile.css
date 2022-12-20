@@ -1,5 +1,9 @@
 .board-tile {
-  position: absolute;
-  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
+
+  padding: 1px;
+  box-sizing: border-box;
+
   transition: transform 0.1s ease-in-out;
 }

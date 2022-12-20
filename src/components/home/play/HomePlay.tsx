@@ -6,11 +6,10 @@ import AppSelectors from 'store/app/app.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import { ArrayUtils } from '@uncover/js-utils'
-import { ShortcutManager, Shortcuts } from '@uncover/games-common'
+import { GridTiles, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
 import { GameSize, GameSizes } from 'lib/game/constants'
 // Components
-import { GridTiles } from './GridTiles'
 
 import './HomePlay.css'
 import GameSelectors from 'store/game/game.selectors'
@@ -98,14 +97,14 @@ const HomeNew = () => {
           </GridTiles>
         </div>
       </div>
-      <div className='home-play-panel'>
-        <button
-          title='New Game'
-          onClick={handleStart}
-        >
-          Start Game
-        </button>
-      </div>
+      <button
+        className='home-play-panel'
+        title='New Game'
+        onClick={handleStart}
+      >
+        Start Game
+      </button>
+
     </div>
   )
 }

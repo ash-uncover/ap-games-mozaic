@@ -12,7 +12,7 @@
 
       & .home-play-sizes {
 
-        & .grid-tiles-item {
+        & .grid-tiles-row-cell {
           box-sizing: border-box;
 
           & .home-play-size {
@@ -59,7 +59,7 @@
     margin: 0.5rem;
     & .home-play-sizes-container {
       & .home-play-sizes {
-        & .grid-tiles-item {
+        & .grid-tiles-row-cell {
           padding: 0.1rem;
           & .home-play-size {
             border-radius: 0.25rem;
@@ -82,7 +82,7 @@
       margin: 1rem;
       & .home-play-sizes-container {
         & .home-play-sizes {
-          & .grid-tiles-item {
+          & .grid-tiles-row-cell {
             padding: 0.25rem;
             & .home-play-size {
               border-radius: 0.25rem;
@@ -105,7 +105,7 @@
       margin: 2rem;
       & .home-play-sizes-container {
         & .home-play-sizes {
-          & .grid-tiles-item {
+          & .grid-tiles-row-cell {
             padding: 0.25rem;
             & .home-play-size {
               border-radius: 0.25rem;

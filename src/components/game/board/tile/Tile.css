@@ -4,12 +4,15 @@
   padding: 0;
   border: 0;
   overflow: hidden;
-  background: black;
+  background: transparent;
   position: relative;
-  border-radius: 5%;
+  border-radius: var(--board_border-radius);
+
+  cursor: pointer;
 
   & .tile-image {
     object-fit: cover;
+    pointer-events: none;
   }
 
   & .tile-layer {

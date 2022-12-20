@@ -21,7 +21,6 @@ const BoardTile = ({
   const dispatch = useDispatch()
 
   const tile = useSelector(GameSelectors.tile(tileId))
-  const size = useSelector(GameSelectors.size)
 
   // Events //
 
@@ -35,14 +34,11 @@ const BoardTile = ({
     return null
   }
 
-  const tileSize = 100 / size.width
-
   return (
     <div
       className='board-tile'
       style={{
-        width: `${tileSize}%`,
-        transform: `translateX(${tile.x * 100}%) translateY(${tile.y * 100}%)`
+        transform: `translateX(${(tile.x - tile.baseX) * 100}%) translateY(${(tile.y - tile.baseY) * 100}%)`
       }}
     >
       <Tile
