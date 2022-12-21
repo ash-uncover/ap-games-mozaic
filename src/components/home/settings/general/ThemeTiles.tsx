@@ -22,7 +22,7 @@ export const ThemeTiles = ({
 
   // Events //
 
-  const handleThemeSelected = (theme: string) => {
+  const handleThemeSelected = (theme?: string) => {
     dispatch(AppSlice.actions.setTheme(theme))
   }
 
@@ -45,6 +45,16 @@ export const ThemeTiles = ({
       <div
         className='theme-tiles-container'
       >
+        {themes.length > 1 ?
+          <ThemeTile
+            name='Random'
+            description='A Random theme will be selected'
+            thumbnail='images/thumbnail_random.jpg'
+            images={[]}
+            selected={!selectedTheme}
+            onClick={() => handleThemeSelected()}
+          />
+          : null}
         {themes.map((theme) => {
           const {
             name,

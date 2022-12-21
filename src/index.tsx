@@ -12,6 +12,7 @@ import {
 
 // Import translation module
 import 'lib/utils/i18n'
+
 // Import icons
 import 'lib/utils/icons'
 

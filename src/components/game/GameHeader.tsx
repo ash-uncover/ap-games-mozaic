@@ -25,9 +25,7 @@ export const GameHeader = ({
 
   return (
     <div className='game-header'>
-      <div>
-        {`${theme.attributes.name} - ${size.height}*${size.width}`}
-      </div>
+     {theme ? theme.attributes.name : 'Random'} - {size.height}*{size.width}
     </div>
   )
 }

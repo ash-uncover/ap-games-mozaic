@@ -1,0 +1,17 @@
+{
+  "LOADING": "Chargement...",
+  "home": {
+    "title": "Accueil",
+    "settings": {
+      "general": {
+        "menu": {
+          "title": "General",
+          "tooltip": "General Settings"
+        }
+      }
+    }
+  },
+  "game": {
+
+  }
+}

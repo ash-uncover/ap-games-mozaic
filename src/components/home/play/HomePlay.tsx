@@ -20,7 +20,7 @@ const HomeNew = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const themeId = useSelector(AppSelectors.theme)
+  const selectedTheme = useSelector(AppSelectors.theme)
   const size = useSelector(GameSelectors.size)
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const HomeNew = () => {
 
   const handleStart = () => {
     const themes = PluginManager.providers['mozaic/theme']
-    const theme = themes.find(t => t.name === themeId)
+    const theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
     let background = null
     if (Array.isArray(theme.attributes.images)) {
       background = ArrayUtils.randomElement(theme.attributes.images)!

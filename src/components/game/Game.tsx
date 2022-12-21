@@ -6,16 +6,15 @@ import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import Audio, { AudioFiles } from 'lib/utils/Audio'
+import { AudioTypes } from '@uncover/games-common'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import { Board } from 'components/game/board/Board'
-// Libs
-import { AudioTypes } from '@uncover/games-common'
-
-import './Game.css'
+import { DIALOG, Dialogs } from './dialogs/Dialogs'
 import { GameFooterAction } from './GameFooterAction'
 import { GameHeader } from './GameHeader'
-import { DIALOG, Dialogs } from './dialogs/Dialogs'
+
+import './Game.css'
 
 const Game = ({ }) => {
 
@@ -24,7 +23,6 @@ const Game = ({ }) => {
   const dispatch = useDispatch()
 
   const [reveal, setReveal] = useState(false)
-  const [showEndConfirm, setShowEndConfirm] = useState(false)
 
   const status = useSelector(GameSelectors.status)
 
@@ -116,10 +114,7 @@ const Game = ({ }) => {
 
       <GameHeader />
 
-      <div
-        className='game-area'
-        style={{ position: 'relative' }}
-      >
+      <div className='game-area'>
         <Board
           reveal={reveal || (status === GameStatuses.GAME_READY)  || (status === GameStatuses.GAME_ENDED_VICTORY)}
         />

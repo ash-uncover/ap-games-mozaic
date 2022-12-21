@@ -14,6 +14,7 @@ import HomeCredits from './credits/HomeCredits'
 import HomeSettingsVideo from './settings/HomeSettingsVideo'
 import HomePlay from './play/HomePlay'
 import { HomeExit } from './exit/HomeExit'
+import { useTranslation } from 'react-i18next'
 
 const HOME_PAGE: { [key: string]: any } = {}
 HOME_PAGE.PLAY = {
@@ -72,6 +73,8 @@ const Home = ({
 
   // Hooks //
 
+  const { t } = useTranslation()
+
   const embedded = useSelector(AppSelectors.embedded)
 
   useEffect(() => {
@@ -105,7 +108,7 @@ const Home = ({
     <PageMenu
       page={{
         id: 'home',
-        title: 'Home',
+        title: t('home.title'),
         content: null,
         pages
       }}

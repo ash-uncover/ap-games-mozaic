@@ -5,13 +5,12 @@ import GameSlice from 'store/game/game.slice'
 // Components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog } from './commons/Dialog'
+// Store
+import GameSelectors from 'store/game/game.selectors'
+// Components
+import { DialogAction } from './commons/DialogAction'
 
 import './DialogDefeat.css'
-import GameSelectors from 'store/game/game.selectors'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
-import AppSelectors from 'store/app/app.selectors'
-import { ArrayUtils } from '@uncover/js-utils'
-import { DialogAction } from './commons/DialogAction'
 
 export interface DialogDefeatProperties {
 }
@@ -23,9 +22,7 @@ export const DialogDefeat = ({
 
   const dispatch = useDispatch()
 
-  const selectedTheme = useSelector(AppSelectors.theme)
   const background = useSelector(GameSelectors.background)
-  const size = useSelector(GameSelectors.size)
 
   // Events //
 

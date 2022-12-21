@@ -7,6 +7,7 @@ import AppSlice from 'store/app/app.slice'
 import { loadData } from 'lib/data'
 import MessageServiceCentral from 'services/message.service'
 import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 interface AppProperties {
   children: ReactElement
@@ -19,6 +20,9 @@ const App = ({
   // Hooks //
 
   const dispatch = useDispatch()
+
+  const { t } = useTranslation()
+
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
 
@@ -43,7 +47,7 @@ const App = ({
 
   return (
     <div>
-      loading
+      {t('LOADING')}
     </div>
   )
 }

@@ -6,7 +6,7 @@ interface AppState {
 
   language: string
 
-  theme: string
+  theme?: string
 
   loaded: boolean
   started: boolean

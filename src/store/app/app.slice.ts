@@ -18,8 +18,6 @@ const initialState: AppState = {
 
   language: Language.DEFAULT.id,
 
-  theme: 'default',
-
   loaded: false,
   started: false,
 }

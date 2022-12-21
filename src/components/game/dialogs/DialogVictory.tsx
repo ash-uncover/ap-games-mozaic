@@ -39,7 +39,7 @@ export const DialogVictory = ({
 
   const handleNextLevel = () => {
     const themes = PluginManager.providers['mozaic/theme']
-    const theme = themes.find(t => t.name === selectedTheme)
+    let theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
     let background = null
     if (Array.isArray(theme.attributes.images)) {
       background = ArrayUtils.randomElement(theme.attributes.images)!
