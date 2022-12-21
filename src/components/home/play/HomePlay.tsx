@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import GameSlice from 'store/game/game.slice'
+import GameSelectors from 'store/game/game.selectors'
 // Libs
 import { ArrayUtils } from '@uncover/js-utils'
+import { GameSize, GameSizes } from 'lib/game/constants'
 import { GridTiles, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
-import { GameSize, GameSizes } from 'lib/game/constants'
 // Components
 
 import './HomePlay.css'
-import GameSelectors from 'store/game/game.selectors'
 
 const HomeNew = () => {
 
@@ -20,6 +21,7 @@ const HomeNew = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const selectedTheme = useSelector(AppSelectors.theme)
   const size = useSelector(GameSelectors.size)
 
@@ -65,10 +67,10 @@ const HomeNew = () => {
   return (
     <div className='home-play'>
       <div className='home-play-panel'>
-        <h2>New Game</h2>
+        <h2>{t('home.play.title')}</h2>
       </div>
       <div className='home-play-panel'>
-        <h3>Board Size</h3>
+        <h3>{t('home.play.size.title')}</h3>
         <div className='home-play-sizes-container'>
           <GridTiles
             className='home-play-sizes'
@@ -99,10 +101,10 @@ const HomeNew = () => {
       </div>
       <button
         className='home-play-panel'
-        title='New Game'
+        title={t('home.play.start.tooltip')}
         onClick={handleStart}
       >
-        Start Game
+        {t('home.play.start.text')}
       </button>
 
     </div>

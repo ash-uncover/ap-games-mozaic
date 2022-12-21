@@ -1,8 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const HomeCredits = () => {
 
   // Hooks //
+
+  const { t } = useTranslation()
 
   // Events //
 
@@ -10,7 +13,7 @@ const HomeCredits = () => {
 
   return (
     <h2 style={{ fontWeight: 'normal' }}>
-      Credits
+      {t('home.credits.title')}
     </h2>
 
   )

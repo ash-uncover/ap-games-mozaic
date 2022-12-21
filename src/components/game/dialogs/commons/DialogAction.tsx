@@ -1,11 +1,11 @@
-import React, { CSSProperties, ReactNode } from 'react'
+import React, { CSSProperties } from 'react'
 // Store
 // Libs
 // Components
-
-import './DialogAction.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core'
+
+import './DialogAction.css'
 
 export interface DialogActionProperties {
   icon?: [IconPrefix, IconName]
@@ -33,8 +33,10 @@ export const DialogAction = ({
       >
         {icon ?
           <FontAwesomeIcon icon={icon} />
-        :null}
-        <span>{text}</span>
+          : null}
+        <span>
+          {text}
+        </span>
       </button>
     </div>
   )

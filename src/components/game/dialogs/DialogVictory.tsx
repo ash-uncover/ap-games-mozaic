@@ -13,6 +13,7 @@ import GameSelectors from 'store/game/game.selectors'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
 import { ArrayUtils } from '@uncover/js-utils'
 import { DialogAction } from './commons/DialogAction'
+import { useTranslation } from 'react-i18next'
 
 export interface DialogVictoryProperties {
 }
@@ -23,6 +24,7 @@ export const DialogVictory = ({
   // Hooks //
 
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   const selectedTheme = useSelector(AppSelectors.theme)
   const background = useSelector(GameSelectors.background)
@@ -68,11 +70,11 @@ export const DialogVictory = ({
     <Dialog>
 
       <h2 className='dialog-title'>
-        Victory
+        {t('game.dialogs.victory.title')}
       </h2>
 
       <DialogAction
-        text='Replay'
+        text={t('game.dialogs.victory.replay')}
         style={{
           background: 'rgb(22, 160, 134)',
           border: '3px solid rgb(22, 160, 134)',
@@ -81,7 +83,7 @@ export const DialogVictory = ({
       />
 
       <DialogAction
-        text='Next Level'
+        text={t('game.dialogs.victory.next')}
         style={{
           background: 'rgb(22, 160, 134)',
           border: '3px solid rgb(22, 160, 134)',
@@ -90,7 +92,7 @@ export const DialogVictory = ({
       />
 
       <DialogAction
-        text='Return to Main Menu'
+        text={t('game.dialogs.victory.quit')}
         style={{
           background: 'grey',
           border: '3px solid grey',
@@ -99,7 +101,7 @@ export const DialogVictory = ({
       />
 
       <DialogAction
-        text='Close'
+        text={t('CLOSE')}
         style={{
           background: 'transparent',
           border: '3px solid grey',

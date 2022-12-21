@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
@@ -9,6 +9,7 @@ import Audio, { AudioFiles } from 'lib/utils/Audio'
 import { AudioTypes } from '@uncover/games-common'
 import { GameStatuses } from 'lib/game/constants'
 // Components
+import { Navigate } from 'react-router-dom'
 import { Board } from 'components/game/board/Board'
 import { DIALOG, Dialogs } from './dialogs/Dialogs'
 import { GameFooterAction } from './GameFooterAction'
@@ -21,6 +22,7 @@ const Game = ({ }) => {
   // Hooks //
 
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   const [reveal, setReveal] = useState(false)
 
@@ -68,7 +70,7 @@ const Game = ({ }) => {
         result.push(
           <GameFooterAction
             key='start'
-            title='Start Game'
+            title={t('game.start.text')}
             onClick={handleStart}
           />
         )

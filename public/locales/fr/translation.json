@@ -1,17 +1,84 @@
 {
   "LOADING": "Chargement...",
+  "BACK": "Retour",
+  "CLOSE": "Fermer",
+
   "home": {
+    "menu": "Accueil",
     "title": "Accueil",
-    "settings": {
-      "general": {
-        "menu": {
-          "title": "General",
-          "tooltip": "General Settings"
-        }
+    "play": {
+      "menu": "Jouer",
+      "title": "Nouvelle Partie",
+      "size": {
+        "title": "Nombre de Cases"
+      },
+      "start": {
+        "text": "Commencer",
+        "tooltip": "Démarrer la partie"
       }
+    },
+    "settings": {
+      "menu": "Paramètres",
+      "general": {
+        "menu": "Généraux",
+        "title": "Paramètres Généraux",
+        "lang": {
+          "title": "Langue"
+        },
+        "keys": {
+          "title": "Contrôles"
+        }
+      },
+      "audio": {
+        "menu": "Sons",
+        "title": "Paramètres de Sons",
+        "master": {
+          "title": "Volume Principal",
+          "enable": "Activer les sons"
+        },
+        "game": {
+          "title": "Volume de Jeu",
+          "enable": "Activer les sons du jeu"
+        },
+        "interface": {
+          "title": "Volume d'Interface",
+          "enable": "Activer les sons de l'interface"
+        },
+        "music": {
+          "title": "Volume de Musique",
+          "enable": "Activer la musique"
+        }
+      },
+      "video": {
+        "menu": "Affichage",
+        "title": "Paramètres d'affichage"
+      }
+    },
+    "credits": {
+      "menu": "Crédits",
+      "title": "Crédits"
+    },
+    "exit": {
+      "menu": "Quitter"
     }
   },
   "game": {
-
+    "start": {
+      "text": "Commencer",
+      "tooltip": "Démarrer la partie"
+    },
+    "dialogs": {
+      "defeat": {
+        "title": "Menu",
+        "replay": "Recommencer",
+        "quit": "Menu Principal"
+      },
+      "victory": {
+        "title": "Partie Terminée",
+        "replay": "Rejouer",
+        "next": "Niveau Suivant",
+        "quit": "Menu Principal"
+      }
+    }
   }
 }

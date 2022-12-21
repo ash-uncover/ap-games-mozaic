@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSlice from 'store/game/game.slice'
@@ -21,6 +22,8 @@ export const DialogDefeat = ({
   // Hooks //
 
   const dispatch = useDispatch()
+
+  const { t } = useTranslation()
 
   const background = useSelector(GameSelectors.background)
 
@@ -46,11 +49,11 @@ export const DialogDefeat = ({
     <Dialog>
 
       <h2 className='dialog-title'>
-        Menu
+        {t('game.dialogs.defeat.title')}
       </h2>
 
       <DialogAction
-        text='Replay'
+        text={t('game.dialogs.defeat.replay')}
         style={{
           background: 'rgb(22, 160, 134)',
           border: '3px solid rgb(22, 160, 134)',
@@ -59,7 +62,7 @@ export const DialogDefeat = ({
       />
 
       <DialogAction
-        text='Return to Main Menu'
+        text={t('game.dialogs.defeat.quit')}
         style={{
           background: 'grey',
           border: '3px solid grey',
@@ -68,7 +71,7 @@ export const DialogDefeat = ({
       />
 
       <DialogAction
-        text='Close'
+        text={t('CLOSE')}
         style={{
           background: 'transparent',
           border: '3px solid grey',

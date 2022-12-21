@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 // Libs
@@ -14,56 +15,6 @@ import HomeCredits from './credits/HomeCredits'
 import HomeSettingsVideo from './settings/HomeSettingsVideo'
 import HomePlay from './play/HomePlay'
 import { HomeExit } from './exit/HomeExit'
-import { useTranslation } from 'react-i18next'
-
-const HOME_PAGE: { [key: string]: any } = {}
-HOME_PAGE.PLAY = {
-  id: 'play',
-  icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
-  title: 'Play',
-  content: <HomePlay />
-}
-HOME_PAGE.SETTINGS_GENERAL = {
-  id: 'settings-general',
-  icon: <FontAwesomeIcon icon={['fas', 'wrench']} />,
-  title: 'General',
-  content: <HomeSettingsGeneral />,
-}
-HOME_PAGE.SETTINGS_AUDIO = {
-  id: 'settings-audio',
-  icon: <FontAwesomeIcon icon={['fas', 'sliders']} />,
-  title: 'Audio',
-  content: <HomeSettingsAudio />,
-}
-HOME_PAGE.SETTINGS_VIDEO = {
-  id: 'settings-video',
-  icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
-  title: 'Video',
-  content: <HomeSettingsVideo />,
-}
-HOME_PAGE.SETTINGS = {
-  id: 'settings',
-  icon: <FontAwesomeIcon icon={['fas', 'gear']} />,
-  title: 'Settings',
-  content: null,
-  pages: [
-    HOME_PAGE.SETTINGS_GENERAL,
-    HOME_PAGE.SETTINGS_AUDIO,
-    HOME_PAGE.SETTINGS_VIDEO
-  ]
-}
-HOME_PAGE.CREDITS = {
-  id: 'credits',
-  icon: <FontAwesomeIcon icon={['fas', 'gifts']} />,
-  title: 'Credits',
-  content: <HomeCredits />
-}
-HOME_PAGE.EXIT = {
-  id: 'exit',
-  icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
-  title: 'Exit',
-  content: <HomeExit />
-}
 
 interface HomeProperties {
 }
@@ -95,13 +46,61 @@ const Home = ({
 
   // Rendering //
 
+  const HOME_PAGE_PLAY = {
+    id: 'play',
+    icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
+    title: t('home.play.menu'),
+    content: <HomePlay />
+  }
+  const HOME_PAGE_SETTINGS_GENERAL = {
+    id: 'settings-general',
+    icon: <FontAwesomeIcon icon={['fas', 'wrench']} />,
+    title: t('home.settings.general.menu'),
+    content: <HomeSettingsGeneral />,
+  }
+  const HOME_PAGE_SETTINGS_AUDIO = {
+    id: 'settings-audio',
+    icon: <FontAwesomeIcon icon={['fas', 'sliders']} />,
+    title: t('home.settings.audio.menu'),
+    content: <HomeSettingsAudio />,
+  }
+  const HOME_PAGE_SETTINGS_VIDEO = {
+    id: 'settings-video',
+    icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
+    title: t('home.settings.video.menu'),
+    content: <HomeSettingsVideo />,
+  }
+  const HOME_PAGE_SETTINGS = {
+    id: 'settings',
+    icon: <FontAwesomeIcon icon={['fas', 'gear']} />,
+    title: t('home.settings.menu'),
+    content: null,
+    pages: [
+      HOME_PAGE_SETTINGS_GENERAL,
+      HOME_PAGE_SETTINGS_AUDIO,
+      HOME_PAGE_SETTINGS_VIDEO
+    ]
+  }
+  const HOME_PAGE_CREDITS = {
+    id: 'credits',
+    icon: <FontAwesomeIcon icon={['fas', 'gifts']} />,
+    title: t('home.credits.menu'),
+    content: <HomeCredits />
+  }
+  const HOME_PAGE_EXIT = {
+    id: 'exit',
+    icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
+    title: t('home.settings.exit.menu'),
+    content: <HomeExit />
+  }
+
   const pages = [
-    HOME_PAGE.PLAY,
-    HOME_PAGE.SETTINGS,
-    HOME_PAGE.CREDITS
+    HOME_PAGE_PLAY,
+    HOME_PAGE_SETTINGS,
+    HOME_PAGE_CREDITS
   ]
   if (embedded) {
-    pages.push(HOME_PAGE.EXIT)
+    pages.push(HOME_PAGE_EXIT)
   }
 
   return (

@@ -17,17 +17,17 @@ const HomeSettingsGeneral = () => {
   return (
     <>
       <h2 style={{ fontWeight: 'normal' }}>
-        General Settings
+        {t('home.settings.general.title')}
       </h2>
 
       <h3 style={{ fontWeight: 'normal' }}>
-        Language
+        {t('home.settings.general.lang.title')}
       </h3>
 
       <ThemeTiles />
 
       <h3 style={{ fontWeight: 'normal' }}>
-        Key bindings
+        {t('home.settings.general.keys.title')}
       </h3>
     </>
   )

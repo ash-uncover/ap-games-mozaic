@@ -1,8 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const HomeSettingsVideo = () => {
 
   // Hooks //
+
+  const { t } = useTranslation()
 
   // Events //
 
@@ -10,7 +13,7 @@ const HomeSettingsVideo = () => {
 
   return (
     <h2 style={{ fontWeight: 'normal' }}>
-      Video Settings
+      {t('home.settings.video.title')}
     </h2>
 
   )
