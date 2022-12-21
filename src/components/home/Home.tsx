@@ -9,11 +9,11 @@ import { AudioTypes, PageMenu } from '@uncover/games-common'
 import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import HomeSettingsGeneral from './settings/HomeSettingsGeneral'
-import HomeSettingsAudio from './settings/HomeSettingsAudio'
-import HomeCredits from './credits/HomeCredits'
-import HomeSettingsVideo from './settings/HomeSettingsVideo'
-import HomePlay from './play/HomePlay'
+import { HomeSettingsGeneral } from './settings/general/HomeSettingsGeneral'
+import { HomeSettingsAudio } from './settings/audio/HomeSettingsAudio'
+import { HomeCredits } from './credits/HomeCredits'
+import { HomeSettingsDisplay } from './settings/display/HomeSettingsDisplay'
+import { HomePlay } from './play/HomePlay'
 import { HomeExit } from './exit/HomeExit'
 
 interface HomeProperties {
@@ -64,11 +64,11 @@ const Home = ({
     title: t('home.settings.audio.menu'),
     content: <HomeSettingsAudio />,
   }
-  const HOME_PAGE_SETTINGS_VIDEO = {
-    id: 'settings-video',
+  const HOME_PAGE_SETTINGS_DISPLAY = {
+    id: 'settings-display',
     icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
-    title: t('home.settings.video.menu'),
-    content: <HomeSettingsVideo />,
+    title: t('home.settings.display.menu'),
+    content: <HomeSettingsDisplay />,
   }
   const HOME_PAGE_SETTINGS = {
     id: 'settings',
@@ -78,7 +78,7 @@ const Home = ({
     pages: [
       HOME_PAGE_SETTINGS_GENERAL,
       HOME_PAGE_SETTINGS_AUDIO,
-      HOME_PAGE_SETTINGS_VIDEO
+      HOME_PAGE_SETTINGS_DISPLAY
     ]
   }
   const HOME_PAGE_CREDITS = {

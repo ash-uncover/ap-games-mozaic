@@ -7,7 +7,7 @@ import { MenuCheckbox, MenuStepInput } from '@uncover/games-common'
 import { useTranslation } from 'react-i18next'
 // Components
 
-const HomeSettingsAudio = () => {
+export const HomeSettingsAudio = () => {
 
   // Hooks //
 
@@ -133,7 +133,3 @@ const HomeSettingsAudio = () => {
     </>
   )
 }
-
-
-
-export default HomeSettingsAudio

@@ -2,9 +2,9 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 // Libs
 // Components
-import { ThemeTiles } from './general/ThemeTiles'
+import { ThemeTiles } from './ThemeTiles'
 
-const HomeSettingsGeneral = () => {
+export const HomeSettingsGeneral = () => {
 
   // Hooks //
 
@@ -32,5 +32,3 @@ const HomeSettingsGeneral = () => {
     </>
   )
 }
-
-export default HomeSettingsGeneral

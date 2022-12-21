@@ -8,6 +8,7 @@ import { loadData } from 'lib/data'
 import MessageServiceCentral from 'services/message.service'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import DisplaySelectors from 'store/display/display.selectors'
 
 interface AppProperties {
   children: ReactElement
@@ -22,6 +23,9 @@ const App = ({
   const dispatch = useDispatch()
 
   const { t } = useTranslation()
+
+  const brightness = useSelector(DisplaySelectors.brightness)
+  const contrast = useSelector(DisplaySelectors.contrast)
 
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
@@ -42,11 +46,20 @@ const App = ({
   // Rendering //
 
   if (loaded) {
-    return children
+    return (
+    <div
+      className='app'
+      style={{
+        filter: `brightness(${brightness / 100}) contrast(${contrast / 100})`
+      }}
+    >
+      {children}
+    </div>
+    )
   }
 
   return (
-    <div>
+    <div className='app'>
       {t('LOADING')}
     </div>
   )

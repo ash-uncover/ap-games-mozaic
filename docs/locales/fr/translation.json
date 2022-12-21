@@ -49,9 +49,15 @@
           "enable": "Activer la musique"
         }
       },
-      "video": {
+      "display": {
         "menu": "Affichage",
-        "title": "Paramètres d'affichage"
+        "title": "Paramètres d'affichage",
+        "brightness": {
+          "title": "Luminosité"
+        },
+        "contrast": {
+          "title": "Contraste"
+        }
       }
     },
     "credits": {

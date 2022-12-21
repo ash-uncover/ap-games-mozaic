@@ -49,9 +49,15 @@
           "enable": "Enable music"
         }
       },
-      "video": {
+      "display": {
         "menu": "Display",
-        "title": "Display Settings"
+        "title": "Display Settings",
+        "brightness": {
+          "title": "Brightness"
+        },
+        "contrast": {
+          "title": "Contrast"
+        }
       }
     },
     "credits": {

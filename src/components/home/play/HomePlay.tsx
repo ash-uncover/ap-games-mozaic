@@ -15,7 +15,7 @@ import { PluginManager } from '@uncover/js-utils-microfrontend'
 
 import './HomePlay.css'
 
-const HomeNew = () => {
+export const HomePlay = () => {
 
   // Hooks //
 
@@ -110,5 +110,3 @@ const HomeNew = () => {
     </div>
   )
 }
-
-export default HomeNew

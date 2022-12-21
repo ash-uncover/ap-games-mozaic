@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-const HomeCredits = () => {
+export const HomeCredits = () => {
 
   // Hooks //
 
@@ -18,5 +18,3 @@ const HomeCredits = () => {
 
   )
 }
-
-export default HomeCredits
