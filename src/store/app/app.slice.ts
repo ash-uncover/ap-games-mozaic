@@ -16,7 +16,7 @@ const initialState: AppState = {
 
   embedded: false,
 
-  language: Language.DEFAULT.id,
+  language: 'fr',
 
   loaded: false,
   started: false,

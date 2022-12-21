@@ -22,13 +22,19 @@ const App = ({
 
   const dispatch = useDispatch()
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const brightness = useSelector(DisplaySelectors.brightness)
   const contrast = useSelector(DisplaySelectors.contrast)
 
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
+
+  const language = useSelector(AppSelectors.language)
+
+  useEffect(() => {
+    i18n.changeLanguage(language)
+  }, [language])
 
   useEffect(() => {
     const embedded = query.has('embedded')

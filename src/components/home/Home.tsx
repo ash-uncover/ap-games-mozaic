@@ -46,61 +46,54 @@ const Home = ({
 
   // Rendering //
 
-  const HOME_PAGE_PLAY = {
+  const translatePage = (page) => {
+    return {
+      ...page,
+      pages: page.pages ? page.pages.map(translatePage) : page.pages,
+      title: t(page.title)
+    }
+  }
+
+  const pages = [{
     id: 'play',
     icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
     title: t('home.play.menu'),
     content: <HomePlay />
-  }
-  const HOME_PAGE_SETTINGS_GENERAL = {
-    id: 'settings-general',
-    icon: <FontAwesomeIcon icon={['fas', 'wrench']} />,
-    title: t('home.settings.general.menu'),
-    content: <HomeSettingsGeneral />,
-  }
-  const HOME_PAGE_SETTINGS_AUDIO = {
-    id: 'settings-audio',
-    icon: <FontAwesomeIcon icon={['fas', 'sliders']} />,
-    title: t('home.settings.audio.menu'),
-    content: <HomeSettingsAudio />,
-  }
-  const HOME_PAGE_SETTINGS_DISPLAY = {
-    id: 'settings-display',
-    icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
-    title: t('home.settings.display.menu'),
-    content: <HomeSettingsDisplay />,
-  }
-  const HOME_PAGE_SETTINGS = {
+  }, {
     id: 'settings',
     icon: <FontAwesomeIcon icon={['fas', 'gear']} />,
     title: t('home.settings.menu'),
     content: null,
-    pages: [
-      HOME_PAGE_SETTINGS_GENERAL,
-      HOME_PAGE_SETTINGS_AUDIO,
-      HOME_PAGE_SETTINGS_DISPLAY
-    ]
-  }
-  const HOME_PAGE_CREDITS = {
+    pages: [{
+      id: 'settings-general',
+      icon: <FontAwesomeIcon icon={['fas', 'wrench']} />,
+      title: t('home.settings.general.menu'),
+      content: <HomeSettingsGeneral />,
+    }, {
+      id: 'settings-audio',
+      icon: <FontAwesomeIcon icon={['fas', 'sliders']} />,
+      title: t('home.settings.audio.menu'),
+      content: <HomeSettingsAudio />,
+    }, {
+      id: 'settings-display',
+      icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
+      title: t('home.settings.display.menu'),
+      content: <HomeSettingsDisplay />,
+    }]
+  }, {
     id: 'credits',
     icon: <FontAwesomeIcon icon={['fas', 'gifts']} />,
     title: t('home.credits.menu'),
     content: <HomeCredits />
-  }
-  const HOME_PAGE_EXIT = {
-    id: 'exit',
-    icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
-    title: t('home.settings.exit.menu'),
-    content: <HomeExit />
-  }
+  }]
 
-  const pages = [
-    HOME_PAGE_PLAY,
-    HOME_PAGE_SETTINGS,
-    HOME_PAGE_CREDITS
-  ]
   if (embedded) {
-    pages.push(HOME_PAGE_EXIT)
+    pages.push({
+      id: 'exit',
+      icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
+      title: t('home.exit.menu'),
+      content: <HomeExit />
+    })
   }
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import {
@@ -42,10 +42,12 @@ PluginManager.loadPlugin(CONFIG.AP_GAMES_MOZAIC_PLUGIN)
     const root = createRoot(containerRoot)
 
     root.render(
-      <Provider store={store}>
-        <Router>
-          <Root />
-        </Router>
-      </Provider>
+      <Suspense fallback="loading">
+        <Provider store={store}>
+          <Router>
+            <Root />
+          </Router>
+        </Provider>
+      </Suspense>
     )
   })
