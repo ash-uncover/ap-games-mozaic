@@ -25,6 +25,9 @@
         "lang": {
           "title": "Language"
         },
+        "theme": {
+          "title": "Theme"
+        },
         "keys": {
           "title": "Key Bindings"
         }

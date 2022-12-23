@@ -1,0 +1,49 @@
+.panel {
+  --panel__background: var(--base_item_background);
+  --panel__color: var(--base_item_color);
+
+  background: var(--panel__background);
+  color: var(--panel__color);
+
+  /* XS Screen layout */
+
+  border-radius: 0.5rem;
+  padding : 0.5rem;
+  margin: 0.5rem;
+}
+
+/* S Screen layout */
+
+@media (min-width: 576px) {
+  .panel {
+    border-radius: 0.5rem;
+    padding : 1rem;
+    margin: 1rem;
+  }
+}
+
+/* M Screen layout */
+
+@media (min-width: 768px) {
+  .panel {
+    border-radius: 1rem;
+    padding : 2rem;
+    margin: 2rem;
+  }
+}
+
+/* L Screen layout */
+
+@media (min-width: 992px) {
+}
+
+/* XL Screen layout */
+
+@media (min-width: 1200px) {
+}
+
+/* XXL Screen layout */
+
+@media (min-width: 1400px) {
+
+}

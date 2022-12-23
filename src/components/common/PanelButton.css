@@ -1,0 +1,10 @@
+.panel-button {
+  border: 0;
+  background: var(--base_selected_background);
+  color: var(--base_selected_color);
+
+  &:hover {
+    background: var(--base_hover_background);
+    color: var(--base_hover_color);
+  }
+}

@@ -13,9 +13,11 @@ import { GridTiles, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
 
-import './HomePlay.css'
+import './HomeContentPlay.css'
+import { Panel } from 'components/common/Panel'
+import { PanelButton } from 'components/common/PanelButton'
 
-export const HomePlay = () => {
+export const HomeContentPlay = () => {
 
   // Hooks //
 
@@ -66,11 +68,13 @@ export const HomePlay = () => {
 
   return (
     <div className='home-play'>
-      <div className='home-play-panel'>
-        <h2>{t('home.play.title')}</h2>
-      </div>
-      <div className='home-play-panel'>
-        <h3>{t('home.play.size.title')}</h3>
+      <Panel>
+        <h2>
+        {t('home.play.title')}
+        </h2>
+      </Panel>
+
+      <Panel title={t('home.play.size.title')}>
         <div className='home-play-sizes-container'>
           <GridTiles
             className='home-play-sizes'
@@ -98,15 +102,14 @@ export const HomePlay = () => {
             })}
           </GridTiles>
         </div>
-      </div>
-      <button
-        className='home-play-panel'
+      </Panel>
+
+      <PanelButton
         title={t('home.play.start.tooltip')}
         onClick={handleStart}
       >
         {t('home.play.start.text')}
-      </button>
-
+      </PanelButton>
     </div>
   )
 }

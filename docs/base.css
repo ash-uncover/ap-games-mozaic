@@ -22,7 +22,7 @@ body,
   width: 100%;
 }
 .main-layer-background {
-  background: url('images/background.jpg');
+  background: #232323;
   background-size: cover;
 }
 

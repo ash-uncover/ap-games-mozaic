@@ -18,8 +18,8 @@
       color: var(--base_item_color);
 
       &:hover {
-        background: var(--base_highlight_background);
-        color: var(--base_highlight_color);
+        background: var(--base_hover_background);
+        color: var(--base_hover_color);
       }
     }
 

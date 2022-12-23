@@ -18,12 +18,15 @@
       }
     },
     "settings": {
-      "menu": "Paramètres",
+      "menu": "Options",
       "general": {
-        "menu": "Généraux",
+        "menu": "Général",
         "title": "Paramètres Généraux",
         "lang": {
           "title": "Langue"
+        },
+        "theme": {
+          "title": "Thème"
         },
         "keys": {
           "title": "Contrôles"
