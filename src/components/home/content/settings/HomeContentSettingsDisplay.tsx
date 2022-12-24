@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import DisplaySelectors from 'store/display/display.selectors'
 import DisplaySlice from 'store/display/display.slice'
 // Components
-import { Panel } from 'components/common/Panel'
+import { Panel } from 'components/common/panel/Panel'
 
 export const HomeContentSettingsDisplay = () => {
 

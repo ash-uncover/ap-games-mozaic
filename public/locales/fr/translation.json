@@ -8,12 +8,12 @@
     "title": "Accueil",
     "play": {
       "menu": "Jouer",
-      "title": "Nouvelle Partie",
+      "title": "Jouer",
       "size": {
-        "title": "Nombre de Cases"
+        "title": "Taille de la grille"
       },
       "start": {
-        "text": "Commencer",
+        "text": "Nouvelle Partie",
         "tooltip": "Démarrer la partie"
       }
     },

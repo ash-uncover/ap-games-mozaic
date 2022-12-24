@@ -6,7 +6,9 @@ import AppSlice from 'store/app/app.slice'
 // Libs
 import CONFIG from 'config'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
-import { ThemeTile } from './ThemeTile'
+import { resolveThumbnail } from 'lib/utils/theme'
+// Components
+import { Tile } from 'components/common/tiles/Tile'
 // Style
 import './ThemeTiles.css'
 
@@ -24,8 +26,8 @@ export const ThemeTiles = ({
 
   // Events //
 
-  const handleThemeSelected = (theme?: string) => {
-    dispatch(AppSlice.actions.setTheme(theme))
+  const handleThemeSelected = (themeId?: string) => {
+    dispatch(AppSlice.actions.setTheme(themeId))
   }
 
   // Rendering //
@@ -42,12 +44,11 @@ export const ThemeTiles = ({
       className={classes.join(' ')}
     >
       {themes.length > 1 ?
-        <ThemeTile
+        <Tile
           name='Random'
-          description='A Random theme will be selected'
-          thumbnail={`${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/images/thumbnail_random.jpg`}
-          images={[]}
-          selected={!selectedTheme}
+          title='A Random theme will be selected'
+          image={`${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/images/thumbnail_random.jpg`}
+          className={!selectedTheme ? 'selected' : undefined}
           onClick={() => handleThemeSelected()}
         />
         : null}
@@ -60,14 +61,12 @@ export const ThemeTiles = ({
           images,
         } = theme.attributes
         return (
-          <ThemeTile
+          <Tile
             key={`theme-${name}`}
+            className={selectedTheme === theme.name ? 'selected' : ''}
             name={name}
-            description={description}
-            thumbnail={thumbnail}
-            background={background}
-            images={images}
-            selected={selectedTheme === theme.name}
+            title={description}
+            image={resolveThumbnail({name, description, thumbnail, background, images })}
             onClick={() => handleThemeSelected(theme.name)}
           />
         )

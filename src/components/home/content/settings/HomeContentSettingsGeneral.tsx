@@ -1,14 +1,14 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 // Components
+import { Panel } from 'components/common/panel/Panel'
+import { MenuSelector } from 'components/common/menu/MenuSelector'
 import { ThemeTiles } from './ThemeTiles'
-import { MenuSelector } from './MenuSelector'
-import { useDispatch, useSelector } from 'react-redux'
-import { Panel } from 'components/common/Panel'
 
 export const HomeContentSettingsGeneral = () => {
 

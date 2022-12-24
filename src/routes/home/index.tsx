@@ -4,11 +4,11 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { Page, PageContent, PageMenu } from '@uncover/games-common'
 import { HomeMenuSettings } from '../../components/home/menu/HomeMenuSettings'
 import { HomeMenu } from '../../components/home/menu/HomeMenu'
-import { HomeContentSettingsAudio } from '../../components/home/content/HomeContentSettingsAudio'
-import { HomeContentSettingsDisplay } from '../../components/home/content/HomeContentSettingsDisplay'
-import { HomeContentSettingsGeneral } from '../../components/home/content/HomeContentSettingsGeneral'
-import { HomeContentCredits } from '../../components/home/content/HomeContentCredits'
-import { HomeContentPlay } from '../../components/home/content/HomeContentPlay'
+import { HomeContentSettingsAudio } from '../../components/home/content/settings/HomeContentSettingsAudio'
+import { HomeContentSettingsDisplay } from '../../components/home/content/settings/HomeContentSettingsDisplay'
+import { HomeContentSettingsGeneral } from '../../components/home/content/settings/HomeContentSettingsGeneral'
+import { HomeContentCredits } from '../../components/home/content/credits/HomeContentCredits'
+import { HomeContentPlay } from '../../components/home/content/play/HomeContentPlay'
 
 const RouteHome = () => {
 

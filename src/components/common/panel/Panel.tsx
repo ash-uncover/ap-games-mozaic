@@ -3,11 +3,13 @@ import React, { ReactNode } from 'react'
 import './Panel.css'
 
 export interface PanelProperties {
+  className?: string
   title?: string
   children?: ReactNode
 }
 
 export const Panel = ({
+  className,
   title,
   children,
 }: PanelProperties) => {
@@ -18,8 +20,13 @@ export const Panel = ({
 
   // Rendering //
 
+  const classes = ['panel']
+  if (className) {
+    classes.push(className)
+  }
+
   return (
-    <div className='panel'>
+    <div className={classes.join(' ')}>
       {title ?
         <h3>
           {title}

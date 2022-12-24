@@ -11,11 +11,11 @@ import { ArrayUtils } from '@uncover/js-utils'
 import { GameSize, GameSizes } from 'lib/game/constants'
 import { GridTiles, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
+import { Panel } from 'components/common/panel/Panel'
+import { PanelButton } from 'components/common/panel/PanelButton'
 // Components
 
 import './HomeContentPlay.css'
-import { Panel } from 'components/common/Panel'
-import { PanelButton } from 'components/common/PanelButton'
 
 export const HomeContentPlay = () => {
 

@@ -5,7 +5,7 @@ import AudioSlice from 'store/audio/audio.slice'
 import AudioSelectors from 'store/audio/audio.selectors'
 import { MenuCheckbox, MenuStepInput } from '@uncover/games-common'
 import { useTranslation } from 'react-i18next'
-import { Panel } from 'components/common/Panel'
+import { Panel } from 'components/common/panel/Panel'
 // Components
 
 export const HomeContentSettingsAudio = () => {
