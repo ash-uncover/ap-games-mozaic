@@ -6,4 +6,8 @@
   box-sizing: border-box;
 
   transition: transform 0.1s ease-in-out;
+
+  &.dragging {
+    transition: none;
+  }
 }

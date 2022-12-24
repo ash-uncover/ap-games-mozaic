@@ -73,9 +73,6 @@ const Tile = ({
           }}
         />
       }
-      <div
-        className='tile-layer2'
-      />
     </button>
   )
 }

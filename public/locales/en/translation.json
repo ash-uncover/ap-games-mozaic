@@ -65,7 +65,10 @@
     },
     "credits": {
       "menu": "Credits",
-      "title": "Credits"
+      "title": "Credits",
+      "art": {
+        "title": "Arts"
+      }
     },
     "exit": {
       "menu": "Exit"
