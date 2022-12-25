@@ -48,9 +48,6 @@ export const HomeContentSettingsGeneral = () => {
       <Panel title={t('home.settings.general.theme.title')}>
         <ThemeTiles />
       </Panel>
-
-      <Panel title={t('home.settings.general.keys.title')}>
-      </Panel>
     </>
   )
 }

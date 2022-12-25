@@ -5,7 +5,7 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 
-import './Tile.css'
+import './BoardTileInner.css'
 
 interface TileProperties extends GameBoardTile {
   id: string
@@ -42,17 +42,17 @@ const Tile = ({
 
   // Rendering //
 
-  const classes = ['tile']
+  const classes = ['board-tile-inner']
 
   return (
-    <button
+    <div
       className={classes.join(' ')}
       onClick={handleClick}
     >
       {!hidden ?
         <>
           <img
-            className='tile-image'
+            className='board-tile-image'
             src={background}
             height={`${size.height * 100}%`}
             width={`${size.width * 100}%`}
@@ -73,7 +73,7 @@ const Tile = ({
           }}
         />
       }
-    </button>
+    </div>
   )
 }
 

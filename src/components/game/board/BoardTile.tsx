@@ -1,14 +1,14 @@
-import React, { MouseEvent, TouchEvent, useState } from 'react'
+import React, { TouchEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Components
-import Tile from './tile/Tile'
+import BoardTileInner from './tile/BoardTileInner'
 
 import './BoardTile.css'
 
-const DRAG_INFO = {
+const dragInfo = {
   x: -1,
   y: -1,
   direction: null,
@@ -20,6 +20,7 @@ const DRAG_DIRECTION = {
   BOTTOM: 'bottom',
   RIGHT: 'right'
 }
+const DRAG_THRESHOLD = 0.25
 
 interface BoardTileProperties {
   tileId: string
@@ -45,24 +46,24 @@ const BoardTile = ({
 
   const handleTouchStart = (event: TouchEvent) => {
     if (hiddenTile.x === tile.x - 1 && hiddenTile.y === tile.y) {
-      DRAG_INFO.direction = DRAG_DIRECTION.LEFT
-      DRAG_INFO.x = event.touches[0].clientX
-      DRAG_INFO.target = event.touches[0].target
+      dragInfo.direction = DRAG_DIRECTION.LEFT
+      dragInfo.x = event.touches[0].clientX
+      dragInfo.target = event.touches[0].target
       startDrag()
     } else if (hiddenTile.x === tile.x + 1 && hiddenTile.y === tile.y) {
-      DRAG_INFO.direction = DRAG_DIRECTION.RIGHT
-      DRAG_INFO.x = event.touches[0].clientX
-      DRAG_INFO.target = event.touches[0].target
+      dragInfo.direction = DRAG_DIRECTION.RIGHT
+      dragInfo.x = event.touches[0].clientX
+      dragInfo.target = event.touches[0].target
       startDrag()
     } else if (hiddenTile.y === tile.y - 1 && hiddenTile.x === tile.x) {
-      DRAG_INFO.direction = DRAG_DIRECTION.TOP
-      DRAG_INFO.y = event.touches[0].clientY
-      DRAG_INFO.target = event.touches[0].target
+      dragInfo.direction = DRAG_DIRECTION.TOP
+      dragInfo.y = event.touches[0].clientY
+      dragInfo.target = event.touches[0].target
       startDrag()
     } else if (hiddenTile.y === tile.y + 1 && hiddenTile.x === tile.x) {
-      DRAG_INFO.direction = DRAG_DIRECTION.BOTTOM
-      DRAG_INFO.y = event.touches[0].clientY
-      DRAG_INFO.target = event.touches[0].target
+      dragInfo.direction = DRAG_DIRECTION.BOTTOM
+      dragInfo.y = event.touches[0].clientY
+      dragInfo.target = event.touches[0].target
       startDrag()
     }
   }
@@ -75,27 +76,27 @@ const BoardTile = ({
 
   const doDrag = (event) => {
     setDragMode(true)
-    switch (DRAG_INFO.direction) {
+    switch (dragInfo.direction) {
       case DRAG_DIRECTION.LEFT: {
-        let offset = (event.touches[0].clientX - DRAG_INFO.x) / DRAG_INFO.target.offsetWidth
+        let offset = (event.touches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth
         offset = Math.max(-1, Math.min(0, offset))
         setOffsetX(offset)
         break
       }
       case DRAG_DIRECTION.RIGHT: {
-        let offset = (event.touches[0].clientX - DRAG_INFO.x) / DRAG_INFO.target.offsetWidth
+        let offset = (event.touches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth
         offset = Math.max(0, Math.min(1, offset))
         setOffsetX(offset)
         break
       }
       case DRAG_DIRECTION.TOP: {
-        let offset = (event.touches[0].clientY - DRAG_INFO.y) / DRAG_INFO.target.offsetHeight
+        let offset = (event.touches[0].clientY - dragInfo.y) / dragInfo.target.offsetHeight
         offset = Math.max(-1, Math.min(0, offset))
         setOffsetY(offset)
         break
       }
       case DRAG_DIRECTION.BOTTOM: {
-        let offset = (event.touches[0].clientY - DRAG_INFO.y) / DRAG_INFO.target.offsetHeight
+        let offset = (event.touches[0].clientY - dragInfo.y) / dragInfo.target.offsetHeight
         offset = Math.max(0, Math.min(1, offset))
         setOffsetY(offset)
         break
@@ -106,24 +107,24 @@ const BoardTile = ({
   const stopDrag = (event) => {
     setDragMode(false)
     let finalOffset = 0
-    switch (DRAG_INFO.direction) {
+    switch (dragInfo.direction) {
       case DRAG_DIRECTION.LEFT: {
-        finalOffset = (event.changedTouches[0].clientX - DRAG_INFO.x) / DRAG_INFO.target.offsetWidth
+        finalOffset = (event.changedTouches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth
         finalOffset = Math.max(-1, Math.min(0, finalOffset))
         break
       }
       case DRAG_DIRECTION.RIGHT: {
-        finalOffset = (event.changedTouches[0].clientX - DRAG_INFO.x) / DRAG_INFO.target.offsetWidth
+        finalOffset = (event.changedTouches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth
         finalOffset = Math.max(0, Math.min(1, finalOffset))
         break
       }
       case DRAG_DIRECTION.TOP: {
-        finalOffset = (event.changedTouches[0].clientY - DRAG_INFO.y) / DRAG_INFO.target.offsetHeight
+        finalOffset = (event.changedTouches[0].clientY - dragInfo.y) / dragInfo.target.offsetHeight
         finalOffset = Math.max(-1, Math.min(0, finalOffset))
         break
       }
       case DRAG_DIRECTION.BOTTOM: {
-        finalOffset = (event.changedTouches[0].clientY - DRAG_INFO.y) / DRAG_INFO.target.offsetHeight
+        finalOffset = (event.changedTouches[0].clientY - dragInfo.y) / dragInfo.target.offsetHeight
         finalOffset = Math.max(0, Math.min(1, finalOffset))
         break
       }
@@ -131,11 +132,11 @@ const BoardTile = ({
     document.removeEventListener('touchend', stopDrag)
     document.removeEventListener('touchcancel', stopDrag)
     document.removeEventListener('touchmove', doDrag)
-    DRAG_INFO.x = -1
-    DRAG_INFO.y = -1
-    DRAG_INFO.direction = null
-    DRAG_INFO.target = null
-    if (finalOffset > 0.5 || finalOffset < -0.5) {
+    dragInfo.x = -1
+    dragInfo.y = -1
+    dragInfo.direction = null
+    dragInfo.target = null
+    if (finalOffset > DRAG_THRESHOLD || finalOffset < -DRAG_THRESHOLD) {
       dispatch(GameSlice.actions.clickTile({ tileId }))
     }
     setOffsetX(0)
@@ -174,7 +175,7 @@ const BoardTile = ({
       }}
       onTouchStart={handleTouchStart}
     >
-      <Tile
+      <BoardTileInner
         {...tile}
         onClick={handleTileClick}
       />
