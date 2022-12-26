@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // Store
 import AudioSlice from 'store/audio/audio.slice'
 import AudioSelectors from 'store/audio/audio.selectors'
-import { MenuCheckbox, Slider } from '@uncover/games-common'
+import { Switch, Slider } from '@uncover/games-common'
 import { useTranslation } from 'react-i18next'
 import { Panel } from 'components/common/panel/Panel'
 // Components
@@ -66,7 +66,7 @@ export const HomeContentSettingsAudio = () => {
       </Panel>
 
       <Panel title={t('home.settings.audio.master.title')}>
-        <MenuCheckbox
+        <Switch
           label={t('home.settings.audio.master.enable')}
           checked={soundMaster}
           onChange={handleMasterChange}
@@ -81,7 +81,7 @@ export const HomeContentSettingsAudio = () => {
       </Panel>
 
       <Panel title={t('home.settings.audio.game.title')}>
-        <MenuCheckbox
+        <Switch
           label={t('home.settings.audio.game.enable')}
           checked={soundGame}
           onChange={handleGameChange}
@@ -96,7 +96,7 @@ export const HomeContentSettingsAudio = () => {
       </Panel>
 
       <Panel title={t('home.settings.audio.interface.title')}>
-        <MenuCheckbox
+        <Switch
           label={t('home.settings.audio.interface.enable')}
           checked={soundInterface}
           onChange={handleInterfaceChange}
@@ -111,7 +111,7 @@ export const HomeContentSettingsAudio = () => {
       </Panel>
 
       <Panel title={t('home.settings.audio.music.title')}>
-        <MenuCheckbox
+        <Switch
           label={t('home.settings.audio.music.enable')}
           checked={soundMusic}
           onChange={handleMusicChange}
