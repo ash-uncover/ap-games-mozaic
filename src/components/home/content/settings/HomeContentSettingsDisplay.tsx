@@ -1,5 +1,5 @@
 import React from 'react'
-import { MenuStepInput } from '@uncover/games-common'
+import { Slider } from '@uncover/games-common'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
@@ -40,7 +40,7 @@ export const HomeContentSettingsDisplay = () => {
       </Panel>
 
       <Panel title={t('home.settings.display.brightness.title')}>
-        <MenuStepInput
+        <Slider
           label={t('home.settings.display.brightness.title')}
           min={0}
           max={100}
@@ -50,7 +50,7 @@ export const HomeContentSettingsDisplay = () => {
       </Panel>
 
       <Panel title={t('home.settings.display.contrast.title')}>
-        <MenuStepInput
+        <Slider
           label={t('home.settings.display.contrast.title')}
           min={0}
           max={100}
