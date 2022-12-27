@@ -23,42 +23,42 @@ export const GameStatuses: {
 // Game Size //
 
 export type GameSize =
-  { name: '2x2', width: 2, height: 2, available: false } |
-  { name: '2x3', width: 3, height: 2, available: true } |
-  { name: '2x4', width: 4, height: 2, available: true } |
-  { name: '2x5', width: 5, height: 2, available: true } |
-  { name: '2x6', width: 6, height: 2, available: true } |
-  { name: '2x7', width: 7, height: 2, available: true } |
-  { name: '3x2', width: 2, height: 3, available: true } |
-  { name: '3x3', width: 3, height: 3, available: true } |
-  { name: '3x4', width: 4, height: 3, available: true } |
-  { name: '3x5', width: 5, height: 3, available: true } |
-  { name: '3x6', width: 6, height: 3, available: true } |
-  { name: '3x7', width: 7, height: 3, available: true } |
-  { name: '4x2', width: 2, height: 4, available: true } |
-  { name: '4x3', width: 3, height: 4, available: true } |
-  { name: '4x4', width: 4, height: 4, available: true } |
-  { name: '4x5', width: 5, height: 4, available: true } |
-  { name: '4x6', width: 6, height: 4, available: true } |
-  { name: '4x7', width: 7, height: 4, available: true } |
-  { name: '5x2', width: 2, height: 5, available: true } |
-  { name: '5x3', width: 3, height: 5, available: true } |
-  { name: '5x4', width: 4, height: 5, available: true } |
-  { name: '5x5', width: 5, height: 5, available: true } |
-  { name: '5x6', width: 6, height: 5, available: true } |
-  { name: '5x7', width: 7, height: 5, available: true } |
-  { name: '6x2', width: 2, height: 6, available: true } |
-  { name: '6x3', width: 3, height: 6, available: true } |
-  { name: '6x4', width: 4, height: 6, available: true } |
-  { name: '6x5', width: 5, height: 6, available: true } |
-  { name: '6x6', width: 6, height: 6, available: true } |
-  { name: '6x7', width: 7, height: 6, available: true } |
-  { name: '7x2', width: 2, height: 7, available: true } |
-  { name: '7x3', width: 3, height: 7, available: true } |
-  { name: '7x4', width: 4, height: 7, available: true } |
-  { name: '7x5', width: 5, height: 7, available: true } |
-  { name: '7x6', width: 6, height: 7, available: true } |
-  { name: '7x7', width: 7, height: 7, available: true }
+  { id: '2x2', width: 2, height: 2, available: false } |
+  { id: '2x3', width: 3, height: 2, available: true } |
+  { id: '2x4', width: 4, height: 2, available: true } |
+  { id: '2x5', width: 5, height: 2, available: true } |
+  { id: '2x6', width: 6, height: 2, available: true } |
+  { id: '2x7', width: 7, height: 2, available: true } |
+  { id: '3x2', width: 2, height: 3, available: true } |
+  { id: '3x3', width: 3, height: 3, available: true } |
+  { id: '3x4', width: 4, height: 3, available: true } |
+  { id: '3x5', width: 5, height: 3, available: true } |
+  { id: '3x6', width: 6, height: 3, available: true } |
+  { id: '3x7', width: 7, height: 3, available: true } |
+  { id: '4x2', width: 2, height: 4, available: true } |
+  { id: '4x3', width: 3, height: 4, available: true } |
+  { id: '4x4', width: 4, height: 4, available: true } |
+  { id: '4x5', width: 5, height: 4, available: true } |
+  { id: '4x6', width: 6, height: 4, available: true } |
+  { id: '4x7', width: 7, height: 4, available: true } |
+  { id: '5x2', width: 2, height: 5, available: true } |
+  { id: '5x3', width: 3, height: 5, available: true } |
+  { id: '5x4', width: 4, height: 5, available: true } |
+  { id: '5x5', width: 5, height: 5, available: true } |
+  { id: '5x6', width: 6, height: 5, available: true } |
+  { id: '5x7', width: 7, height: 5, available: true } |
+  { id: '6x2', width: 2, height: 6, available: true } |
+  { id: '6x3', width: 3, height: 6, available: true } |
+  { id: '6x4', width: 4, height: 6, available: true } |
+  { id: '6x5', width: 5, height: 6, available: true } |
+  { id: '6x6', width: 6, height: 6, available: true } |
+  { id: '6x7', width: 7, height: 6, available: true } |
+  { id: '7x2', width: 2, height: 7, available: true } |
+  { id: '7x3', width: 3, height: 7, available: true } |
+  { id: '7x4', width: 4, height: 7, available: true } |
+  { id: '7x5', width: 5, height: 7, available: true } |
+  { id: '7x6', width: 6, height: 7, available: true } |
+  { id: '7x7', width: 7, height: 7, available: true }
 export const GameSizes: {
   SIZE_2X2: GameSize
   SIZE_2X3: GameSize
@@ -97,40 +97,52 @@ export const GameSizes: {
   SIZE_7X6: GameSize
   SIZE_7X7: GameSize
 } = {
-  SIZE_2X2: { name: '2x2', width: 2, height: 2, available: false },
-  SIZE_2X3: { name: '2x3', width: 3, height: 2, available: true },
-  SIZE_2X4: { name: '2x4', width: 4, height: 2, available: true },
-  SIZE_2X5: { name: '2x5', width: 5, height: 2, available: true },
-  SIZE_2X6: { name: '2x6', width: 6, height: 2, available: true },
-  SIZE_2X7: { name: '2x7', width: 7, height: 2, available: true },
-  SIZE_3X2: { name: '3x2', width: 2, height: 3, available: true },
-  SIZE_3X3: { name: '3x3', width: 3, height: 3, available: true },
-  SIZE_3X4: { name: '3x4', width: 4, height: 3, available: true },
-  SIZE_3X5: { name: '3x5', width: 5, height: 3, available: true },
-  SIZE_3X6: { name: '3x6', width: 6, height: 3, available: true },
-  SIZE_3X7: { name: '3x7', width: 7, height: 3, available: true },
-  SIZE_4X2: { name: '4x2', width: 2, height: 4, available: true },
-  SIZE_4X3: { name: '4x3', width: 3, height: 4, available: true },
-  SIZE_4X4: { name: '4x4', width: 4, height: 4, available: true },
-  SIZE_4X5: { name: '4x5', width: 5, height: 4, available: true },
-  SIZE_4X6: { name: '4x6', width: 6, height: 4, available: true },
-  SIZE_4X7: { name: '4x7', width: 7, height: 4, available: true },
-  SIZE_5X2: { name: '5x2', width: 2, height: 5, available: true },
-  SIZE_5X3: { name: '5x3', width: 3, height: 5, available: true },
-  SIZE_5X4: { name: '5x4', width: 4, height: 5, available: true },
-  SIZE_5X5: { name: '5x5', width: 5, height: 5, available: true },
-  SIZE_5X6: { name: '5x6', width: 6, height: 5, available: true },
-  SIZE_5X7: { name: '5x7', width: 7, height: 5, available: true },
-  SIZE_6X2: { name: '6x2', width: 2, height: 6, available: true },
-  SIZE_6X3: { name: '6x3', width: 3, height: 6, available: true },
-  SIZE_6X4: { name: '6x4', width: 4, height: 6, available: true },
-  SIZE_6X5: { name: '6x5', width: 5, height: 6, available: true },
-  SIZE_6X6: { name: '6x6', width: 6, height: 6, available: true },
-  SIZE_6X7: { name: '6x7', width: 7, height: 6, available: true },
-  SIZE_7X2: { name: '7x2', width: 2, height: 7, available: true },
-  SIZE_7X3: { name: '7x3', width: 3, height: 7, available: true },
-  SIZE_7X4: { name: '7x4', width: 4, height: 7, available: true },
-  SIZE_7X5: { name: '7x5', width: 5, height: 7, available: true },
-  SIZE_7X6: { name: '7x6', width: 6, height: 7, available: true },
-  SIZE_7X7: { name: '7x7', width: 7, height: 7, available: true }
+  SIZE_2X2: { id: '2x2', width: 2, height: 2, available: false },
+  SIZE_2X3: { id: '2x3', width: 3, height: 2, available: true },
+  SIZE_2X4: { id: '2x4', width: 4, height: 2, available: true },
+  SIZE_2X5: { id: '2x5', width: 5, height: 2, available: true },
+  SIZE_2X6: { id: '2x6', width: 6, height: 2, available: true },
+  SIZE_2X7: { id: '2x7', width: 7, height: 2, available: true },
+  SIZE_3X2: { id: '3x2', width: 2, height: 3, available: true },
+  SIZE_3X3: { id: '3x3', width: 3, height: 3, available: true },
+  SIZE_3X4: { id: '3x4', width: 4, height: 3, available: true },
+  SIZE_3X5: { id: '3x5', width: 5, height: 3, available: true },
+  SIZE_3X6: { id: '3x6', width: 6, height: 3, available: true },
+  SIZE_3X7: { id: '3x7', width: 7, height: 3, available: true },
+  SIZE_4X2: { id: '4x2', width: 2, height: 4, available: true },
+  SIZE_4X3: { id: '4x3', width: 3, height: 4, available: true },
+  SIZE_4X4: { id: '4x4', width: 4, height: 4, available: true },
+  SIZE_4X5: { id: '4x5', width: 5, height: 4, available: true },
+  SIZE_4X6: { id: '4x6', width: 6, height: 4, available: true },
+  SIZE_4X7: { id: '4x7', width: 7, height: 4, available: true },
+  SIZE_5X2: { id: '5x2', width: 2, height: 5, available: true },
+  SIZE_5X3: { id: '5x3', width: 3, height: 5, available: true },
+  SIZE_5X4: { id: '5x4', width: 4, height: 5, available: true },
+  SIZE_5X5: { id: '5x5', width: 5, height: 5, available: true },
+  SIZE_5X6: { id: '5x6', width: 6, height: 5, available: true },
+  SIZE_5X7: { id: '5x7', width: 7, height: 5, available: true },
+  SIZE_6X2: { id: '6x2', width: 2, height: 6, available: true },
+  SIZE_6X3: { id: '6x3', width: 3, height: 6, available: true },
+  SIZE_6X4: { id: '6x4', width: 4, height: 6, available: true },
+  SIZE_6X5: { id: '6x5', width: 5, height: 6, available: true },
+  SIZE_6X6: { id: '6x6', width: 6, height: 6, available: true },
+  SIZE_6X7: { id: '6x7', width: 7, height: 6, available: true },
+  SIZE_7X2: { id: '7x2', width: 2, height: 7, available: true },
+  SIZE_7X3: { id: '7x3', width: 3, height: 7, available: true },
+  SIZE_7X4: { id: '7x4', width: 4, height: 7, available: true },
+  SIZE_7X5: { id: '7x5', width: 5, height: 7, available: true },
+  SIZE_7X6: { id: '7x6', width: 6, height: 7, available: true },
+  SIZE_7X7: { id: '7x7', width: 7, height: 7, available: true }
 }
+
+export const getSize = (sizeId: string) => {
+  return Object.values(GameSizes).find(size => size.id === sizeId)
+}
+
+export const GameSizesPlayable: GameSize[] = [
+  GameSizes.SIZE_3X3,
+  GameSizes.SIZE_4X4,
+  GameSizes.SIZE_5X5,
+  GameSizes.SIZE_6X6,
+  GameSizes.SIZE_7X7
+]

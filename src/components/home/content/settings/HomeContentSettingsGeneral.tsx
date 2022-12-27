@@ -7,9 +7,6 @@ import AppSlice from 'store/app/app.slice'
 // Libs
 // Components
 import {
-  ThemeTiles
-} from './ThemeTiles'
-import {
   Panel,
   Select
 } from '@uncover/games-common'
@@ -20,7 +17,7 @@ export const HomeContentSettingsGeneral = () => {
 
   const dispatch = useDispatch()
   const language = useSelector(AppSelectors.language)
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   // Events //
 
@@ -47,10 +44,6 @@ export const HomeContentSettingsGeneral = () => {
           ]}
           onChange={handleLanguageChange}
         />
-      </Panel>
-
-      <Panel title={t('home.settings.general.theme.title')}>
-        <ThemeTiles />
       </Panel>
     </>
   )

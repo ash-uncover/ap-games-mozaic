@@ -1,102 +1,33 @@
 .home-play {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-  & .home-play-sizes-container {
-    position: relative;
-    width: 100%;
-    max-width: 576px;
-    aspect-ratio: 1;
-
-    & .home-play-sizes {
-
-      & .grid-tiles-row-cell {
-        box-sizing: border-box;
-
-        & .home-play-size {
-          height: 100%;
-          width: 100%;
-          cursor: pointer;
-
-          border: 1px solid #555;
-          background: rgba(0,0,0,0.6);
-
-          color: white;
-          font-weight: bold;
-
-
-          &.disabled {
-            cursor: not-allowed;
-            color: grey;
-            background: rgba(8,8,8,0.6);
-            font-style: italic;
-          }
-          &:hover {
-            background: grey;
-            border-color: black;
-            color: black;
-          }
-          &.selected {
-            background: white;
-            border-color: black;
-            color: black;
-          }
-        }
-      }
-    }
+  & .home-play__scroll-area {
+    flex-grow: 1;
+    height: 0;
+    overflow: auto;
   }
 
+  & .home-play__main-action {
+    flex-shrink: 0;
+  }
 }
 
 /* XS Screen layout */
 
-.home-play {
-  & .home-play-sizes-container {
-    & .home-play-sizes {
-      & .grid-tiles-row-cell {
-        padding: 0.1rem;
-        & .home-play-size {
-          border-radius: 0.25rem;
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-}
-
+.home-play {}
 
 /* S Screen layout */
 
 @media (min-width: 576px) {
-  .home-play {
-    & .home-play-sizes-container {
-      & .home-play-sizes {
-        & .grid-tiles-row-cell {
-          padding: 0.25rem;
-          & .home-play-size {
-            border-radius: 0.25rem;
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-  }
+  .home-play {}
 }
 
 /* M Screen layout */
 
 @media (min-width: 768px) {
-  .home-play {
-    & .home-play-sizes-container {
-      & .home-play-sizes {
-        & .grid-tiles-row-cell {
-          padding: 0.25rem;
-          & .home-play-size {
-            border-radius: 0.25rem;
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-  }
+  .home-play {}
 }
 
 /* L Screen layout */

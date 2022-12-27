@@ -8,18 +8,19 @@ import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
 // Libs
 import { ArrayUtils } from '@uncover/js-utils'
-import { GameSize, GameSizes } from 'lib/game/constants'
+import { GameSizesPlayable, getSize } from 'lib/game/constants'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
 import {
-  GridTiles,
   Panel,
   PanelButton,
+  Select,
   ShortcutManager,
   Shortcuts
 } from '@uncover/games-common'
 
 import './HomeContentPlay.css'
+import { ThemeTiles } from '../settings/ThemeTiles'
 
 export const HomeContentPlay = () => {
 
@@ -45,8 +46,9 @@ export const HomeContentPlay = () => {
 
   // Events //
 
-  const handleSizeSelected = (gameSize: GameSize) => {
-    dispatch(GameSlice.actions.setSize({ size: gameSize }))
+  const handleSizeSelected = (sizeId: string) => {
+    const newSize = getSize(sizeId)
+    dispatch(GameSlice.actions.setSize({ size: newSize }))
   }
 
   const handleStart = () => {
@@ -70,45 +72,38 @@ export const HomeContentPlay = () => {
 
   // Rendering //
 
+  const sizes = GameSizesPlayable.map(size => {
+    return {
+      id: size.id,
+      text: `${size.width} x ${size.height}`
+    }
+  })
+
   return (
     <div className='home-play'>
-      <Panel>
-        <h2>
-        {t('home.play.title')}
-        </h2>
-      </Panel>
 
-      <Panel title={t('home.play.size.title')}>
-        <div className='home-play-sizes-container'>
-          <GridTiles
-            className='home-play-sizes'
-            width={6}
-            height={6}
-          >
-            {Object.values(GameSizes).map((gameSize) => {
-              const classes = ['home-play-size']
-              if (size === gameSize) {
-                classes.push('selected')
-              }
-              if (!gameSize.available) {
-                classes.push('disabled')
-              }
-              return (
-                <button
-                  key={gameSize.name}
-                  className={classes.join(' ')}
-                  disabled={!gameSize.available}
-                  onClick={() => handleSizeSelected(gameSize)}
-                >
-                  {gameSize.name}
-                </button>
-              )
-            })}
-          </GridTiles>
-        </div>
-      </Panel>
+      <div className='home-play__scroll-area'>
+        <Panel>
+          <h2>
+            {t('home.play.title')}
+          </h2>
+        </Panel>
+
+        <Panel title={t('home.play.size.title')}>
+          <Select
+            value={size.id}
+            values={sizes}
+            onChange={handleSizeSelected}
+          />
+        </Panel>
+
+        <Panel title={t('home.settings.general.theme.title')}>
+          <ThemeTiles />
+        </Panel>
+      </div>
 
       <PanelButton
+        className='home-play__main-action'
         title={t('home.play.start.tooltip')}
         onClick={handleStart}
       >
