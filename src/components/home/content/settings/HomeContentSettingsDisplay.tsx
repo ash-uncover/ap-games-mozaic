@@ -1,12 +1,14 @@
 import React from 'react'
-import { Slider } from '@uncover/games-common'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
 import DisplaySelectors from 'store/display/display.selectors'
 import DisplaySlice from 'store/display/display.slice'
 // Components
-import { Panel } from 'components/common/panel/Panel'
+import {
+  Panel,
+  Slider
+} from '@uncover/games-common'
 
 export const HomeContentSettingsDisplay = () => {
 

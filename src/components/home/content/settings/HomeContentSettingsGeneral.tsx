@@ -6,9 +6,13 @@ import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 // Components
-import { Panel } from 'components/common/panel/Panel'
-import { MenuSelector } from 'components/common/menu/MenuSelector'
-import { ThemeTiles } from './ThemeTiles'
+import {
+  ThemeTiles
+} from './ThemeTiles'
+import {
+  Panel,
+  Select
+} from '@uncover/games-common'
 
 export const HomeContentSettingsGeneral = () => {
 
@@ -35,7 +39,7 @@ export const HomeContentSettingsGeneral = () => {
       </Panel>
 
       <Panel title={t('home.settings.general.lang.title')}>
-        <MenuSelector
+        <Select
           value={language}
           values={[
             { id: 'fr', text: 'Français' },

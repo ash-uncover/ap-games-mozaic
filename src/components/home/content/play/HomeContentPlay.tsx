@@ -9,11 +9,15 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 import { ArrayUtils } from '@uncover/js-utils'
 import { GameSize, GameSizes } from 'lib/game/constants'
-import { GridTiles, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import { PluginManager } from '@uncover/js-utils-microfrontend'
-import { Panel } from 'components/common/panel/Panel'
-import { PanelButton } from 'components/common/panel/PanelButton'
 // Components
+import {
+  GridTiles,
+  Panel,
+  PanelButton,
+  ShortcutManager,
+  Shortcuts
+} from '@uncover/games-common'
 
 import './HomeContentPlay.css'
 

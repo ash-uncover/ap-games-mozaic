@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 // Components
-import { Panel } from '../../../common/panel/Panel'
+import { Panel } from '@uncover/games-common'
 
 export const HomeContentCredits = () => {
 

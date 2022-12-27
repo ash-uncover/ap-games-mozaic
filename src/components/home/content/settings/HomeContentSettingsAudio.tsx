@@ -1,12 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
 import AudioSlice from 'store/audio/audio.slice'
 import AudioSelectors from 'store/audio/audio.selectors'
-import { Switch, Slider } from '@uncover/games-common'
-import { useTranslation } from 'react-i18next'
-import { Panel } from 'components/common/panel/Panel'
 // Components
+import { Panel, Switch, Slider } from '@uncover/games-common'
 
 export const HomeContentSettingsAudio = () => {
 
@@ -72,6 +71,7 @@ export const HomeContentSettingsAudio = () => {
           onChange={handleMasterChange}
         />
         <Slider
+          disabled={!soundMaster}
           label={t('home.settings.audio.master.title')}
           min={0}
           max={100}
@@ -87,6 +87,7 @@ export const HomeContentSettingsAudio = () => {
           onChange={handleGameChange}
         />
         <Slider
+          disabled={!soundGame}
           label={t('home.settings.audio.game.title')}
           min={0}
           max={100}
@@ -102,6 +103,7 @@ export const HomeContentSettingsAudio = () => {
           onChange={handleInterfaceChange}
         />
         <Slider
+          disabled={!soundInterface}
           label={t('home.settings.audio.interface.title')}
           min={0}
           max={100}
@@ -117,6 +119,7 @@ export const HomeContentSettingsAudio = () => {
           onChange={handleMusicChange}
         />
         <Slider
+          disabled={!soundMusic}
           label={t('home.settings.audio.music.title')}
           min={0}
           max={100}
