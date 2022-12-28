@@ -79,6 +79,10 @@
       "text": "Start",
       "tooltip": "Start Game"
     },
+    "change": {
+      "text": "Change",
+      "tooltip": "Change image"
+    },
     "dialogs": {
       "defeat": {
         "title": "Menu",

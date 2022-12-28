@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 // Store
+import AppSelectors from 'store/app/app.selectors'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import Audio, { AudioFiles } from 'lib/utils/Audio'
+import { ArrayUtils } from '@uncover/js-utils'
 import { AudioTypes } from '@uncover/games-common'
 import { GameStatuses } from 'lib/game/constants'
+import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
-import { Navigate } from 'react-router-dom'
 import { Board } from 'components/game/board/Board'
 import { DIALOG, Dialogs } from './dialogs/Dialogs'
 import { GameFooterAction } from './GameFooterAction'
 import { GameHeader } from './GameHeader'
+import { Navigate } from 'react-router-dom'
 
 import './Game.css'
 
@@ -28,7 +31,11 @@ const Game = ({ }) => {
 
   const status = useSelector(GameSelectors.status)
 
-  const clicks = useSelector(GameSelectors.clicks)
+  const background = useSelector(GameSelectors.background)
+
+  const selectedTheme = useSelector(AppSelectors.theme)
+  const themes = PluginManager.providers['mozaic/theme']
+  const theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
 
   useEffect(() => {
     return Audio.play(
@@ -41,6 +48,16 @@ const Game = ({ }) => {
 
   const handleStart = () => {
     dispatch(GameSlice.actions.startGame())
+  }
+
+  const handleChangeImage = () => {
+    let newBackground = background
+    if (Array.isArray(theme.attributes.images) && theme.attributes.images.length > 1) {
+      while (newBackground === background) {
+        newBackground = ArrayUtils.randomElement(theme.attributes.images)!
+      }
+    }
+    dispatch(GameSlice.actions.changeImage(newBackground))
   }
 
   const handleToggleView = () => {
@@ -70,10 +87,20 @@ const Game = ({ }) => {
         result.push(
           <GameFooterAction
             key='start'
+            selected={true}
             title={t('game.start.text')}
             onClick={handleStart}
           />
         )
+        if (Array.isArray(theme.attributes.images) && theme.attributes.images.length > 1) {
+          result.push(
+            <GameFooterAction
+              key='change'
+              title={t('game.change.text')}
+              onClick={handleChangeImage}
+            />
+          )
+        }
         break
       }
       case GameStatuses.GAME_ON_GOING: {
@@ -118,7 +145,7 @@ const Game = ({ }) => {
 
       <div className='game-area'>
         <Board
-          reveal={reveal || (status === GameStatuses.GAME_READY)  || (status === GameStatuses.GAME_ENDED_VICTORY)}
+          reveal={reveal || (status === GameStatuses.GAME_READY) || (status === GameStatuses.GAME_ENDED_VICTORY)}
         />
       </div>
 

@@ -79,6 +79,10 @@
       "text": "Commencer",
       "tooltip": "Démarrer la partie"
     },
+    "change": {
+      "text": "Modifier",
+      "tooltip": "Utiliser une autre image"
+    },
     "dialogs": {
       "defeat": {
         "title": "Menu",

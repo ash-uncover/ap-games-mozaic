@@ -15,6 +15,8 @@
   background: var(--base_item_background);
   color: var(--base_item_color);
 
+  font-weight: bold;
+
   &:hover:not(.selected) {
     background: var(--base_hover_background);
     color: var(--base_hover_color);

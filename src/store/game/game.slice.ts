@@ -16,6 +16,7 @@ import {
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 import { DIALOG } from 'components/game/dialogs/Dialogs'
+import { isSolvable } from 'lib/game/board/board.helper'
 
 // STATE //
 
@@ -63,13 +64,19 @@ const prepareGame: CaseReducer<GameState, PayloadAction<PrepareGamePayload>> = (
   const tilesPosition = ArrayUtils.createIntArray(tilesNumber)
 
   tilesPosition.forEach((tilePosition: number) => {
+    const x = tilePosition % state.size.width
+    const y = Math.floor(tilePosition / state.size.width)
     const tile: GameBoardTile = {
       id: `tile-${UUID.next()}`,
       hidden: false,
-      baseX: tilePosition % state.size.width,
-      baseY: Math.floor(tilePosition / state.size.width),
-      x: tilePosition % state.size.width,
-      y: Math.floor(tilePosition / state.size.width)
+      baseX: x,
+      baseY: y,
+      x: x,
+      y: y
+    }
+    if (y === state.size.width - 1 && x === state.size.height - 1) {
+      tile.hidden = true
+      state.board.hiddenTile = tile.id
     }
     state.tiles[tile.id] = tile
     state.board.tiles.push(tile.id)
@@ -81,7 +88,11 @@ const prepareGame: CaseReducer<GameState, PayloadAction<PrepareGamePayload>> = (
 
 const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   const tilesNumber = state.size.width * state.size.height
-  const tilesPosition = ArrayUtils.shuffle(ArrayUtils.createIntArray(tilesNumber))
+  const tilesPositionBase = ArrayUtils.createIntArray(tilesNumber)
+  let tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
+  while (!isSolvable(tilesPosition)) {
+    tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
+  }
 
   // state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
   // state.tiles[state.board.hiddenTile].x--
@@ -93,15 +104,15 @@ const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
     const tile = state.tiles[tileId]
     tile.x = index % state.size.width
     tile.y = Math.floor(index / state.size.width)
-    if (index === state.board.tiles.length - 1) {
-      state.board.hiddenTile = tileId
-      tile.hidden = true
-    }
   })
 
   state.startTime = new Date().getTime()
   state.clicks = 0
   state.status = GameStatuses.GAME_ON_GOING
+}
+
+const changeImage: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
+  state.background = action.payload
 }
 
 interface ClickTilePayload {
@@ -179,6 +190,7 @@ const GameSlice = createSlice({
 
     prepareGame,
     startGame,
+    changeImage,
 
     clickTile,
 

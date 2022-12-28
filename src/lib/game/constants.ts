@@ -140,6 +140,7 @@ export const getSize = (sizeId: string) => {
 }
 
 export const GameSizesPlayable: GameSize[] = [
+  GameSizes.SIZE_2X2,
   GameSizes.SIZE_3X3,
   GameSizes.SIZE_4X4,
   GameSizes.SIZE_5X5,
