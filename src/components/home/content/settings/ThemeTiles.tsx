@@ -52,7 +52,7 @@ export const ThemeTiles = ({
           onClick={() => handleThemeSelected()}
         />
         : null}
-      {themes.map((theme) => {
+      {themes.sort((theme1, theme2) => theme1.name.localeCompare(theme2.name)).map((theme) => {
         const {
           name,
           description,
