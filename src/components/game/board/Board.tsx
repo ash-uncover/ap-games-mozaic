@@ -5,16 +5,14 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
-import { GridContainer, GridTiles } from '@uncover/games-common'
+import { GridTiles } from '@uncover/games-common'
 
 import './Board.css'
 
 export interface BoardProperties {
-  reveal?: boolean
 }
 
 export const Board = ({
-  reveal
 }: BoardProperties) => {
 
   // Hooks //
@@ -42,9 +40,6 @@ export const Board = ({
   }
 
   const classes = ['board']
-  if (reveal) {
-    classes.push('reveal')
-  }
 
   return (
     <div className={classes.join(' ')}>
@@ -57,16 +52,7 @@ export const Board = ({
         {renderTiles()}
       </GridTiles>
 
-      <GridContainer
-        className='board-layer board-layer__mask'
-        width={size.width}
-        height={size.height}
-      >
-        <img
-          className='board-layer-image'
-          src={background}
-        />
-      </GridContainer>
+
 
     </div>
   )

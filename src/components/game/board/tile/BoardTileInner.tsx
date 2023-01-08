@@ -61,6 +61,8 @@ const Tile = ({
               position: 'absolute',
               top: `${-baseY * 100}%`,
               left: `${-baseX * 100}%`,
+              height: `${size.height * 100}%`,
+              width: `${size.width * 100}%`,
             }}
           />
         </>

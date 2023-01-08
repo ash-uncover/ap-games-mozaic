@@ -193,7 +193,6 @@ const closeDialog: CaseReducer<GameState, PayloadAction<void>> = (state, action)
 
 const setThemeAction = createAction('app/setTheme')
 const setTheme: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
-  console.log('game themee changed')
   state.theme = action.payload
 }
 

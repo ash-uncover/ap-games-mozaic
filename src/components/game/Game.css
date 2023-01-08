@@ -16,6 +16,55 @@
     flex-basis: 0;
     flex-grow: 1;
     overflow: hidden;
+
+    & .grid-container {
+      top: 0;
+      & img {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        width: 100%;
+
+        border-radius: var(--board_border-radius);
+        object-fit: cover;
+      }
+    }
+    & .grid-container.previous {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    & .grid-container.next {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  &.animate-previous {
+    & .game-area {
+      & .grid-container {
+        transform: translateX(100%);
+      }
+      & .grid-container.previous {
+        opacity: 1;
+        transform: translateX(0);
+        transition: transform 0.25s ease-in-out;
+      }
+    }
+  }
+
+  &.animate-next {
+    & .game-area {
+      & .grid-container {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      & .grid-container.next {
+        opacity: 1;
+        transform: translateX(0);
+        transition: transform 0.25s ease-in-out;
+      }
+    }
   }
 
   & .game-footer {
