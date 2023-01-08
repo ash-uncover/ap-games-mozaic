@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 // Store
-import AppSelectors from 'store/app/app.selectors'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import Audio, { AudioFiles } from 'lib/utils/Audio'
-import { ArrayUtils } from '@uncover/js-utils'
 import { AudioTypes } from '@uncover/games-common'
 import { GameStatuses } from 'lib/game/constants'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
 import { Board } from 'components/game/board/Board'
 import { DIALOG, Dialogs } from './dialogs/Dialogs'
@@ -30,12 +27,7 @@ const Game = ({ }) => {
   const [reveal, setReveal] = useState(false)
 
   const status = useSelector(GameSelectors.status)
-
-  const background = useSelector(GameSelectors.background)
-
-  const selectedTheme = useSelector(AppSelectors.theme)
-  const themes = PluginManager.providers['mozaic/theme']
-  const theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
+  const backgrounds = useSelector(GameSelectors.backgrounds)
 
   useEffect(() => {
     return Audio.play(
@@ -51,13 +43,7 @@ const Game = ({ }) => {
   }
 
   const handleChangeImage = () => {
-    let newBackground = background
-    if (Array.isArray(theme.attributes.images) && theme.attributes.images.length > 1) {
-      while (newBackground === background) {
-        newBackground = ArrayUtils.randomElement(theme.attributes.images)!
-      }
-    }
-    dispatch(GameSlice.actions.changeImage(newBackground))
+    dispatch(GameSlice.actions.nextImage())
   }
 
   const handleToggleView = () => {
@@ -92,7 +78,7 @@ const Game = ({ }) => {
             onClick={handleStart}
           />
         )
-        if (Array.isArray(theme.attributes.images) && theme.attributes.images.length > 1) {
+        if (backgrounds.length > 1) {
           result.push(
             <GameFooterAction
               key='change'

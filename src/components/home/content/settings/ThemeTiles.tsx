@@ -32,7 +32,7 @@ export const ThemeTiles = ({
 
   // Rendering //
 
-  const themes = PluginManager.providers['mozaic/theme']
+  const themes = PluginManager.getProviders('mozaic/theme')
   if (!themes || !themes.length) {
     return null
   }

@@ -30,10 +30,6 @@ export const Board = ({
 
   // Events //
 
-  const handleStart = () => {
-    dispatch(GameSlice.actions.startGame())
-  }
-
   // Rendering //
 
   const renderTiles = () => {

@@ -9,8 +9,11 @@ export interface GameState {
 
   clicks: number
 
-  background: string
   size: GameSize
+
+  theme: string
+  background: string
+  backgrounds: string[]
 
   dialog: string | null
   dialogParams: any | null

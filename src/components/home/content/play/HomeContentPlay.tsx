@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
-import AppSelectors from 'store/app/app.selectors'
 import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
 // Libs
-import { ArrayUtils } from '@uncover/js-utils'
 import { GameSizesPlayable, getSize } from 'lib/game/constants'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
 // Components
+import { ThemeTiles } from '../settings/ThemeTiles'
 import {
   Panel,
   PanelButton,
@@ -20,7 +18,6 @@ import {
 } from '@uncover/games-common'
 
 import './HomeContentPlay.css'
-import { ThemeTiles } from '../settings/ThemeTiles'
 
 export const HomeContentPlay = () => {
 
@@ -29,7 +26,6 @@ export const HomeContentPlay = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const selectedTheme = useSelector(AppSelectors.theme)
   const size = useSelector(GameSelectors.size)
 
   useEffect(() => {
@@ -52,17 +48,7 @@ export const HomeContentPlay = () => {
   }
 
   const handleStart = () => {
-    const themes = PluginManager.providers['mozaic/theme']
-    const theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
-    let background = null
-    if (Array.isArray(theme.attributes.images)) {
-      background = ArrayUtils.randomElement(theme.attributes.images)!
-    } else {
-      background = theme.attributes.images
-    }
-    dispatch(GameSlice.actions.prepareGame({
-      background,
-    }))
+    dispatch(GameSlice.actions.prepareGame())
     navigate('/game')
   }
 

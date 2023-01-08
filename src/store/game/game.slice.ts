@@ -1,5 +1,6 @@
 import {
   CaseReducer,
+  createAction,
   createSlice,
   PayloadAction
 } from '@reduxjs/toolkit'
@@ -17,6 +18,7 @@ import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 import { DIALOG } from 'components/game/dialogs/Dialogs'
 import { isSolvable } from 'lib/game/board/board.helper'
+import { PluginManager } from '@uncover/js-utils-microfrontend'
 
 // STATE //
 
@@ -27,8 +29,12 @@ const initialState: GameState = {
   endTime: 0,
 
   clicks: 0,
-  background: null,
+
   size: GameSizes.SIZE_3X3,
+
+  theme: null,
+  background: null,
+  backgrounds: null,
 
   dialog: null,
   dialogParams: null,
@@ -52,18 +58,27 @@ const setSize: CaseReducer<GameState, PayloadAction<SetSizePayload>> = (state, a
   state.size = size
 }
 
-interface PrepareGamePayload {
-  background: string
+const prepareGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  if (state.theme) {
+    const theme = PluginManager.getProvider(state.theme)
+    state.backgrounds = theme.attributes.images
+  } else {
+    const themes = PluginManager.getProviders('mozaic/theme')
+    state.backgrounds = themes.reduce((acc, theme) => {
+      acc.push(...theme.attributes.images)
+      return acc
+    }, [])
+  }
+  state.backgrounds = ArrayUtils.shuffle(state.backgrounds)
+  state.background = ArrayUtils.randomElement(state.backgrounds)
+  state.status = GameStatuses.GAME_READY
 }
-const prepareGame: CaseReducer<GameState, PayloadAction<PrepareGamePayload>> = (state, action) => {
-  const {
-    background,
-  } = action.payload
 
+const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   const tilesNumber = state.size.width * state.size.height
-  const tilesPosition = ArrayUtils.createIntArray(tilesNumber)
+  const tilesPositionBase = ArrayUtils.createIntArray(tilesNumber)
 
-  tilesPosition.forEach((tilePosition: number) => {
+  tilesPositionBase.forEach((tilePosition: number) => {
     const x = tilePosition % state.size.width
     const y = Math.floor(tilePosition / state.size.width)
     const tile: GameBoardTile = {
@@ -82,22 +97,10 @@ const prepareGame: CaseReducer<GameState, PayloadAction<PrepareGamePayload>> = (
     state.board.tiles.push(tile.id)
   })
 
-  state.background = background
-  state.status = GameStatuses.GAME_READY
-}
-
-const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const tilesNumber = state.size.width * state.size.height
-  const tilesPositionBase = ArrayUtils.createIntArray(tilesNumber)
   let tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
   while (!isSolvable(tilesPosition)) {
     tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
   }
-
-  // state.board.hiddenTile = state.board.tiles[state.board.tiles.length - 1]
-  // state.tiles[state.board.hiddenTile].x--
-  // state.tiles[state.board.hiddenTile].hidden = true
-  // state.tiles[state.board.tiles[state.board.tiles.length - 2]].x++
 
   tilesPosition.forEach((tilePosition: number, index: number) => {
     const tileId = state.board.tiles[tilePosition]
@@ -111,8 +114,16 @@ const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
   state.status = GameStatuses.GAME_ON_GOING
 }
 
-const changeImage: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
-  state.background = action.payload
+const previousImage: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  const index = state.backgrounds.indexOf(state.background)
+  const newIndex = (index + state.backgrounds.length - 1) % state.backgrounds.length
+  state.background = state.backgrounds[newIndex]
+}
+
+const nextImage: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  const index = state.backgrounds.indexOf(state.background)
+  const newIndex = (index + 1) % state.backgrounds.length
+  state.background = state.backgrounds[newIndex]
 }
 
 interface ClickTilePayload {
@@ -179,6 +190,13 @@ const closeDialog: CaseReducer<GameState, PayloadAction<void>> = (state, action)
   state.dialogParams = null
 }
 
+
+const setThemeAction = createAction('app/setTheme')
+const setTheme: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
+  console.log('game themee changed')
+  state.theme = action.payload
+}
+
 // SLICE //
 
 const GameSlice = createSlice({
@@ -189,8 +207,9 @@ const GameSlice = createSlice({
     setSize,
 
     prepareGame,
+    previousImage,
+    nextImage,
     startGame,
-    changeImage,
 
     clickTile,
 
@@ -199,6 +218,10 @@ const GameSlice = createSlice({
     openDialog,
     closeDialog,
   },
+
+  extraReducers: (builder) => {
+   builder.addCase(setThemeAction, setTheme)
+  }
 })
 
 export default GameSlice

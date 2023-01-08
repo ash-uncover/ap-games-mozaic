@@ -1,19 +1,14 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
+import { useTranslation } from 'react-i18next'
 // Store
 import GameSlice from 'store/game/game.slice'
 // Libs
+import { DialogAction } from './commons/DialogAction'
 // Components
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog } from './commons/Dialog'
 
 import './DialogVictory.css'
-import AppSelectors from 'store/app/app.selectors'
-import GameSelectors from 'store/game/game.selectors'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
-import { ArrayUtils } from '@uncover/js-utils'
-import { DialogAction } from './commons/DialogAction'
-import { useTranslation } from 'react-i18next'
 
 export interface DialogVictoryProperties {
 }
@@ -26,32 +21,17 @@ export const DialogVictory = ({
   const dispatch = useDispatch()
   const { t } = useTranslation()
 
-  const selectedTheme = useSelector(AppSelectors.theme)
-  const background = useSelector(GameSelectors.background)
-  const size = useSelector(GameSelectors.size)
-
   // Events //
 
   const handleRetry = () => {
     dispatch(GameSlice.actions.endGame())
-    dispatch(GameSlice.actions.prepareGame({ background }))
     dispatch(GameSlice.actions.startGame())
     dispatch(GameSlice.actions.closeDialog())
   }
 
   const handleNextLevel = () => {
-    const themes = PluginManager.providers['mozaic/theme']
-    let theme = selectedTheme ? themes.find(t => t.name === selectedTheme) : ArrayUtils.randomElement(themes)
-    let background = null
-    if (Array.isArray(theme.attributes.images)) {
-      background = ArrayUtils.randomElement(theme.attributes.images)!
-    } else {
-      background = theme.attributes.images
-    }
     dispatch(GameSlice.actions.endGame())
-    dispatch(GameSlice.actions.prepareGame({
-      background,
-    }))
+    dispatch(GameSlice.actions.prepareGame())
     dispatch(GameSlice.actions.startGame())
     dispatch(GameSlice.actions.closeDialog())
   }

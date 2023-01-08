@@ -39,8 +39,8 @@
   "defines": {
     "theme": {
       "attributes": {
-        "name": "string",
-        "description": "string",
+        "name": "i18n.string",
+        "description": "i18n.string",
         "thumbnail?": "url",
         "background?": "url",
         "images": "url[]",
