@@ -16,6 +16,7 @@ import { GameHeader } from './GameHeader'
 import { Navigate } from 'react-router-dom'
 
 import './Game.css'
+import { loadImages } from 'lib/utils/ImageLoader'
 
 const Game = ({ }) => {
 
@@ -25,6 +26,7 @@ const Game = ({ }) => {
   const { t } = useTranslation()
 
   const [reveal, setReveal] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
   const status = useSelector(GameSelectors.status)
   const backgrounds = useSelector(GameSelectors.backgrounds)
@@ -35,6 +37,11 @@ const Game = ({ }) => {
       AudioTypes.MUSIC
     )
   }, [])
+
+  useEffect(() => {
+    setLoaded(false)
+    loadImages(backgrounds).then(() => setLoaded(true))
+  }, [backgrounds])
 
   // Events //
 
@@ -63,6 +70,12 @@ const Game = ({ }) => {
   if (status === GameStatuses.GAME_NOT_STARTED) {
     return (
       <Navigate to='/' />
+    )
+  }
+
+  if (!loaded) {
+    return (
+      <div>LOADING</div>
     )
   }
 

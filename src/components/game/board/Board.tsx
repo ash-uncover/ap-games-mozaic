@@ -1,13 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
 import { GridContainer, GridTiles } from '@uncover/games-common'
-
-import GameSlice from 'store/game/game.slice'
 
 import './Board.css'
 
@@ -20,8 +18,6 @@ export const Board = ({
 }: BoardProperties) => {
 
   // Hooks //
-
-  const dispatch = useDispatch()
 
   const background = useSelector(GameSelectors.background)
 

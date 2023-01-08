@@ -46,7 +46,9 @@ const App = ({
 
   useEffect(() => {
     loadData()
-      .then(() => dispatch(AppSlice.actions.setLoaded(true)))
+      .then(() => {
+        dispatch(AppSlice.actions.setLoaded(true))
+      })
   }, [])
 
   // Rendering //
