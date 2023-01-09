@@ -40,6 +40,7 @@ const Carousel = ({
   // Events //
 
   const handleTouchStart = (event: TouchEvent) => {
+    event.preventDefault()
     if (!animationMode) {
       dragInfo.x = event.touches[0].clientX
       dragInfo.target = event.touches[0].target
@@ -54,6 +55,7 @@ const Carousel = ({
   }
 
   const doDrag = (event) => {
+    event.preventDefault()
     let offset = (event.touches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth
     offset = Math.max(-1, Math.min(1, offset))
     setOffsetX(offset)

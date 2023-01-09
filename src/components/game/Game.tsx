@@ -96,6 +96,16 @@ const Game = ({ }) => {
     const result = []
     switch (status) {
       case GameStatuses.GAME_READY: {
+        if (backgrounds.length > 1) {
+          result.push(
+            <GameFooterAction
+              key='previous'
+              title={t('game.previous.text')}
+              icon={['fas', 'chevron-left']}
+              onClick={handlePreviousBackground}
+            />
+          )
+        }
         result.push(
           <GameFooterAction
             key='start'
@@ -107,9 +117,10 @@ const Game = ({ }) => {
         if (backgrounds.length > 1) {
           result.push(
             <GameFooterAction
-              key='change'
-              title={t('game.change.text')}
-              onClick={handleChangeImage}
+              key='next'
+              title={t('game.next.text')}
+              icon={['fas', 'chevron-right']}
+              onClick={handleNextBackground}
             />
           )
         }

@@ -79,9 +79,13 @@
       "text": "Start",
       "tooltip": "Start Game"
     },
-    "change": {
-      "text": "Change",
-      "tooltip": "Change image"
+    "next": {
+      "text": "Next Image",
+      "tooltip": "Sélect next image"
+    },
+    "previous": {
+      "text": "Previous Image",
+      "tooltip": "Sélect previous image"
     },
     "dialogs": {
       "defeat": {
