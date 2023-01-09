@@ -25,7 +25,7 @@ export const DialogDefeat = ({
   // Events //
 
   const handleRetry = () => {
-    dispatch(GameSlice.actions.endGame())
+    dispatch(GameSlice.actions.restartGame())
     dispatch(GameSlice.actions.startGame())
     dispatch(GameSlice.actions.closeDialog())
   }

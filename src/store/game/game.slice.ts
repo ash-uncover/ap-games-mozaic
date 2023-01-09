@@ -169,6 +169,14 @@ const clickTile: CaseReducer<GameState, PayloadAction<ClickTilePayload>> = (stat
   }
 }
 
+const restartGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.board = {
+    tiles: [],
+    hiddenTile: null,
+  }
+  state.tiles = {}
+}
+
 const endGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   Object.assign(state, initialState)
 }
@@ -212,6 +220,7 @@ const GameSlice = createSlice({
 
     clickTile,
 
+    restartGame,
     endGame,
 
     openDialog,
