@@ -14,11 +14,12 @@
     width: 100%;
 
     object-fit: cover;
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.25s ease-in-out;
   }
 
   &.animate-previous-before {
     & .carousel__image {
+      transition: transform 0.1s ease-in-out;
       transform: translateX(101%);
     }
   }
@@ -32,6 +33,7 @@
 
   &.animate-next-before {
     & .carousel__image {
+      transition: transform 0.1s ease-in-out;
       transform: translateX(-101%);
     }
   }
