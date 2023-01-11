@@ -1,4 +1,4 @@
-.carousel {
+.image-slider {
   position: relative;
   top: 0;
   height: 100%;
@@ -6,7 +6,7 @@
   width: 100%;
   overflow: hidden;
 
-  & .carousel__image {
+  & .image-slider__image {
     position: absolute;
     top: 0;
     height: 100%;
@@ -18,13 +18,13 @@
   }
 
   &.animate-previous-before {
-    & .carousel__image {
+    & .image-slider__image {
       transition: transform 0.1s ease-in-out;
       transform: translateX(101%);
     }
   }
   &.animate-previous-after {
-    & .carousel__image {
+    & .image-slider__image {
       opacity: 0;
       transition: transform 0.001s;
       transform: translateX(-101%);
@@ -32,13 +32,13 @@
   }
 
   &.animate-next-before {
-    & .carousel__image {
+    & .image-slider__image {
       transition: transform 0.1s ease-in-out;
       transform: translateX(-101%);
     }
   }
   &.animate-next-after {
-    & .carousel__image {
+    & .image-slider__image {
       opacity: 0;
       transition: transform 0.001s;
       transform: translateX(101%);

@@ -1,9 +1,8 @@
-import React, { useEffect, useState, TouchEvent, CSSProperties } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, TouchEvent, CSSProperties } from 'react'
 // Libs
 // Components
 
-import './Carousel.css'
+import './ImageSlider.css'
 
 const ANIMATE = {
   PREVIOUS_BEFORE: 'animate-previous-before',
@@ -18,19 +17,19 @@ const dragInfo = {
 }
 const DRAG_THRESHOLD = 0.25
 
-interface CarouselProperties {
+interface ImageSliderProperties {
   image: string
 
   onChangePrevious: () => void
   onChangeNext: () => void
 }
 
-const Carousel = ({
+const ImageSlider = ({
   image,
 
   onChangePrevious,
   onChangeNext,
-}: CarouselProperties) => {
+}: ImageSliderProperties) => {
 
   // Hooks //
 
@@ -102,7 +101,7 @@ const Carousel = ({
 
   // Rendering //
 
-  const classes = ['carousel']
+  const classes = ['image-slider']
   if (animationMode) {
     classes.push(animationMode)
   }
@@ -118,7 +117,7 @@ const Carousel = ({
       className={classes.join(' ')}
     >
       <img
-        className='carousel__image'
+        className='image-slider__image'
         style={style}
         src={image}
         onTouchStart={handleTouchStart}
@@ -128,4 +127,4 @@ const Carousel = ({
   )
 }
 
-export default Carousel
+export default ImageSlider

@@ -14,10 +14,11 @@ import { DIALOG, Dialogs } from './dialogs/Dialogs'
 import { GameFooterAction } from './GameFooterAction'
 import { GameHeader } from './GameHeader'
 import { Navigate } from 'react-router-dom'
-import Carousel from '../common/carousel/Carousel'
+import ImageSlider from '../common/image-slider/ImageSlider'
 
 import './Game.css'
 import { loadImages } from 'lib/utils/ImageLoader'
+import { Loader } from 'components/common/loader/Loader'
 
 
 const Game = ({ }) => {
@@ -29,6 +30,7 @@ const Game = ({ }) => {
 
   const [reveal, setReveal] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const [loadStatus, setLoadStatus] = useState(0)
 
   const status = useSelector(GameSelectors.status)
   const size = useSelector(GameSelectors.size)
@@ -45,7 +47,7 @@ const Game = ({ }) => {
 
   useEffect(() => {
     setLoaded(false)
-    loadImages(backgrounds).then(() => setLoaded(true))
+    loadImages(backgrounds, setLoadStatus).then(() => setTimeout(() => setLoaded(true), 250))
   }, [backgrounds])
 
   // Events //
@@ -60,10 +62,6 @@ const Game = ({ }) => {
 
   const handleStart = () => {
     dispatch(GameSlice.actions.startGame())
-  }
-
-  const handleChangeImage = () => {
-    dispatch(GameSlice.actions.nextImage())
   }
 
   const handleToggleView = () => {
@@ -88,7 +86,10 @@ const Game = ({ }) => {
 
   if (!loaded) {
     return (
-      <div>LOADING</div>
+      <Loader
+        text={t('LOADING')}
+        value={loadStatus}
+      />
     )
   }
 
@@ -191,7 +192,7 @@ const Game = ({ }) => {
             width={size.width}
             height={size.height}
           >
-            <Carousel
+            <ImageSlider
               image={background}
               onChangePrevious={handlePreviousBackground}
               onChangeNext={handleNextBackground}

@@ -1,6 +1,19 @@
-export const loadImages = async (images: string[]) => {
+export const loadImages = async (images: string[], onProgress?: (value: number) => void) => {
   if (images) {
-    return Promise.all(images.map(loadImage))
+    let loaded = 0
+    let total = images.length
+    return Promise.all(images.map((image) => {
+      return loadImage(image)
+        .then(() => {
+          loaded++
+          onProgress(Math.round(loaded * 100 / total))
+        })
+        .catch((error) => {
+          loaded++
+          onProgress(Math.round(loaded * 100 / total))
+          throw error
+        })
+    }))
   }
   return Promise.resolve()
 }
