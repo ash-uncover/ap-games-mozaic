@@ -6,20 +6,19 @@ import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import Audio, { AudioFiles } from 'lib/utils/Audio'
-import { AudioTypes, GridContainer } from '@uncover/games-common'
+import { AudioTypes, GridContainer, ImageSlider, Loader } from '@uncover/games-common'
+import { loadImages } from 'lib/utils/ImageLoader'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import { Board } from 'components/game/board/Board'
 import { DIALOG, Dialogs } from './dialogs/Dialogs'
-import { GameFooterAction } from './GameFooterAction'
-import { GameHeader } from './GameHeader'
+import { GameFooterAction } from './footer/GameFooterAction'
+import { GameHeader } from './header/GameHeader'
 import { Navigate } from 'react-router-dom'
-import ImageSlider from '../common/image-slider/ImageSlider'
+
 
 import './Game.css'
-import { loadImages } from 'lib/utils/ImageLoader'
-import { Loader } from 'components/common/loader/Loader'
-
+import { GameFooter } from './footer/GameFooter'
 
 const Game = ({ }) => {
 
@@ -47,7 +46,12 @@ const Game = ({ }) => {
 
   useEffect(() => {
     setLoaded(false)
-    loadImages(backgrounds, setLoadStatus).then(() => setTimeout(() => setLoaded(true), 250))
+    loadImages(backgrounds, (value) => {
+      setLoadStatus(value * 100 / backgrounds.length)
+    })
+      .then(() => {
+        setTimeout(() => setLoaded(true), 250)
+      })
   }, [backgrounds])
 
   // Events //
@@ -201,9 +205,9 @@ const Game = ({ }) => {
           : null}
       </div>
 
-      <div className='game-footer'>
+      <GameFooter>
         {buildFooterActions()}
-      </div>
+      </GameFooter>
 
       <Dialogs />
     </div>

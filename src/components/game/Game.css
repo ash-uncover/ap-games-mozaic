@@ -39,49 +39,4 @@
       transform: translateX(100%);
     }
   }
-
-  &.animate-previous {
-    & .game-area {
-      & .grid-container {
-        transform: translateX(100%);
-      }
-      & .grid-container.previous {
-        opacity: 1;
-        transform: translateX(0);
-        transition: transform 0.25s ease-in-out;
-      }
-    }
-  }
-
-  &.animate-next {
-    & .game-area {
-      & .grid-container {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-      & .grid-container.next {
-        opacity: 1;
-        transform: translateX(0);
-        transition: transform 0.25s ease-in-out;
-      }
-    }
-  }
-
-  & .game-footer {
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 1rem;
-
-    height: 3rem;
-
-    background: black;
-    color: grey;
-
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
 }

@@ -16,8 +16,9 @@
     "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/js-utils-microfrontend": "^1.0.6",
-    "i18next": "^22.4.8",
+    "@uncover/ward": "^0.1.2",
+    "@uncover/ward-react": "^0.1.3",
+    "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
     "i18next-resources-to-backend": "^1.1.1",
@@ -25,7 +26,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.1"
+    "react-router-dom": "^6.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

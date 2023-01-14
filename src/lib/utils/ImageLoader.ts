@@ -1,16 +1,15 @@
 export const loadImages = async (images: string[], onProgress?: (value: number) => void) => {
   if (images) {
     let loaded = 0
-    let total = images.length
     return Promise.all(images.map((image) => {
       return loadImage(image)
         .then(() => {
           loaded++
-          onProgress(Math.round(loaded * 100 / total))
+          onProgress(loaded)
         })
         .catch((error) => {
           loaded++
-          onProgress(Math.round(loaded * 100 / total))
+          onProgress(loaded)
           throw error
         })
     }))

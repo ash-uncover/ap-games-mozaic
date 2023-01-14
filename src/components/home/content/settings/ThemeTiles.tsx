@@ -5,12 +5,12 @@ import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 import CONFIG from 'config'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
 import { resolveThumbnail } from 'lib/utils/theme'
 // Components
 import { Tile } from 'components/common/tiles/Tile'
 // Style
 import './ThemeTiles.css'
+import { useProviders } from '@uncover/ward-react'
 
 export interface ThemeTilesProperties {
 }
@@ -22,6 +22,7 @@ export const ThemeTiles = ({
 
   const dispatch = useDispatch()
 
+  const themes = useProviders('mozaic/theme')
   const selectedTheme = useSelector(AppSelectors.theme)
 
   // Events //
@@ -32,7 +33,6 @@ export const ThemeTiles = ({
 
   // Rendering //
 
-  const themes = PluginManager.getProviders('mozaic/theme')
   if (!themes || !themes.length) {
     return null
   }

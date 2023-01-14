@@ -18,7 +18,7 @@ import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 import { DIALOG } from 'components/game/dialogs/Dialogs'
 import { isSolvable } from 'lib/game/board/board.helper'
-import { PluginManager } from '@uncover/js-utils-microfrontend'
+import { PluginManager } from '@uncover/ward'
 
 // STATE //
 
