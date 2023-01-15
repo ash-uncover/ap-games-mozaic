@@ -16,6 +16,7 @@ const RouteHome = () => {
 
   return (
     <Page>
+
       <PageMenu>
         <Routes>
           <Route path='' element={<Navigate to='/play' replace={true} />} />
@@ -30,6 +31,7 @@ const RouteHome = () => {
           <Route path='*' element={<Navigate to='/play' replace={true} />} />
         </Routes>
       </PageMenu>
+
       <PageContent>
         <Routes>
           <Route path='' element={<Navigate to='/play' replace={true} />} />
@@ -41,6 +43,7 @@ const RouteHome = () => {
             <Route path='display' element={<HomeContentSettingsDisplay />} />
           </Route>
           <Route path='credits' element={<HomeContentCredits />} />
+          <Route path='*' element={<div />} />
         </Routes>
       </PageContent>
 

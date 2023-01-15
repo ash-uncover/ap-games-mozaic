@@ -81,11 +81,11 @@
     },
     "next": {
       "text": "Next Image",
-      "tooltip": "Sélect next image"
+      "tooltip": "Select next image"
     },
     "previous": {
       "text": "Previous Image",
-      "tooltip": "Sélect previous image"
+      "tooltip": "Select previous image"
     },
     "dialogs": {
       "defeat": {
@@ -94,7 +94,7 @@
         "quit": "Main Menu"
       },
       "victory": {
-        "title": "Level Cmpleted",
+        "title": "Level Completed",
         "replay": "Replay",
         "next": "Next Level",
         "quit": "Main Menu"

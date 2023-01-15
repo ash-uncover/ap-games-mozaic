@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
     "paths": {
       "components": [
         "src/components"
@@ -36,12 +41,7 @@
         "src/*"
       ],
     },
-    "esModuleInterop": true,
-    "jsx": "react",
     "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "dist",
     "sourceMap": true,
     "typeRoots": [
       "node_modules/@types"
