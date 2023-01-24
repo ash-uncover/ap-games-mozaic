@@ -62,14 +62,12 @@ export const GamePlaying = ({
       }
       footer={[
         <GameFooterAction
-          key='reveal'
           icon={['fas', 'eye']}
           selected={reveal}
           title=''
           onClick={handleToggleView}
         />,
         <GameFooterAction
-          key='quit'
           icon={['fas', 'door-open']}
           title=''
           onClick={handleEndMenu}

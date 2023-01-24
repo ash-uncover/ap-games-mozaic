@@ -6,16 +6,18 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const base = require('./webpack.config.base.js')
 
+const DIR_SRC = path.resolve(__dirname, 'src')
 const DIR_DOCS = path.resolve(__dirname, 'docs')
 const DIR_PUBLIC = path.resolve(__dirname, 'public')
+const DIR_NODE_MODULES = path.resolve(__dirname, 'node_modules')
 
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const transformPlugin = (buffer) => {
+function transformPlugin (buffer) {
   const plugin = JSON.parse(buffer.toString())
   plugin.url = 'https://ash-uncover.github.io/ap-games-mozaic'
-  plugin.provides['ap-games/game'].elements.main.url = '#'
+  plugin.provides['ap-games/game'].mozaic.elements.main.url = '#'
   return JSON.stringify(plugin, null, 2)
 }
 
