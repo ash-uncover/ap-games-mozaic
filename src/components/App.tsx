@@ -8,7 +8,8 @@ import { loadData } from 'lib/data'
 import MessageServiceCentral from 'services/message.service'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import DisplaySelectors from 'store/display/display.selectors'
+import { AppLoadStatuses } from 'store/app/app.state'
+import { Display } from './common/display/Display'
 
 interface AppProperties {
   children: ReactElement
@@ -24,11 +25,8 @@ const App = ({
 
   const { t, i18n } = useTranslation()
 
-  const brightness = useSelector(DisplaySelectors.brightness)
-  const contrast = useSelector(DisplaySelectors.contrast)
-
   const query = useQuery()
-  const loaded = useSelector(AppSelectors.loaded)
+  const loadStatus = useSelector(AppSelectors.loadStatus)
 
   const language = useSelector(AppSelectors.language)
 
@@ -47,30 +45,36 @@ const App = ({
   useEffect(() => {
     loadData()
       .then(() => {
-        dispatch(AppSlice.actions.setLoaded(true))
+        dispatch(AppSlice.actions.setLoadStatus(AppLoadStatuses.STARTED))
       })
   }, [])
 
   // Rendering //
 
-  if (loaded) {
-    return (
-    <div
-      className='app'
-      style={{
-        filter: `brightness(${brightness / 100}) contrast(${contrast / 100})`
-      }}
-    >
-      {children}
-    </div>
-    )
+  switch (loadStatus) {
+    case AppLoadStatuses.NONE:
+    case AppLoadStatuses.LOADING: {
+      return (
+        <Display className='app'>
+          {t('LOADING')}
+        </Display>
+      )
+    }
+    case AppLoadStatuses.READY: {
+      return (
+        <Display className='app'>
+          {t('LOADING')}
+        </Display>
+      )
+    }
+    case AppLoadStatuses.STARTED: {
+      return (
+        <Display className='app'>
+          {children}
+        </Display>
+      )
+    }
   }
-
-  return (
-    <div className='app'>
-      {t('LOADING')}
-    </div>
-  )
 }
 
 const useQuery = () => {

@@ -5,7 +5,7 @@ export const AudioFiles = {
   home: 'home.mp3',
   game: 'game.mp3',
   menuChange: 'menu_change.mp3',
-  step: 'step.mp3',
+  tap: 'tap.mp3',
 }
 
 export const Audio = new AudioManager(`${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/`)

@@ -18,7 +18,6 @@ import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 import { DIALOG } from 'components/game/dialogs/Dialogs'
 import { isSolvable } from 'lib/game/board/board.helper'
-import { PluginManager } from '@uncover/ward'
 
 // STATE //
 
@@ -52,29 +51,23 @@ interface SetSizePayload {
   size: GameSize
 }
 const setSize: CaseReducer<GameState, PayloadAction<SetSizePayload>> = (state, action) => {
-  const {
-    size,
-  } = action.payload
-  state.size = size
+  state.size = action.payload.size
 }
 
-const prepareGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  if (state.theme) {
-    const theme = PluginManager.getProvider(state.theme)
-    state.backgrounds = theme.attributes.images
-  } else {
-    const themes = PluginManager.getProviders('mozaic/theme')
-    state.backgrounds = themes.reduce((acc, theme) => {
-      acc.push(...theme.attributes.images)
-      return acc
-    }, [])
-  }
-  state.backgrounds = ArrayUtils.shuffle(state.backgrounds)
-  state.background = ArrayUtils.randomElement(state.backgrounds)
+const gameLaunch: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.status = GameStatuses.GAME_LOADING
+}
+
+const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   state.status = GameStatuses.GAME_READY
 }
 
-const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+interface GameStartPayload {
+  background: string
+}
+const gameStart: CaseReducer<GameState, PayloadAction<GameStartPayload>> = (state, action) => {
+  state.background = action.payload.background
+
   const tilesNumber = state.size.width * state.size.height
   const tilesPositionBase = ArrayUtils.createIntArray(tilesNumber)
 
@@ -112,18 +105,6 @@ const startGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
   state.startTime = new Date().getTime()
   state.clicks = 0
   state.status = GameStatuses.GAME_ON_GOING
-}
-
-const previousImage: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const index = state.backgrounds.indexOf(state.background)
-  const newIndex = (index + state.backgrounds.length - 1) % state.backgrounds.length
-  state.background = state.backgrounds[newIndex]
-}
-
-const nextImage: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const index = state.backgrounds.indexOf(state.background)
-  const newIndex = (index + 1) % state.backgrounds.length
-  state.background = state.backgrounds[newIndex]
 }
 
 interface ClickTilePayload {
@@ -198,7 +179,6 @@ const closeDialog: CaseReducer<GameState, PayloadAction<void>> = (state, action)
   state.dialogParams = null
 }
 
-
 const setThemeAction = createAction('app/setTheme')
 const setTheme: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
   state.theme = action.payload
@@ -213,10 +193,9 @@ const GameSlice = createSlice({
   reducers: {
     setSize,
 
-    prepareGame,
-    previousImage,
-    nextImage,
-    startGame,
+    gameLaunch,
+    gameReady,
+    gameStart,
 
     clickTile,
 

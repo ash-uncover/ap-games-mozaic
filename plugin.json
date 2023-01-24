@@ -4,47 +4,49 @@
   "dependencies": [
     "https://ash-uncover.github.io/ap-games-mozaic-themes/plugin.json"
   ],
-  "provides": {
-    "ap-games/game": {
-      "name": "mozaic",
-      "attributes": {
-        "name": "Mozaic",
-        "description": "A mozaic game",
-        "thumbnail": "/images/thumbnail.jpg"
-      },
-      "elements": {
-        "main": {
-          "url": "",
-          "type": "iframe"
-        }
-      }
-    },
-    "mozaic/theme": {
-      "name": "default",
-      "attributes": {
-        "name": "Natural",
-        "description": "Default theme",
-        "thumbnail": "/theme/thumbnail.jpg",
-        "background": "/theme/background.jpg",
-        "images": [
-          "/theme/image_0.jpg",
-          "/theme/image_1.jpg",
-          "/theme/image_2.jpg",
-          "/theme/image_3.jpg",
-          "/theme/image_4.jpg"
-        ]
-      }
-    }
-  },
   "defines": {
     "theme": {
       "attributes": {
-        "name": "i18n.string",
-        "description": "i18n.string",
+        "name": "string",
+        "description": "string",
         "thumbnail?": "url",
         "background?": "url",
         "images": "url[]",
         "music?": "url[]"
+      }
+    }
+  },
+  "provides": {
+    "ap-games/game": {
+      "mozaic": {
+        "attributes": {
+          "name": "Mozaic",
+          "description": "A mozaic game",
+          "thumbnail": "/images/thumbnail.jpg"
+        },
+        "elements": {
+          "main": {
+            "url": "",
+            "type": "iframe"
+          }
+        }
+      }
+    },
+    "mozaic/theme": {
+      "default": {
+        "attributes": {
+          "name": "Natural",
+          "description": "Default theme",
+          "thumbnail": "/theme/thumbnail.jpg",
+          "background": "/theme/background.jpg",
+          "images": [
+            "/theme/image_0.jpg",
+            "/theme/image_1.jpg",
+            "/theme/image_2.jpg",
+            "/theme/image_3.jpg",
+            "/theme/image_4.jpg"
+          ]
+        }
       }
     }
   }

@@ -17,8 +17,6 @@ export const Board = ({
 
   // Hooks //
 
-  const background = useSelector(GameSelectors.background)
-
   const tiles = useSelector(GameSelectors.boardTiles)
   const size = useSelector(GameSelectors.size)
 

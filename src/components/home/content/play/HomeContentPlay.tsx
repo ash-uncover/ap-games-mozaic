@@ -48,7 +48,7 @@ export const HomeContentPlay = () => {
   }
 
   const handleStart = () => {
-    dispatch(GameSlice.actions.prepareGame())
+    dispatch(GameSlice.actions.gameLaunch())
     navigate('/game')
   }
 

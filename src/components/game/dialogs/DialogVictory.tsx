@@ -25,14 +25,14 @@ export const DialogVictory = ({
 
   const handleRetry = () => {
     dispatch(GameSlice.actions.endGame())
-    dispatch(GameSlice.actions.startGame())
+    dispatch(GameSlice.actions.gameStart())
     dispatch(GameSlice.actions.closeDialog())
   }
 
   const handleNextLevel = () => {
     dispatch(GameSlice.actions.endGame())
-    dispatch(GameSlice.actions.prepareGame())
-    dispatch(GameSlice.actions.startGame())
+    dispatch(GameSlice.actions.gameReady())
+    dispatch(GameSlice.actions.gameStart())
     dispatch(GameSlice.actions.closeDialog())
   }
 

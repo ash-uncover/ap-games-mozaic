@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 
 import {
@@ -21,11 +21,10 @@ import store from 'store'
 
 // Import components
 import Root from 'routes/__layout'
-
-import { ShortcutManager } from '@uncover/games-common'
 import CONFIG from 'config'
+import { ShortcutManager } from '@uncover/games-common'
 import { WardProvider } from '@uncover/ward-react'
-import { PluginManager } from '@uncover/ward'
+
 ShortcutManager.reset()
 
 let Router = BrowserRouter
@@ -33,19 +32,15 @@ if (CONFIG.AP_GAMES_MOZAIC_ENVIRONMENT === 'github') {
   Router = HashRouter
 }
 
-PluginManager.loadPlugin(CONFIG.AP_GAMES_MOZAIC_PLUGIN)
-
 const containerRoot = document.getElementById('reactroot')!
 const root = createRoot(containerRoot)
 
 root.render(
-  <Suspense fallback="loading">
-    <WardProvider plugin={CONFIG.AP_GAMES_MOZAIC_PLUGIN}>
-      <Provider store={store}>
-        <Router>
-          <Root />
-        </Router>
-      </Provider>
-    </WardProvider>
-  </Suspense>
+  <WardProvider plugin={CONFIG.AP_GAMES_MOZAIC_PLUGIN}>
+    <Provider store={store}>
+      <Router>
+        <Root />
+      </Router>
+    </Provider>
+  </WardProvider>
 )

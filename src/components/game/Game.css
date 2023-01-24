@@ -1,42 +1,13 @@
-.game {
-  width: 100%;
-  height: 100%;
-  position: relative;
+.image-preview {
+  top: 0;
+  & img {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
-
-  background: var(--base_background_1);
-  color: var(--base_color);
-
-  user-select: none;
-
-  & .game-area {
-    position: relative;
-    flex-basis: 0;
-    flex-grow: 1;
-    overflow: hidden;
-
-    & .grid-container {
-      top: 0;
-      & img {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        left: 0;
-        width: 100%;
-
-        border-radius: var(--board_border-radius);
-        object-fit: cover;
-      }
-    }
-    & .grid-container.previous {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    & .grid-container.next {
-      opacity: 0;
-      transform: translateX(100%);
-    }
+    border-radius: var(--board_border-radius);
+    object-fit: cover;
   }
 }

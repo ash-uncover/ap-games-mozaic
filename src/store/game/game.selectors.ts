@@ -6,8 +6,8 @@ export const status = (state: RootState) => base(state).status
 export const startTime = (state: RootState) => base(state).startTime
 export const endTime = (state: RootState) => base(state).endTime
 export const clicks = (state: RootState) => base(state).clicks
+export const theme = (state: RootState) => base(state).theme
 export const background = (state: RootState) => base(state).background
-export const backgrounds = (state: RootState) => base(state).backgrounds
 export const size = (state: RootState) => base(state).size
 
 export const dialog = (state: RootState) => base(state).dialog
@@ -25,8 +25,8 @@ const GameSelectors = {
   startTime,
   endTime,
   clicks,
+  theme,
   background,
-  backgrounds,
   size,
 
   dialog,

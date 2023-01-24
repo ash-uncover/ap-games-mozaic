@@ -6,7 +6,7 @@ import {
 
 import Language from 'lib/utils/language'
 
-import AppState from 'store/app/app.state'
+import AppState, { AppLoadStatus, AppLoadStatuses } from 'store/app/app.state'
 
 // STATE //
 
@@ -18,15 +18,10 @@ const initialState: AppState = {
 
   language: 'fr',
 
-  loaded: false,
-  started: false,
+  loadStatus: AppLoadStatuses.NONE,
 }
 
 // REDUCERS //
-
-const startApp: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, action) => {
-  state.started = true
-}
 
 type PayloadBusy = {
   busy: boolean,
@@ -59,8 +54,8 @@ const setTheme: CaseReducer<AppState, PayloadAction<string>> = (state, action) =
   state.theme = action.payload
 }
 
-const setLoaded: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
-  state.loaded = action.payload
+const setLoadStatus: CaseReducer<AppState, PayloadAction<AppLoadStatus>> = (state, action) => {
+  state.loadStatus = action.payload
 }
 
 
@@ -71,12 +66,11 @@ const AppSlice = createSlice({
   initialState,
 
   reducers: {
-    startApp,
     setBusy,
     setLanguage,
     setTheme,
     setEmbedded,
-    setLoaded,
+    setLoadStatus,
   },
 })
 

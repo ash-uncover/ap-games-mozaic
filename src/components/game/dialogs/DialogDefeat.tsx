@@ -1,11 +1,12 @@
 import React from 'react'
+// Hooks
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSlice from 'store/game/game.slice'
+import GameSelectors from 'store/game/game.selectors'
 // Components
 import { Dialog } from './commons/Dialog'
-// Components
 import { DialogAction } from './commons/DialogAction'
 
 import './DialogDefeat.css'
@@ -22,11 +23,13 @@ export const DialogDefeat = ({
 
   const { t } = useTranslation()
 
+  const background = useSelector(GameSelectors.background)
+
   // Events //
 
   const handleRetry = () => {
     dispatch(GameSlice.actions.restartGame())
-    dispatch(GameSlice.actions.startGame())
+    dispatch(GameSlice.actions.gameStart({ background }))
     dispatch(GameSlice.actions.closeDialog())
   }
 
