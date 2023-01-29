@@ -1,9 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+import { useAudioVolume } from '@uncover/games-common-audio'
 // Store
-import AudioSlice from 'store/audio/audio.slice'
-import AudioSelectors from 'store/audio/audio.selectors'
 // Components
 import { Panel, Switch, Slider } from '@uncover/games-common'
 
@@ -15,43 +14,54 @@ export const HomeContentSettingsAudio = () => {
 
   const { t } = useTranslation()
 
-  const soundMaster = useSelector(AudioSelectors.master)
-  const soundMasterVolume = useSelector(AudioSelectors.masterVolume)
-  const soundGame = useSelector(AudioSelectors.game)
-  const soundGameVolume = useSelector(AudioSelectors.gameVolume)
-  const soundMusic = useSelector(AudioSelectors.music)
-  const soundMusicVolume = useSelector(AudioSelectors.musicVolume)
-  const soundInterface = useSelector(AudioSelectors.interfac)
-  const soundInterfaceVolume = useSelector(AudioSelectors.interfaceVolume)
+  const {
+    master,
+    masterVolume,
+    game,
+    gameVolume,
+    music,
+    musicVolume,
+    ui,
+    uiVolume,
+
+    setMaster,
+    setMasterVolume,
+    setGame,
+    setGameVolume,
+    setMusic,
+    setMusicVolume,
+    setUi,
+    setUiVolume,
+  } = useAudioVolume()
 
   // Events //
 
   const handleMasterChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setMaster(value))
+    setMaster(value)
   }
   const handleMasterVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setMasterVolume(value))
+    setMasterVolume(value)
   }
 
   const handleGameChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setGame(value))
+    setGame(value)
   }
   const handleGameVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setGameVolume(value))
+    setGameVolume(value)
   }
 
-  const handleInterfaceChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setInterface(value))
+  const handleUiChange = (value: boolean) => {
+    setUi(value)
   }
-  const handleInterfaceVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setInterfaceVolume(value))
+  const handleUiVolumeChange = (value: number) => {
+    setUiVolume(value)
   }
 
   const handleMusicChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setMusic(value))
+    setMusic(value)
   }
   const handleMusicVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setMusicVolume(value))
+    setMusicVolume(value)
   }
 
   // Rendering //
@@ -67,15 +77,15 @@ export const HomeContentSettingsAudio = () => {
       <Panel title={t('home.settings.audio.master.title')}>
         <Switch
           label={t('home.settings.audio.master.enable')}
-          checked={soundMaster}
+          checked={master}
           onChange={handleMasterChange}
         />
         <Slider
-          disabled={!soundMaster}
+          disabled={!master}
           label={t('home.settings.audio.master.title')}
           min={0}
           max={100}
-          value={soundMasterVolume}
+          value={masterVolume}
           onChange={handleMasterVolumeChange}
         />
       </Panel>
@@ -83,15 +93,15 @@ export const HomeContentSettingsAudio = () => {
       <Panel title={t('home.settings.audio.game.title')}>
         <Switch
           label={t('home.settings.audio.game.enable')}
-          checked={soundGame}
+          checked={game}
           onChange={handleGameChange}
         />
         <Slider
-          disabled={!soundGame}
+          disabled={!game}
           label={t('home.settings.audio.game.title')}
           min={0}
           max={100}
-          value={soundGameVolume}
+          value={gameVolume}
           onChange={handleGameVolumeChange}
         />
       </Panel>
@@ -99,31 +109,31 @@ export const HomeContentSettingsAudio = () => {
       <Panel title={t('home.settings.audio.interface.title')}>
         <Switch
           label={t('home.settings.audio.interface.enable')}
-          checked={soundInterface}
-          onChange={handleInterfaceChange}
+          checked={ui}
+          onChange={handleUiChange}
         />
         <Slider
-          disabled={!soundInterface}
+          disabled={!ui}
           label={t('home.settings.audio.interface.title')}
           min={0}
           max={100}
-          value={soundInterfaceVolume}
-          onChange={handleInterfaceVolumeChange}
+          value={uiVolume}
+          onChange={handleUiVolumeChange}
         />
       </Panel>
 
       <Panel title={t('home.settings.audio.music.title')}>
         <Switch
           label={t('home.settings.audio.music.enable')}
-          checked={soundMusic}
+          checked={music}
           onChange={handleMusicChange}
         />
         <Slider
-          disabled={!soundMusic}
+          disabled={!music}
           label={t('home.settings.audio.music.title')}
           min={0}
           max={100}
-          value={soundMusicVolume}
+          value={musicVolume}
           onChange={handleMusicVolumeChange}
         />
       </Panel>

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // Hooks
 import { useSelector } from 'react-redux'
+import { useAudioEffect, AudioCategories } from '@uncover/games-common-audio'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 // Libs
-import Audio, { AudioFiles } from 'lib/utils/Audio'
-import { AudioTypes } from '@uncover/games-common'
+import CONFIG from 'config'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import { Navigate } from 'react-router-dom'
@@ -23,12 +23,11 @@ const Game = ({ }) => {
 
   const status = useSelector(GameSelectors.status)
 
-  useEffect(() => {
-    return Audio.play(
-      AudioFiles.game,
-      AudioTypes.MUSIC
-    )
-  }, [])
+  useAudioEffect([
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/game.mp3`
+  ], {
+    category: AudioCategories.MUSIC
+  })
 
   // Events //
 

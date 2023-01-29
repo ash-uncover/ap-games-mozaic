@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build:docs": "webpack --config webpack.config.docs.js --mode production",
-    "postinstall": "npm update @uncover/games-common",
+    "postinstall": "npm update @uncover/games-common @uncover/games-common-audio",
     "start": "webpack serve --config webpack.config.dev.js --progress"
   },
   "dependencies": {
@@ -12,10 +12,11 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@uncover/games-common": "ash-uncover/ap-games-common",
-    "@uncover/js-utils": "^0.0.12",
+    "@uncover/games-common-audio": "ash-uncover/ap-games-common-audio",
+    "@uncover/js-utils": "^0.0.13",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/ward": "^0.1.9",
+    "@uncover/ward": "^0.1.10",
     "@uncover/ward-react": "^0.1.11",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -25,13 +26,13 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.7.0"
+    "react-router-dom": "^6.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@reduxjs/toolkit": "^1.9.1",
+    "@reduxjs/toolkit": "^1.9.2",
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.2",
@@ -40,7 +41,7 @@
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
-    "postcss-preset-env": "^8.0.0",
+    "postcss-preset-env": "^8.0.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",

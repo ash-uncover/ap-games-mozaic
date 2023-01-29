@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
+// Libs
+import CONFIG from 'config'
+import {
+  useAudio,
+  AudioCategories
+} from '@uncover/games-common-audio'
 // Components
 import BoardTileInner from './tile/BoardTileInner'
 
@@ -41,6 +47,12 @@ const BoardTile = ({
   const tile = useSelector(GameSelectors.tile(tileId))
   const hiddenTileId = useSelector(GameSelectors.board).hiddenTile
   const hiddenTile = useSelector(GameSelectors.tile(hiddenTileId))
+
+  const audioTap = useAudio([
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/tap.mp3`
+  ], {
+    category: AudioCategories.GAME
+  })
 
   // Events //
 
@@ -137,6 +149,7 @@ const BoardTile = ({
     dragInfo.direction = null
     dragInfo.target = null
     if (finalOffset > DRAG_THRESHOLD || finalOffset < -DRAG_THRESHOLD) {
+      audioTap.play()
       dispatch(GameSlice.actions.clickTile({ tileId }))
     }
     setOffsetX(0)
@@ -144,6 +157,7 @@ const BoardTile = ({
   }
 
   const handleTileClick = () => {
+    audioTap.play()
     dispatch(GameSlice.actions.clickTile({ tileId }))
   }
 

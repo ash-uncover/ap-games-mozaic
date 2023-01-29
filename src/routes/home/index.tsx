@@ -1,4 +1,10 @@
 import React from 'react'
+// Libs
+import CONFIG from 'config'
+import {
+  useAudioEffect,
+  AudioCategories
+} from '@uncover/games-common-audio'
 // Components
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Page, PageContent, PageMenu } from '@uncover/games-common'
@@ -11,6 +17,14 @@ import { HomeContentCredits } from '../../components/home/content/credits/HomeCo
 import { HomeContentPlay } from '../../components/home/content/play/HomeContentPlay'
 
 const RouteHome = () => {
+
+  // Hooks //
+
+  useAudioEffect([
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/home.mp3`
+  ], {
+    category: AudioCategories.MUSIC
+  })
 
   // Rendering //
 

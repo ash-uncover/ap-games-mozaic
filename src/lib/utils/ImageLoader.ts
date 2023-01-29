@@ -1,7 +1,7 @@
 export const loadImages = async (images: string[], onProgress?: (value: number) => void) => {
   if (images) {
     let loaded = 0
-    return Promise.all(images.map((image) => {
+    return Promise.allSettled(images.map((image) => {
       return loadImage(image)
         .then(() => {
           loaded++

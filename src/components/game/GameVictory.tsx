@@ -45,6 +45,12 @@ export const GameVictory = ({
           height={size.height}
         >
           <img
+            style={{
+              borderRadius: '0.5rem',
+              width: '100%',
+              objectFit: 'cover',
+              height: '100%'
+            }}
             src={background}
           />
         </GridContainer>
