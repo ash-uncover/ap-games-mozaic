@@ -1,6 +1,7 @@
 import React from 'react'
 // Hooks
 import { useSelector } from 'react-redux'
+import { useProviders } from '@uncover/ward-react'
 import { useAudioEffect, AudioCategories } from '@uncover/games-common-audio'
 // Store
 import GameSelectors from 'store/game/game.selectors'
@@ -23,11 +24,23 @@ const Game = ({ }) => {
 
   const status = useSelector(GameSelectors.status)
 
-  useAudioEffect([
-    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/game.mp3`
-  ], {
-    category: AudioCategories.MUSIC
-  })
+  const theme = useSelector(GameSelectors.theme)
+
+  const themes = useProviders('mozaic/theme')
+
+  let audios = []
+  let images = []
+  if (theme) {
+    const themeObj = themes.find(t => t.name === theme)
+    images = themeObj.attributes.images
+    audios = themeObj.attributes.music
+  } else {
+    [images, audios] = themes.reduce((acc, theme) => {
+      acc[0].push(...theme.attributes.images)
+      acc[1].push(...theme.attributes.music)
+      return acc
+    }, [[], []])
+  }
 
   // Events //
 
@@ -39,13 +52,22 @@ const Game = ({ }) => {
         return <Navigate to='/' />
       }
       case GameStatuses.GAME_LOADING: {
-        return <GameLoading />
+        return (
+          <GameLoading
+            images={images}
+            audios={audios}
+          />
+        )
       }
       case GameStatuses.GAME_READY: {
         return <GameReady />
       }
       case GameStatuses.GAME_ON_GOING: {
-        return <GamePlaying />
+        return (
+          <GamePlaying
+            audios={audios}
+          />
+        )
       }
       case GameStatuses.GAME_ENDED_DEFEAT: {
         return null

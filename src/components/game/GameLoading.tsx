@@ -11,11 +11,16 @@ import { loadImages } from 'lib/utils/ImageLoader'
 // Components
 import { Loader } from '@uncover/games-common'
 import { GameLayout } from 'components/common/game/GameLayout'
+import { useAudioLoad } from '@uncover/games-common-audio'
 
 export interface GameLoadingProperties {
+  audios: string[]
+  images: string[]
 }
 
 export const GameLoading = ({
+  audios,
+  images
 }: GameLoadingProperties) => {
 
   // Hooks //
@@ -23,30 +28,35 @@ export const GameLoading = ({
   const dispatch = useDispatch()
   const { t } = useTranslation()
 
-  const theme = useSelector(GameSelectors.theme)
-
-  const themes = useProviders('mozaic/theme')
-
   const [loadStatus, setLoadStatus] = useState(0)
+  const [imageLoadStatus, setImageLoadStatus] = useState(false)
+  const [audioLoadStatus, setAudioLoadStatus] = useState(false)
+
+  useAudioLoad(audios, (value) => {
+    setLoadStatus(value => value + 1)
+    if (value === audios.length) {
+      setAudioLoadStatus(true)
+    }
+  })
 
   useEffect(() => {
-    let images = []
-    if (theme) {
-      const themeObj = themes.find(t => t.name === theme)
-      images = themeObj.attributes.images
-    } else {
-      images = themes.reduce((acc, theme) => {
-        acc.push(...theme.attributes.images)
-        return acc
-      }, [])
-    }
-    loadImages(images, (value) => {
-      setLoadStatus(value * 100 / images.length)
+    loadImages(images, (v) => {
+      setLoadStatus(value => value + 1)
     })
       .then(() => {
-        setTimeout(() => dispatch(GameSlice.actions.gameReady()), 250)
+        setImageLoadStatus(true)
       })
   }, [])
+
+  const value = Math.floor(loadStatus * 100 / (images.length + audios.length))
+  console.log(loadStatus + ' - ' + value)
+
+
+  useEffect(() => {
+    if (imageLoadStatus && audioLoadStatus) {
+      setTimeout(() => dispatch(GameSlice.actions.gameReady()), 250)
+    }
+  }, [imageLoadStatus, audioLoadStatus])
 
   // Rendering //
 
@@ -55,7 +65,7 @@ export const GameLoading = ({
       content={
         <Loader
           text={t('LOADING')}
-          value={loadStatus}
+          value={value}
         />
       }
     />

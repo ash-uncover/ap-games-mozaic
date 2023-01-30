@@ -6,6 +6,10 @@ import { useProvider } from '@uncover/ward-react'
 import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
 // Libs
+import {
+  AudioCategories,
+  useAudioEffect
+} from '@uncover/games-common-audio'
 // Components
 import { GameLayout } from 'components/common/game/GameLayout'
 import { Board } from './board/Board'
@@ -14,9 +18,11 @@ import { DIALOG } from './dialogs/Dialogs'
 import { GridContainer } from '@uncover/games-common'
 
 export interface GamePlayingProperties {
+  audios: string[]
 }
 
 export const GamePlaying = ({
+  audios
 }: GamePlayingProperties) => {
 
   // Hooks //
@@ -30,6 +36,12 @@ export const GamePlaying = ({
   const background = useSelector(GameSelectors.background)
 
   const themeObj = useProvider(theme)
+
+  useAudioEffect(audios, {
+    category: AudioCategories.MUSIC,
+    shufffle: true,
+    loop: true
+  })
 
   // Events //
 
@@ -62,12 +74,14 @@ export const GamePlaying = ({
       }
       footer={[
         <GameFooterAction
+          key='reveal'
           icon={['fas', 'eye']}
           selected={reveal}
           title=''
           onClick={handleToggleView}
         />,
         <GameFooterAction
+          key='quit'
           icon={['fas', 'door-open']}
           title=''
           onClick={handleEndMenu}

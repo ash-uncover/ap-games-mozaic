@@ -21,9 +21,16 @@ const RouteHome = () => {
   // Hooks //
 
   useAudioEffect([
-    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/home.mp3`
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_0.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_1.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_2.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_3.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_4.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_5.mp3`
   ], {
-    category: AudioCategories.MUSIC
+    category: AudioCategories.MUSIC,
+    shufffle: true,
+    loop: true
   })
 
   // Rendering //

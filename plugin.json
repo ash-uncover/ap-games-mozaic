@@ -45,6 +45,14 @@
             "/theme/image_2.jpg",
             "/theme/image_3.jpg",
             "/theme/image_4.jpg"
+          ],
+          "music": [
+            "/sound/music_0.mp3",
+            "/sound/music_1.mp3",
+            "/sound/music_2.mp3",
+            "/sound/music_3.mp3",
+            "/sound/music_4.mp3",
+            "/sound/music_5.mp3"
           ]
         }
       }
