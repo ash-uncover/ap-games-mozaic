@@ -7,7 +7,11 @@ import {
 } from '@uncover/games-common'
 // Components
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Page, PageContent, PageMenu } from '@uncover/games-common'
+import {
+  Page,
+  PageContent,
+  PageMenu
+} from '@uncover/games-common'
 import { HomeMenuSettings } from '../../components/home/menu/HomeMenuSettings'
 import { HomeMenu } from '../../components/home/menu/HomeMenu'
 import { HomeContentSettingsAudio } from '../../components/home/content/settings/HomeContentSettingsAudio'
