@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
-import { useAudioVolume } from '@uncover/games-common-audio'
+import { useDispatch } from 'react-redux'
+import { useAudioVolume } from '@uncover/games-common'
 // Store
 // Components
 import { Panel, Switch, Slider } from '@uncover/games-common'

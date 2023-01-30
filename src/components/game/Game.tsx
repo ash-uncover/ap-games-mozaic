@@ -1,12 +1,10 @@
 import React from 'react'
 // Hooks
 import { useSelector } from 'react-redux'
-import { useProviders } from '@uncover/ward-react'
-import { useAudioEffect, AudioCategories } from '@uncover/games-common-audio'
+import { useWardProviders } from '@uncover/ward-react'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 // Libs
-import CONFIG from 'config'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import { Navigate } from 'react-router-dom'
@@ -26,7 +24,7 @@ const Game = ({ }) => {
 
   const theme = useSelector(GameSelectors.theme)
 
-  const themes = useProviders('mozaic/theme')
+  const themes = useWardProviders('mozaic/theme')
 
   let audios = []
   let images = []

@@ -8,7 +8,7 @@ import CONFIG from 'config'
 import {
   useAudio,
   AudioCategories
-} from '@uncover/games-common-audio'
+} from '@uncover/games-common'
 // Components
 import BoardTileInner from './tile/BoardTileInner'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 // Hooks
 import { useDispatch, useSelector } from 'react-redux'
-import { useProvider } from '@uncover/ward-react'
+import { useWardProvider } from '@uncover/ward-react'
 // Store
 import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
@@ -26,7 +26,7 @@ export const GameVictory = ({
   const background = useSelector(GameSelectors.background)
 
   const theme = useSelector(GameSelectors.theme)
-  const themeObj = useProvider(`mozaic/theme/${theme}`)
+  const themeObj = useWardProvider(`mozaic/theme/${theme}`)
 
   // Events //
 

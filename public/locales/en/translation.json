@@ -2,7 +2,9 @@
   "LOADING": "Loading...",
   "BACK": "Back",
   "CLOSE": "Close",
-
+  "app": {
+    "start": "Press any key"
+  },
   "home": {
     "menu": "Home",
     "title": "Home",

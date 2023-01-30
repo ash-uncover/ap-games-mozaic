@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
-import { loadData } from 'lib/data'
 import MessageServiceCentral from 'services/message.service'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AppLoadStatuses } from 'store/app/app.state'
 import { Display } from './common/display/Display'
+// Components
+import AppLoading from './AppLoading'
 
 interface AppProperties {
   children: ReactElement
@@ -23,7 +24,7 @@ const App = ({
 
   const dispatch = useDispatch()
 
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
 
   const query = useQuery()
   const loadStatus = useSelector(AppSelectors.loadStatus)
@@ -42,28 +43,15 @@ const App = ({
     }
   }, [])
 
-  useEffect(() => {
-    loadData()
-      .then(() => {
-        dispatch(AppSlice.actions.setLoadStatus(AppLoadStatuses.STARTED))
-      })
-  }, [])
-
   // Rendering //
 
   switch (loadStatus) {
     case AppLoadStatuses.NONE:
-    case AppLoadStatuses.LOADING: {
-      return (
-        <Display className='app'>
-          {t('LOADING')}
-        </Display>
-      )
-    }
+    case AppLoadStatuses.LOADING:
     case AppLoadStatuses.READY: {
       return (
         <Display className='app'>
-          {t('LOADING')}
+          <AppLoading />
         </Display>
       )
     }

@@ -4,7 +4,7 @@ import CONFIG from 'config'
 import {
   useAudioEffect,
   AudioCategories
-} from '@uncover/games-common-audio'
+} from '@uncover/games-common'
 // Components
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Page, PageContent, PageMenu } from '@uncover/games-common'

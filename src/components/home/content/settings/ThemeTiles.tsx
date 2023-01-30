@@ -1,5 +1,7 @@
 import React from 'react'
+// Hooks
 import { useDispatch, useSelector } from 'react-redux'
+import { useWardProviders } from '@uncover/ward-react'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
@@ -10,7 +12,6 @@ import { resolveThumbnail } from 'lib/utils/theme'
 import { Tile } from 'components/common/tiles/Tile'
 // Style
 import './ThemeTiles.css'
-import { useProviders } from '@uncover/ward-react'
 
 export interface ThemeTilesProperties {
 }
@@ -22,7 +23,7 @@ export const ThemeTiles = ({
 
   const dispatch = useDispatch()
 
-  const themes = useProviders('mozaic/theme')
+  const themes = useWardProviders('mozaic/theme')
   const selectedTheme = useSelector(AppSelectors.theme)
 
   // Events //

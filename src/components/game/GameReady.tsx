@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // Hooks
-import { useProvider, useProviders } from '@uncover/ward-react'
+import { useWardProvider, useWardProviders } from '@uncover/ward-react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 // Store
@@ -32,8 +32,8 @@ export const GameReady = ({
 
   const theme = useSelector(GameSelectors.theme)
 
-  const themeObj = useProvider(theme)
-  const themes = useProviders('mozaic/theme')
+  const themeObj = useWardProvider(theme)
+  const themes = useWardProviders('mozaic/theme')
 
   useEffect(() => {
     let newBackgrounds = []

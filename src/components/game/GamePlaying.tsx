@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // Hooks
 import { useDispatch, useSelector } from 'react-redux'
-import { useProvider } from '@uncover/ward-react'
+import { useWardProvider } from '@uncover/ward-react'
 // Store
 import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
@@ -9,7 +9,7 @@ import GameSelectors from 'store/game/game.selectors'
 import {
   AudioCategories,
   useAudioEffect
-} from '@uncover/games-common-audio'
+} from '@uncover/games-common'
 // Components
 import { GameLayout } from 'components/common/game/GameLayout'
 import { Board } from './board/Board'
@@ -35,7 +35,7 @@ export const GamePlaying = ({
   const size = useSelector(GameSelectors.size)
   const background = useSelector(GameSelectors.background)
 
-  const themeObj = useProvider(theme)
+  const themeObj = useWardProvider(theme)
 
   useAudioEffect(audios, {
     category: AudioCategories.MUSIC,

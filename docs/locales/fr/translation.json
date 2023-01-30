@@ -3,6 +3,9 @@
   "BACK": "Retour",
   "CLOSE": "Fermer",
 
+  "app": {
+    "start": "Appuyer sur une touche"
+  },
   "home": {
     "menu": "Accueil",
     "title": "Accueil",
