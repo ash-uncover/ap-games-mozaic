@@ -33,7 +33,6 @@ const initialState: GameState = {
 
   theme: null,
   background: null,
-  backgrounds: null,
 
   dialog: null,
   dialogParams: null,
@@ -159,7 +158,11 @@ const restartGame: CaseReducer<GameState, PayloadAction<void>> = (state, action)
 }
 
 const endGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  Object.assign(state, initialState)
+  Object.assign(state, {
+    ...initialState,
+    size: state.size,
+    theme: state.theme
+  })
 }
 
 type PayloadDialog = {

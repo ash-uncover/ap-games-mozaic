@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { useTranslation } from 'react-i18next'
 // Store
 import GameSlice from 'store/game/game.slice'
@@ -9,6 +9,7 @@ import { DialogAction } from './commons/DialogAction'
 import { Dialog } from './commons/Dialog'
 
 import './DialogVictory.css'
+import GameSelectors from 'store/game/game.selectors'
 
 export interface DialogVictoryProperties {
 }
@@ -25,14 +26,7 @@ export const DialogVictory = ({
 
   const handleRetry = () => {
     dispatch(GameSlice.actions.endGame())
-    dispatch(GameSlice.actions.gameStart())
-    dispatch(GameSlice.actions.closeDialog())
-  }
-
-  const handleNextLevel = () => {
-    dispatch(GameSlice.actions.endGame())
     dispatch(GameSlice.actions.gameReady())
-    dispatch(GameSlice.actions.gameStart())
     dispatch(GameSlice.actions.closeDialog())
   }
 
@@ -60,15 +54,6 @@ export const DialogVictory = ({
           border: '3px solid rgb(22, 160, 134)',
         }}
         onClick={handleRetry}
-      />
-
-      <DialogAction
-        text={t('game.dialogs.victory.next')}
-        style={{
-          background: 'rgb(22, 160, 134)',
-          border: '3px solid rgb(22, 160, 134)',
-        }}
-        onClick={handleNextLevel}
       />
 
       <DialogAction

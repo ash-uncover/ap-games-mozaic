@@ -13,7 +13,6 @@ export interface GameState {
 
   theme: string
   background: string
-  backgrounds: string[]
 
   dialog: string | null
   dialogParams: any | null

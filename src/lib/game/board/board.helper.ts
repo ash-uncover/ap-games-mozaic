@@ -13,10 +13,11 @@ export const isSolvable = (tiles: number[]): boolean => {
   let count = 0
   let miscPosition = 0
   for (let i = 0 ; i < tiles.length ; i++) {
+    if (tiles[i] === tiles.length - 1) {
+      miscPosition = size - Math.floor(i / size)
+    }
     for (let j = i + 1 ; j < tiles.length ; j++) {
-      if (tiles[i] === tiles.length - 1) {
-        miscPosition = size - Math.floor(i / size)
-      } else if (tiles[i] > tiles[j]) {
+      if (tiles[i] !== tiles.length - 1 && tiles[i] > tiles[j]) {
         count++
       }
     }
