@@ -11,6 +11,7 @@ import {
 } from '@uncover/games-common'
 // Components
 import { GameLayout } from 'components/common/game/GameLayout'
+import { LoadIndicator } from 'components/common/LoadIndicator'
 
 export interface GameLoadingProperties {
   audios: string[]
@@ -56,9 +57,20 @@ export const GameLoading = ({
     <GameLayout
       content={
         <Loader
-          text={t('LOADING')}
           value={loadValue}
-        />
+        >
+          <div
+            style={{
+              width: '10rem',
+              height: '2rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center'
+            }}>
+            <LoadIndicator />
+          </div>
+        </Loader>
       }
     />
   )

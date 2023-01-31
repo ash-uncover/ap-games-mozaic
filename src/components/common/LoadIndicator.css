@@ -1,0 +1,70 @@
+:root {
+  --load-indicator--timing: 2s;
+}
+
+@keyframes slide-element-1 {
+  0% { transform: translateX(0) translateY(0); }
+  45% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(0) translateY(100%); }
+  100% { transform: translateX(0) translateY(100%); }
+}
+
+@keyframes slide-element-2 {
+  0% { transform: translateX(100%) translateY(0); }
+  70% { transform: translateX(100%) translateY(0); }
+  75% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes slide-element-3 {
+  0% { transform: translateX(0) translateY(100%); }
+  20% { transform: translateX(0) translateY(100%); }
+  25% { transform: translateX(100%) translateY(100%); }
+  95% { transform: translateX(100%) translateY(100%); }
+  100% { transform: translateX(100%) translateY(0); }
+}
+
+.load-indicator {
+  aspect-ratio: 1;
+  position: relative;
+
+  width: 2rem;
+
+  & .load-indicator-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    padding: 2%;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    & .load-indicator-element__inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 10%;
+      background: var(--base_selected_background);
+    }
+
+    &.element--1 {
+      animation-duration: var(--load-indicator--timing);
+      animation-name: slide-element-1;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+    }
+    &.element--2 {
+      animation-duration: var(--load-indicator--timing);
+      animation-name: slide-element-2;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+    }
+    &.element--3 {
+      animation-duration: var(--load-indicator--timing);
+      animation-name: slide-element-3;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+    }
+  }
+}

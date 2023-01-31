@@ -13,6 +13,7 @@ import { AppLoadStatuses } from 'store/app/app.state'
 import CONFIG from 'config'
 // Components
 import { Loader, useLoadData } from '@uncover/games-common'
+import { LoadIndicator } from './common/LoadIndicator'
 
 interface AppLoadingProperties {
 }
@@ -74,10 +75,22 @@ const AppLoading = ({
 
   return (
     <Loader
-      text={loadCompleted ? t('app.start') : t('LOADING')}
       value={loadValue}
       onClick={handleClick}
-    />
+    >
+      <div
+        style={{
+          width: '12rem',
+          margin: '0 -1rem',
+          height: '2rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center'
+        }}>
+        {loadCompleted ? t('app.start') : <LoadIndicator />}
+      </div>
+    </Loader>
   )
 }
 
