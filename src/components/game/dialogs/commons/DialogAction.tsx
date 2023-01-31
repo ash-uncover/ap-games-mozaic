@@ -8,15 +8,17 @@ import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core'
 import './DialogAction.css'
 
 export interface DialogActionProperties {
-  icon?: [IconPrefix, IconName]
+  className?: string
   style?: CSSProperties
+  icon?: [IconPrefix, IconName]
   text: string
   onClick: () => void
 }
 
 export const DialogAction = ({
-  icon,
+  className,
   style,
+  icon,
   text,
   onClick,
 }: DialogActionProperties) => {
@@ -25,9 +27,15 @@ export const DialogAction = ({
 
   // Rendering //
 
+  const classes = ['dialog-action']
+  if (className) {
+    classes.push(className)
+  }
+
   return (
-    <div className='dialog-action'>
+    <div className={classes.join(' ')}>
       <button
+        className='dialog-action__button'
         style={style}
         onClick={onClick}
       >

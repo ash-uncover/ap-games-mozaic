@@ -90,13 +90,14 @@
       "defeat": {
         "title": "Menu",
         "replay": "Recommencer",
-        "quit": "Menu Principal"
+        "quit": "Quitter",
+        "continue": "Reprendre"
       },
       "victory": {
         "title": "Partie Terminée",
         "replay": "Rejouer",
-        "next": "Niveau Suivant",
-        "quit": "Menu Principal"
+        "quit": "Quitter",
+        "continue": "Reprendre"
       }
     }
   }

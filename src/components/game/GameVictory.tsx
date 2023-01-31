@@ -41,6 +41,7 @@ export const GameVictory = ({
       header={`Mozaic - ${themeObj ? themeObj.name : 'Random'}`}
       content={
         <GridContainer
+          className='image-preview'
           width={size.width}
           height={size.height}
         >

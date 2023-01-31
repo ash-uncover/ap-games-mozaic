@@ -49,29 +49,17 @@ export const DialogVictory = ({
 
       <DialogAction
         text={t('game.dialogs.victory.replay')}
-        style={{
-          background: 'rgb(22, 160, 134)',
-          border: '3px solid rgb(22, 160, 134)',
-        }}
+        className='selected'
         onClick={handleRetry}
       />
 
       <DialogAction
         text={t('game.dialogs.victory.quit')}
-        style={{
-          background: 'grey',
-          border: '3px solid grey',
-        }}
         onClick={handleEndGame}
       />
 
       <DialogAction
-        text={t('CLOSE')}
-        style={{
-          background: 'transparent',
-          border: '3px solid grey',
-          color: '#222',
-        }}
+        text={t('game.dialogs.victory.continue')}
         onClick={handleClose}
       />
 

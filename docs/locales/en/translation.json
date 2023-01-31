@@ -93,13 +93,14 @@
       "defeat": {
         "title": "Menu",
         "replay": "Restart",
-        "quit": "Main Menu"
+        "quit": "Quit",
+        "continue": "Continue"
       },
       "victory": {
         "title": "Level Completed",
         "replay": "Replay",
-        "next": "Next Level",
-        "quit": "Main Menu"
+        "quit": "Quit",
+        "continue": "Continue"
       }
     }
   }

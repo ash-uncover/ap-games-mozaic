@@ -1,20 +1,28 @@
 .dialog-action {
 
-  & button {
+  & .dialog-action__button {
     width: 100%;
 
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
 
     cursor: pointer;
     border: 0;
     border-radius: 0.75rem;
-    color: white;
+    background: var(--base_item_background);
+    color: var(--base_item_color);
     font-size: 1rem;
     font-weight: bold;
     box-sizing: border-box;
 
     & svg + span {
       margin-left: 1rem;
+    }
+  }
+
+  &.selected {
+    & .dialog-action__button {
+      background: var(--base_selected_background);
+      color: var(--base_selected_color);
     }
   }
 

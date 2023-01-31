@@ -5,20 +5,25 @@
   right: 0;
   bottom: 0;
 
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   & .dialog {
-    background: white;
+    background: var(--base_background);
+    color: var(--base_hover_background);
     padding: 1rem 1.5rem;
+    padding-bottom: 1.5rem;
     border-radius: 1.5rem;
+    box-shadow: 0 0 5px 0px grey;
+    min-width: 12rem;
 
     & .dialog-title {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
       font-weight:bold;
     }
   }

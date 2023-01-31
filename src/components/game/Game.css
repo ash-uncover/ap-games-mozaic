@@ -1,4 +1,6 @@
 .image-preview {
+  border: 1px solid black;
+  box-sizing: border-box;
   top: 0;
   & img {
     position: absolute;
