@@ -7,8 +7,7 @@ import GameSlice from 'store/game/game.slice'
 // Libs
 import {
   Loader,
-  loadAudio,
-  loadImages
+  useLoadData
 } from '@uncover/games-common'
 // Components
 import { GameLayout } from 'components/common/game/GameLayout'
@@ -31,30 +30,19 @@ export const GameLoading = ({
   const [loadValue, setLoadValue] = useState(0)
   const [loadCompleted, setLoadCompleted] = useState(false)
 
-  let audioLoaded = 0
-  let imageLoaded = 0
-  const handleAudioProgress = () => {
-    audioLoaded++
-    handleProgress()
-  }
-  const handleImageProgress = () => {
-    imageLoaded++
-    handleProgress()
-  }
-  const handleProgress = () => {
-    const value = Math.floor((audioLoaded + imageLoaded) * 100 / (images.length + audios.length))
+  const handleLoadProgress = (value: number) => {
     setLoadValue(value)
   }
 
-  useEffect(() => {
-    Promise.allSettled([
-      loadAudio(audios, handleAudioProgress),
-      loadImages(images, handleImageProgress),
-    ])
-      .then(() => {
-        setLoadCompleted(true)
-      })
-  })
+  const handleLoadCompleted = () => {
+    setLoadCompleted(true)
+  }
+
+  useLoadData(
+    { images, audios },
+    handleLoadProgress,
+    handleLoadCompleted
+  )
 
   useEffect(() => {
     if (loadCompleted) {

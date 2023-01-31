@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 // Hooks
-import { useDataLoad } from 'lib/data'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import {
+  useWardProviders,
+  useWardLoaded
+} from '@uncover/ward-react'
 // Store
 import AppSlice from 'store/app/app.slice'
 import { AppLoadStatuses } from 'store/app/app.state'
 // Libs
+import CONFIG from 'config'
 // Components
-import { Loader } from '@uncover/games-common'
-import { useTranslation } from 'react-i18next'
+import { Loader, useLoadData } from '@uncover/games-common'
 
 interface AppLoadingProperties {
 }
@@ -32,7 +36,31 @@ const AppLoading = ({
     setLoadCompleted(true)
   }
 
-  useDataLoad(handleLoadProgress, handleLoadCompleted)
+  const wardLoaded = useWardLoaded()
+  const themes = useWardProviders('mozaic/theme')
+
+  const audios = [
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_0.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_1.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_2.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_3.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_4.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_5.mp3`
+  ]
+
+  const images = themes.map((theme: any) => {
+    return theme.attributes.thumbnail
+  })
+
+  useLoadData(
+    {
+      audios,
+      images,
+      delayed: wardLoaded
+    },
+    handleLoadProgress,
+    handleLoadCompleted
+  )
 
   // Events //
 

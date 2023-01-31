@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // Libs
 import CONFIG from 'config'
 import {
@@ -19,10 +19,18 @@ import { HomeContentSettingsDisplay } from '../../components/home/content/settin
 import { HomeContentSettingsGeneral } from '../../components/home/content/settings/HomeContentSettingsGeneral'
 import { HomeContentCredits } from '../../components/home/content/credits/HomeContentCredits'
 import { HomeContentPlay } from '../../components/home/content/play/HomeContentPlay'
+import { useDispatch } from 'react-redux'
+import GameSlice from 'store/game/game.slice'
 
 const RouteHome = () => {
 
   // Hooks //
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(GameSlice.actions.endGame())
+  }, [])
 
   useAudioEffect([
     `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_0.mp3`,

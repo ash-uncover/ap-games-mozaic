@@ -16,7 +16,7 @@ const Root = () => {
   return (
     <>
       <Routes>
-        <Route path='' element={<RouteRoot />}>
+        <Route path='/' element={<RouteRoot />}>
           <Route path='' element={<RouteHome />} />
           <Route path='game' element={<RouteGame />} />
           <Route path='*' element={<RouteHome />} />

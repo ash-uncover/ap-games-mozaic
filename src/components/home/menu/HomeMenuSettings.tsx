@@ -1,8 +1,19 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Menu } from '@uncover/games-common'
+// Hooks
+import {
+  useTranslation
+} from 'react-i18next'
+import {
+  useLocation,
+  useNavigate
+} from 'react-router-dom'
+// Components
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
+import {
+  Menu
+} from '@uncover/games-common'
 
 export const HomeMenuSettings = () => {
 
