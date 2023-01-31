@@ -5,7 +5,7 @@ import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 import MessageServiceCentral from 'services/message.service'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AppLoadStatuses } from 'store/app/app.state'
 import { Display } from './common/display/Display'
@@ -24,12 +24,18 @@ const App = ({
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const { i18n } = useTranslation()
 
   const query = useQuery()
   const loadStatus = useSelector(AppSelectors.loadStatus)
 
   const language = useSelector(AppSelectors.language)
+
+  useEffect(() => {
+    navigate('/')
+  }, [])
 
   useEffect(() => {
     i18n.changeLanguage(language)

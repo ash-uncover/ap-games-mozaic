@@ -20,7 +20,7 @@ import 'lib/utils/icons'
 import store from 'store'
 
 // Import components
-import Root from 'routes/__layout'
+import Root from 'routes'
 import CONFIG from 'config'
 import { ShortcutManager } from '@uncover/games-common'
 import { WardProvider } from '@uncover/ward-react'
