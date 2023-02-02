@@ -16,6 +16,8 @@ import CONFIG from 'config'
 
 import './GameVictory.css'
 
+let victoryTimeout
+
 export interface GameVictoryProperties {
 }
 
@@ -27,6 +29,7 @@ export const GameVictory = ({
   const dispatch = useDispatch()
 
   const [animate, setAnimate] = useState(false)
+  const [once, setOnce] = useState(true)
 
   const size = useSelector(GameSelectors.size)
   const background = useSelector(GameSelectors.background)
@@ -40,9 +43,20 @@ export const GameVictory = ({
 
   useEffect(() => {
     setAnimate(true)
+    victoryTimeout = setTimeout(() => {
+      handleVictoryMenuOnce()
+    }, 3000)
   }, [])
 
   // Events //
+
+  const handleVictoryMenuOnce = () => {
+    clearTimeout(victoryTimeout)
+    if (once) {
+      setOnce(false)
+      handleVictoryMenu()
+    }
+  }
 
   const handleVictoryMenu = () => {
     dispatch(GameSlice.actions.openDialog({ dialog: DIALOG.VICTORY }))
@@ -75,6 +89,7 @@ export const GameVictory = ({
                 height: '100%'
               }}
               src={background}
+              onClick={handleVictoryMenuOnce}
             />
           </GridContainer>
         </>

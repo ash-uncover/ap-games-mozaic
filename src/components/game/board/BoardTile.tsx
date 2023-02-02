@@ -11,7 +11,7 @@ import {
 } from '@uncover/games-common'
 // Components
 import BoardTileInner from './tile/BoardTileInner'
-
+// Styles
 import './BoardTile.css'
 
 const dragInfo = {
