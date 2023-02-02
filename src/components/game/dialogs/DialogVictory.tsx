@@ -7,9 +7,8 @@ import GameSlice from 'store/game/game.slice'
 import { DialogAction } from './commons/DialogAction'
 // Components
 import { Dialog } from './commons/Dialog'
-
+// Styles
 import './DialogVictory.css'
-import GameSelectors from 'store/game/game.selectors'
 
 export interface DialogVictoryProperties {
 }
@@ -32,6 +31,7 @@ export const DialogVictory = ({
 
   const handleEndGame = () => {
     dispatch(GameSlice.actions.endGame())
+    dispatch(GameSlice.actions.closeDialog())
   }
 
   const handleClose = () => {

@@ -145,7 +145,6 @@ const clickTile: CaseReducer<GameState, PayloadAction<ClickTilePayload>> = (stat
   })
   if (!mismatch) {
     state.status = GameStatuses.GAME_ENDED_VICTORY
-    // state.dialog = DIALOG.VICTORY
   }
 }
 

@@ -6,13 +6,13 @@ import { useWardProvider } from '@uncover/ward-react'
 import GameSlice from 'store/game/game.slice'
 import GameSelectors from 'store/game/game.selectors'
 // Libs
+import CONFIG from 'config'
 // Components
 import { DIALOG } from './dialogs/Dialogs'
 import { GameLayout } from 'components/common/game/GameLayout'
 import { GameFooterAction } from 'components/common/game/GameFooterAction'
 import { GridContainer, useAudioEffect } from '@uncover/games-common'
 import { Board } from './board/Board'
-import CONFIG from 'config'
 
 import './GameVictory.css'
 
@@ -24,12 +24,12 @@ export interface GameVictoryProperties {
 export const GameVictory = ({
 }: GameVictoryProperties) => {
 
+
   // Hooks //
 
   const dispatch = useDispatch()
 
   const [animate, setAnimate] = useState(false)
-  const [once, setOnce] = useState(true)
 
   const size = useSelector(GameSelectors.size)
   const background = useSelector(GameSelectors.background)
@@ -44,21 +44,19 @@ export const GameVictory = ({
   useEffect(() => {
     setAnimate(true)
     victoryTimeout = setTimeout(() => {
-      handleVictoryMenuOnce()
+      console.log('in timeout')
+      handleVictoryMenu()
     }, 3000)
+    return () => {
+      clearTimeout(victoryTimeout)
+    }
   }, [])
 
   // Events //
 
-  const handleVictoryMenuOnce = () => {
-    clearTimeout(victoryTimeout)
-    if (once) {
-      setOnce(false)
-      handleVictoryMenu()
-    }
-  }
-
   const handleVictoryMenu = () => {
+    console.log('clearing timeout')
+    clearTimeout(victoryTimeout)
     dispatch(GameSlice.actions.openDialog({ dialog: DIALOG.VICTORY }))
   }
 
@@ -89,7 +87,7 @@ export const GameVictory = ({
                 height: '100%'
               }}
               src={background}
-              onClick={handleVictoryMenuOnce}
+              onClick={handleVictoryMenu}
             />
           </GridContainer>
         </>
