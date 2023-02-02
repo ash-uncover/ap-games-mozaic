@@ -55,6 +55,7 @@ const AppLoading = ({
   const images = themes.map((theme: any) => {
     return theme.attributes.thumbnail
   })
+  images.push(`${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/images/thumbnail_random.jpg`)
 
   useLoadData(
     {
