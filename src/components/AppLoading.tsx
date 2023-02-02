@@ -41,6 +41,9 @@ const AppLoading = ({
   const themes = useWardProviders('mozaic/theme')
 
   const audios = [
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/click.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/gong.mp3`,
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_0.mp3`,
     `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_0.mp3`,
     `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_1.mp3`,
     `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/music_2.mp3`,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 // Store
 import GameSlice from 'store/game/game.slice'

@@ -49,7 +49,7 @@ const BoardTile = ({
   const hiddenTile = useSelector(GameSelectors.tile(hiddenTileId))
 
   const audioTap = useAudio([
-    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/tap.mp3`
+    `${CONFIG.AP_GAMES_MOZAIC_PUBLIC}/sound/click.mp3`
   ], {
     category: AudioCategories.GAME
   })
@@ -173,7 +173,8 @@ const BoardTile = ({
   }
 
   const computeTranslateY = () => {
-    return (offsetY + tile.y - tile.baseY) * 100
+    const result = (offsetY + tile.y - tile.baseY) * 100
+    return result
   }
 
   const classes = ['board-tile']
@@ -185,7 +186,7 @@ const BoardTile = ({
     <div
       className={classes.join(' ')}
       style={{
-        transform: `translateX(${computeTranslateX()}%) translateY(${computeTranslateY()}%)`
+        transform: `translateX(${computeTranslateX()}%) translateY(${computeTranslateY()}%) translateZ(0)`
       }}
       onTouchStart={handleTouchStart}
     >

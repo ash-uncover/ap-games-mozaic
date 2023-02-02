@@ -52,17 +52,17 @@ export const DialogDefeat = ({
 
       <DialogAction
         text={t('game.dialogs.defeat.replay')}
-        className='selected'
         onClick={handleRetry}
-      />
+        />
 
       <DialogAction
         text={t('game.dialogs.defeat.quit')}
         onClick={handleEndGame}
-      />
+        />
 
       <DialogAction
         text={t('game.dialogs.defeat.continue')}
+        className='selected'
         onClick={handleClose}
       />
 

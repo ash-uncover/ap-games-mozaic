@@ -7,6 +7,10 @@ export const getTile = (
   return game.tiles[tileId]
 }
 
+export const isShuffled = (tiles: number[]): boolean => {
+  return tiles.some((tile, index) => tile !== index)
+}
+
 export const isSolvable = (tiles: number[]): boolean => {
   const size = Math.sqrt(tiles.length)
   const sizeEven = size % 2 === 0

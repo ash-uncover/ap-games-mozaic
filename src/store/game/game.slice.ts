@@ -17,7 +17,7 @@ import {
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { GameSize, GameSizes, GameStatuses } from 'lib/game/constants'
 import { DIALOG } from 'components/game/dialogs/Dialogs'
-import { isSolvable } from 'lib/game/board/board.helper'
+import { isShuffled, isSolvable } from 'lib/game/board/board.helper'
 
 // STATE //
 
@@ -90,7 +90,7 @@ const gameStart: CaseReducer<GameState, PayloadAction<GameStartPayload>> = (stat
   })
 
   let tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
-  while (!isSolvable(tilesPosition)) {
+  while (!isShuffled(tilesPosition) || !isSolvable(tilesPosition)) {
     tilesPosition = ArrayUtils.shuffle(tilesPositionBase)
   }
 
@@ -145,7 +145,7 @@ const clickTile: CaseReducer<GameState, PayloadAction<ClickTilePayload>> = (stat
   })
   if (!mismatch) {
     state.status = GameStatuses.GAME_ENDED_VICTORY
-    state.dialog = DIALOG.VICTORY
+    // state.dialog = DIALOG.VICTORY
   }
 }
 

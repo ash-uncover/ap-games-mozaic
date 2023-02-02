@@ -1,0 +1,15 @@
+.game-victory {
+
+  & .image-preview {
+    opacity: 0;
+    transition: opacity 1s, filter 2.5s ease-out;
+    filter: sepia(1);
+  }
+
+  &.animate {
+    & .image-preview {
+      opacity: 1;
+      filter: sepia(0);
+    }
+  }
+}
