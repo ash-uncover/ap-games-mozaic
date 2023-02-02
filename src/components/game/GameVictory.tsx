@@ -24,7 +24,6 @@ export interface GameVictoryProperties {
 export const GameVictory = ({
 }: GameVictoryProperties) => {
 
-
   // Hooks //
 
   const dispatch = useDispatch()
@@ -44,7 +43,6 @@ export const GameVictory = ({
   useEffect(() => {
     setAnimate(true)
     victoryTimeout = setTimeout(() => {
-      console.log('in timeout')
       handleVictoryMenu()
     }, 3000)
     return () => {
@@ -55,7 +53,6 @@ export const GameVictory = ({
   // Events //
 
   const handleVictoryMenu = () => {
-    console.log('clearing timeout')
     clearTimeout(victoryTimeout)
     dispatch(GameSlice.actions.openDialog({ dialog: DIALOG.VICTORY }))
   }
