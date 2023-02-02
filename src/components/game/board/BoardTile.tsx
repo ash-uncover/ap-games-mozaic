@@ -149,6 +149,7 @@ const BoardTile = ({
     dragInfo.direction = null
     dragInfo.target = null
     if (finalOffset > DRAG_THRESHOLD || finalOffset < -DRAG_THRESHOLD) {
+      audioTap.stop()
       audioTap.play()
       dispatch(GameSlice.actions.clickTile({ tileId }))
     }
@@ -157,6 +158,7 @@ const BoardTile = ({
   }
 
   const handleTileClick = () => {
+    audioTap.stop()
     audioTap.play()
     dispatch(GameSlice.actions.clickTile({ tileId }))
   }
