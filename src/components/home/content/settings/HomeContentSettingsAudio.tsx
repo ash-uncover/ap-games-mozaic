@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
 import { useAudioVolume } from '@uncover/games-common'
 // Store
 // Components
@@ -9,8 +8,6 @@ import { Panel, Switch, Slider } from '@uncover/games-common'
 export const HomeContentSettingsAudio = () => {
 
   // Hooks //
-
-  const dispatch = useDispatch()
 
   const { t } = useTranslation()
 
