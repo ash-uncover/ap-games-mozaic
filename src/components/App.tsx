@@ -44,10 +44,7 @@ const App = ({
   }, [language])
 
   useEffect(() => {
-    const embedded = query.has('embedded')
-    if (embedded) {
-      dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-    }
+    dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
   }, [])
 
   // Rendering //
