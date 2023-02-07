@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build:docs": "webpack --config webpack.config.docs.js --mode production",
-    "postinstall": "npm update @uncover/games-common @uncover/games-common-audio",
+    "postinstall": "npm update @uncover/games-common",
     "start": "webpack serve --config webpack.config.dev.js --progress"
   },
   "dependencies": {
@@ -15,17 +15,17 @@
     "@uncover/js-utils": "^0.0.13",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/ward": "^0.1.12",
-    "@uncover/ward-react": "^0.1.14",
+    "@uncover/ward": "^0.2.2",
+    "@uncover/ward-react": "^0.1.18",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
     "i18next-resources-to-backend": "^1.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^12.1.4",
+    "react-i18next": "^12.1.5",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.8.0"
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

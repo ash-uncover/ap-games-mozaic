@@ -24,6 +24,7 @@ import Root from 'routes'
 import CONFIG from 'config'
 import { ShortcutManager } from '@uncover/games-common'
 import { WardProvider } from '@uncover/ward-react'
+import { WardDevTools } from '@uncover/ward-react'
 
 ShortcutManager.reset()
 
@@ -42,5 +43,8 @@ root.render(
         <Root />
       </Router>
     </Provider>
+    {CONFIG.AP_GAMES_MOZAIC_ENVIRONMENT === 'local' ?
+      <WardDevTools />
+      : null}
   </WardProvider>
 )

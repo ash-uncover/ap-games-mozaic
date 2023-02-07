@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
-import MessageServiceCentral from 'services/message.service'
+import { useWardService } from '@uncover/ward-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AppLoadStatuses } from 'store/app/app.state'
@@ -33,6 +33,8 @@ const App = ({
 
   const language = useSelector(AppSelectors.language)
 
+  useWardService(dispatch)
+
   useEffect(() => {
     navigate('/')
   }, [])
@@ -45,7 +47,6 @@ const App = ({
     const embedded = query.has('embedded')
     if (embedded) {
       dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-      return MessageServiceCentral.init(dispatch)
     }
   }, [])
 

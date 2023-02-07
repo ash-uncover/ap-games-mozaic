@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { useDispatchMessage } from '../../../services/message.service'
+import { useWardService } from '@uncover/ward-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 // Store
 import AppSelectors from '../../../store/app/app.selectors'
@@ -16,7 +16,7 @@ export const HomeMenu = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const dispatchMessage = useDispatchMessage()
+  const { dispatchEvent } = useWardService()
 
   const embedded = useSelector(AppSelectors.embedded)
 
@@ -46,7 +46,7 @@ export const HomeMenu = () => {
       icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
       selected: false,
       text: t('home.exit.menu'),
-      onClick: () => { dispatchMessage({ type: 'exitGame', payload: null }) }
+      onClick: () => { dispatchEvent({ type: 'exitGame', payload: null }) }
     })
   }
 
