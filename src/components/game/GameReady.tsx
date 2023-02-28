@@ -9,9 +9,7 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 import { ArrayUtils } from '@uncover/js-utils'
 // Components
-import { GridContainer, ImageSlider } from '@uncover/games-common'
-import { GameFooterAction } from '../common/game/GameFooterAction'
-import { GameLayout } from 'components/common/game/GameLayout'
+import { GameFooterAction, GameLayout, GridContainer, ImageSlider } from '@uncover/games-common'
 
 export interface GameReadyProperties {
 
@@ -72,7 +70,7 @@ export const GameReady = ({
 
   return (
     <GameLayout
-    header={`Mozaic - ${themeObj ? themeObj.attributes.name : 'Random'}`}
+      header={`Mozaic - ${themeObj ? themeObj.attributes.name : 'Random'}`}
       content={
         <GridContainer
           className='image-preview'

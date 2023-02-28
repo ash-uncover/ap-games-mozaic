@@ -9,9 +9,7 @@ import GameSelectors from 'store/game/game.selectors'
 import CONFIG from 'config'
 // Components
 import { DIALOG } from './dialogs/Dialogs'
-import { GameLayout } from 'components/common/game/GameLayout'
-import { GameFooterAction } from 'components/common/game/GameFooterAction'
-import { GridContainer, useAudioEffect } from '@uncover/games-common'
+import { GameFooterAction, GameLayout, GridContainer, useAudioEffect } from '@uncover/games-common'
 import { Board } from './board/Board'
 
 import './GameVictory.css'

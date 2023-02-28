@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import {
+  GameLayout,
   Loader,
   useLoadData
 } from '@uncover/games-common'
 // Components
-import { GameLayout } from 'components/common/game/GameLayout'
 import { LoadIndicator } from 'components/common/LoadIndicator'
 
 export interface GameLoadingProperties {

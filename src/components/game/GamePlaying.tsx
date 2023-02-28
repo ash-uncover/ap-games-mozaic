@@ -8,12 +8,12 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 import {
   AudioCategories,
+  GameFooterAction,
+  GameLayout,
   useAudioEffect
 } from '@uncover/games-common'
 // Components
-import { GameLayout } from 'components/common/game/GameLayout'
 import { Board } from './board/Board'
-import { GameFooterAction } from 'components/common/game/GameFooterAction'
 import { DIALOG } from './dialogs/Dialogs'
 import { GridContainer } from '@uncover/games-common'
 
